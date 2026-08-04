@@ -77,8 +77,8 @@
   --wine:#C22E3A;        /* book category titles & prices follow brand red */
   --gold:#B8863B;
   --gold-soft:#D9B36A;
-  --paper:#FDFAF3;
-  --paper-edge:#E8DFC9;
+  --paper:#D6BE9C;        /* kraft kağıt — basılı menü ile aynı */
+  --paper-edge:#B2946B;
   --wine-soft:#FBEAEB;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -331,11 +331,19 @@ footer{background:var(--navy); color:#E9EDF4; padding:60px 5vw 30px; display:fle
   cursor:pointer;
 }
 .leaf.flipped{transform:rotateY(-180deg);}
+.book.no-anim .leaf{transition:none !important;}
 .face{
   position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
   border-radius:4px 14px 14px 4px;
   background:var(--paper);
-  box-shadow:inset 3px 0 8px rgba(120,100,60,0.10), 0 4px 14px rgba(34,31,26,0.10);
+  background-image:
+    radial-gradient(circle at 18% 26%, rgba(92,68,40,0.055) 0 1.1px, transparent 1.2px),
+    radial-gradient(circle at 72% 14%, rgba(92,68,40,0.05) 0 1px, transparent 1.1px),
+    radial-gradient(circle at 41% 68%, rgba(92,68,40,0.05) 0 1.2px, transparent 1.3px),
+    radial-gradient(circle at 86% 82%, rgba(92,68,40,0.045) 0 1px, transparent 1.1px),
+    linear-gradient(155deg, rgba(255,246,228,0.30), rgba(150,116,74,0.10));
+  background-size:170px 170px, 210px 210px, 140px 140px, 190px 190px, 100% 100%;
+  box-shadow:inset 3px 0 10px rgba(92,68,40,0.16), 0 4px 14px rgba(34,31,26,0.14);
   border:1px solid var(--paper-edge);
   transform:rotateY(0deg) translateZ(0.6px);
   -webkit-transform:rotateY(0deg) translateZ(0.6px);
@@ -371,48 +379,55 @@ footer{background:var(--navy); color:#E9EDF4; padding:60px 5vw 30px; display:fle
 
 /* chapter pages */
 .face.chapter, .mface.chapter{
-  background:linear-gradient(160deg, #F6EFE0, #EEE3CC);
+  background:linear-gradient(160deg, #DCC5A4, #C9AE87);
   display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:14px;
 }
-.chapter-num{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.28em; color:var(--gold); text-transform:uppercase;}
-.chapter-title{font-family:'Fraunces',serif; font-size:clamp(1.5rem,3.4vw,2.2rem); color:#221F1A; max-width:10ch; line-height:1.15;}
-.chapter-orn{color:var(--gold); font-size:1.1rem; letter-spacing:0.4em;}
+.chapter-num{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.28em; color:#8E1B22; text-transform:uppercase;}
+.chapter-title{font-family:'Fraunces',serif; font-style:italic; font-size:clamp(1.6rem,3.6vw,2.3rem); color:#2B1E10; max-width:10ch; line-height:1.15;}
+.chapter-orn{color:#8E1B22; font-size:1.1rem; letter-spacing:0.4em;}
 
 /* menu pages */
 .page-pad{position:absolute; inset:0; padding:26px 24px 40px; display:flex; flex-direction:column; overflow:hidden; border-radius:inherit;}
-.page-cat{font-family:'Fraunces',serif; font-size:1.15rem; color:var(--wine); text-align:center; padding-bottom:10px; border-bottom:1px solid rgba(34,31,26,0.12); margin-bottom:6px; flex:none;}
-.page-group{font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); text-align:center; margin-bottom:4px; flex:none;}
+.page-cat{font-family:'Fraunces',serif; font-style:italic; font-weight:400; font-size:1.5rem; color:#8E1B22; text-align:center; padding-bottom:10px; border-bottom:1px solid rgba(80,58,34,0.22); margin-bottom:6px; flex:none; letter-spacing:0.01em;}
+.page-group{font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; color:#7A5A22; text-align:center; margin-bottom:4px; flex:none;}
 .page-items{flex:1; overflow-y:auto; padding:6px 2px 6px 0; scrollbar-width:thin; touch-action:pan-y; -webkit-overflow-scrolling:touch;}
 .face::after, .face.back::after{pointer-events:none;}
 .page-items::-webkit-scrollbar{width:4px;}
-.page-items::-webkit-scrollbar-thumb{background:var(--paper-edge); border-radius:4px;}
+.page-items::-webkit-scrollbar-thumb{background:rgba(92,68,40,0.45); border-radius:4px;}
 .scroll-hint{
   position:absolute; left:0; right:0; bottom:32px; height:52px; pointer-events:none;
-  background:linear-gradient(180deg, rgba(253,250,243,0), var(--paper) 78%);
+  background:linear-gradient(180deg, rgba(214,190,156,0), var(--paper) 78%);
   display:flex; align-items:flex-end; justify-content:center;
   opacity:0; transition:opacity .3s;
 }
 .page-pad.has-more .scroll-hint{opacity:1;}
 .scroll-hint .chip{
   font-family:'IBM Plex Mono',monospace; font-size:0.58rem; letter-spacing:0.12em;
-  color:#7A5A1E; background:rgba(232,223,201,0.85); border:1px solid var(--paper-edge);
+  color:#5C3F12; background:rgba(240,225,199,0.92); border:1px solid var(--paper-edge);
   padding:4px 12px; border-radius:14px; margin-bottom:2px;
   animation:hintBob 1.6s ease-in-out infinite;
 }
 @keyframes hintBob{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
-.mi{padding:8px 0; border-bottom:1px dashed rgba(34,31,26,0.12);}
+.mi{padding:9px 0; border-bottom:1px dashed rgba(80,58,34,0.20);}
 .mi:last-child{border-bottom:none;}
 .mi-top{display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
-.mi-name{font-size:0.82rem; font-weight:600; line-height:1.3; color:#221F1A;}
+.mi-name{font-size:0.82rem; font-weight:700; line-height:1.3; color:#241A10;}
 .mi-name .star{color:var(--gold); font-size:0.9em;}
-.mi-dots{flex:1; border-bottom:1.5px dotted rgba(34,31,26,0.28); transform:translateY(-3px); min-width:14px;}
-.mi-price{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--wine); white-space:nowrap; font-weight:600;}
-.mi-desc{font-size:0.7rem; color:#84796A; margin-top:2px; line-height:1.4;}
-.mi.sig .mi-name{color:#7A5A1E;}
-.page-num{position:absolute; bottom:14px; font-family:'IBM Plex Mono',monospace; font-size:0.62rem; color:#84796A;}
+.mi-dots{flex:1; border-bottom:1.5px dotted rgba(60,42,24,0.35); transform:translateY(-3px); min-width:14px;}
+.mi-price{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:#8E1B22; white-space:nowrap; font-weight:700;}
+.mi-desc{font-size:0.7rem; color:#5C4A34; margin-top:3px; line-height:1.45;}
+.mi.sig .mi-name{color:#7A4A12;}
+.mi-meta{display:flex; flex-wrap:wrap; gap:6px; margin-top:5px; align-items:center;}
+.mi-kcal{font-family:'IBM Plex Mono',monospace; font-size:0.56rem; letter-spacing:0.06em;
+  color:#6B5334; background:rgba(255,248,232,0.55); border:1px solid rgba(92,68,40,0.22);
+  padding:1px 6px; border-radius:9px; white-space:nowrap;}
+.mi-alrg{font-size:0.6rem; color:#7A4A12; line-height:1.3;}
+.page-note{margin-top:14px; padding-top:9px; border-top:1px solid rgba(80,58,34,0.20);
+  font-size:0.56rem; line-height:1.45; color:#6B5334; font-style:italic;}
+.page-num{position:absolute; bottom:14px; font-family:'IBM Plex Mono',monospace; font-size:0.62rem; color:#6B5334;}
 .face.front .page-num{right:18px;}
 .face.back .page-num{left:18px;}
-.page-brand{position:absolute; bottom:14px; font-family:'Fraunces',serif; font-size:0.66rem; color:rgba(34,31,26,0.35); letter-spacing:0.08em;}
+.page-brand{position:absolute; bottom:14px; font-family:'Fraunces',serif; font-size:0.66rem; color:rgba(45,32,18,0.45); letter-spacing:0.08em;}
 .face.front .page-brand{left:18px;}
 .face.back .page-brand{right:18px;}
 
@@ -449,6 +464,12 @@ footer{background:var(--navy); color:#E9EDF4; padding:60px 5vw 30px; display:fle
 .mp-top.no-anim{transition:none !important;}
 .mface{
   position:absolute; inset:0; background:var(--paper); border-radius:12px;
+  background-image:
+    radial-gradient(circle at 18% 26%, rgba(92,68,40,0.055) 0 1.1px, transparent 1.2px),
+    radial-gradient(circle at 72% 14%, rgba(92,68,40,0.05) 0 1px, transparent 1.1px),
+    radial-gradient(circle at 41% 68%, rgba(92,68,40,0.05) 0 1.2px, transparent 1.3px),
+    linear-gradient(155deg, rgba(255,246,228,0.30), rgba(150,116,74,0.10));
+  background-size:170px 170px, 210px 210px, 140px 140px, 100% 100%;
   border:1px solid var(--paper-edge); overflow:hidden;
   box-shadow:0 6px 22px rgba(22,35,58,0.14);
 }
@@ -473,6 +494,10 @@ footer{background:var(--navy); color:#E9EDF4; padding:60px 5vw 30px; display:fle
   .mi-name{font-size:0.76rem;}
   .mi-price{font-size:0.7rem;}
   .mi-desc{font-size:0.63rem;}
+  .page-cat{font-size:1.3rem;}
+  .mi-kcal{font-size:0.53rem;}
+  .mi-alrg{font-size:0.56rem;}
+  .page-note{font-size:0.53rem;}
   .flip-btn{width:46px; height:46px;}
   .music-inner{padding:70px 5vw;}
   .mcard{padding:26px 22px;}
@@ -799,7 +824,7 @@ body.cb-open .wa-fab{bottom:150px;}
     <button onclick="openLegal('kvkk')" data-en="Privacy &amp; Data Protection Notice">Gizlilik &amp; KVKK Aydınlatma Metni</button>
     <button onclick="openLegal('cerez')" data-en="Cookie Policy">Çerez Politikası</button>
   </div>
-  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v22
+  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v24
 </div>
 
 
@@ -864,302 +889,421 @@ body.cb-open .wa-fab{bottom:150px;}
 </div>
 
 <script>
-function it(n,d,p,s){ return {n:n,d:d||null,p:p,s:!!s}; }
+function it(n,d,p,k,a,s,pt){ return {n:n,d:d||null,p:p,k:k||null,a:a||null,s:!!s,pt:pt||null}; }
 
 const DATA = {
   "Yemek": {
     "Kahvaltı": [
-      it("Sade Omlet",null,360),
-      it("Kaşar Peynirli Omlet",null,390),
-      it("Beyaz Omlet","3 yumurta beyazı, beyaz peynir, avokado, zeytin, söğüş",420),
-      it("Beyaz Peynirli Omlet","2 yumurta, beyaz peynir, söğüş, zeytin",450),
-      it("Sebzeli Omlet","2 yumurta, mevsim sebzeleri, domates söğüş",450),
-      it("Karışık Omlet","2 yumurta, sucuk, salam, sosis, mantar",480),
-      it("Menemen","Soğan isteğe bağlı",450),
-      it("Pankek",null,385),
-      it("Sahanda Yumurta","2 adet yumurta, tereyağı, tuz",330),
-      it("Sucuklu Yumurta","2 adet yumurta, tereyağı, sucuk",480),
-      it("Sucuk","Tereyağı, sucuk",450),
-      it("Yumurtalı Ekmek","Yumurta, ekmek dilimi, baharat",240),
-      it("Pişi",null,240),
-      it("Gevrek",null,95),
-      it("Bal",null,95),
-      it("Kaymak",null,95),
-      it("Döküm Tavada Sıcak Kahvaltı","Hellim ızgara peynir, ev yapımı dana sosis, yağda yumurta, sucuk, baharatlı baby patates, çeri domates, çay ile servis edilir",935),
-      it("Zaz Serpme Kahvaltı (Kişi Başı)","En az 2 kişiden başlar, kişi başı sınırsız çay dahil",800,true)
+      it("Zaz Serpme Kahvaltı (Kişi Başı)","Beyaz peynir, tulum peyniri, zeytin, acılı lor, çemen, kızarmış patates, tereyağı, bal, kaymak, reçel, söğüş tabağı, haşlanmış yumurta, sıcak hamur sepeti. Kişi başı sınırsız çay ile servis edilir. En az 2 kişiden başlar.",800,null,"S,Y,G",1),
+      it("Döküm Tavada Sıcak Kahvaltı","Izgara hellim, kızarmış ev yapımı dana sosis, yağda yumurta, sucuk, baharatlı baby patates, çeri domates. Bir bardak çay ile servis edilir.",935,"965","S,Y"),
+      it("Diet Kahvaltı","2 adet haşlanmış yumurta, ceviz, lor peyniri, avokado, söğüş tabağı. Bir bardak çay ile servis edilir.",575,"650–660","Y,S,C"),
+      it("Hızlı Kahvaltı","Beyaz peynir, tulum peyniri, zeytin, tereyağı, reçel, domates, salatalık, haşlanmış yumurta. Bir bardak çay ile servis edilir.",480,"595","S,Y"),
+      it("Gevrek Tost","Gevrek arasına eritilmiş kaşar peyniri, zeytin, söğüş tabağı. Bir bardak çay ile servis edilir.",420,"525","G,S"),
+      it("Pankek",null,385,"295","S,G,Y"),
+      it("Sade Omlet",null,360,"230","Y,S"),
+      it("Kaşar Peynirli Omlet",null,390,"330–335","Y,S"),
+      it("Beyaz Omlet","3 yumurta beyazı, beyaz peynir, avokado, zeytin, söğüş tabağı.",450,"286","Y,S"),
+      it("Beyaz Peynirli Omlet","2 yumurta, beyaz peynir. Söğüş tabağı ve zeytin ile servis edilir.",420,"360","Y,S"),
+      it("Sebzeli Omlet","2 yumurta, mevsim sebzeleri, domates söğüş tabağı ile.",450,"200","Y"),
+      it("Karışık Omlet","2 yumurta, sucuk, salam, sosis, mantar.",480,"600","Y"),
+      it("Menemen","2 yumurta, soğan, domates, biber, baharat, çiçek yağı.",450,"300","Y"),
+      it("Sahanda Yumurta","2 adet yumurta, tereyağı, tuz.",330,"230","Y,S"),
+      it("Sucuklu Yumurta","2 adet yumurta, tereyağı, sucuk.",480,"410","Y,S"),
+      it("Sucuk","Tereyağı, sucuk.",450,"250","S"),
+      it("Yumurtalı Ekmek","Yumurta, ekmek dilimi ve baharat.",240,"150","Y,G"),
+      it("Pişi","Miktara göre değişir (8 adet, toplam 285 kcal).",240,null,"G"),
+      it("Gevrek",null,95,"285","G,SU"),
+      it("Bal",null,180,"64",null),
+      it("Kaymak",null,180,"175","S")
     ],
     "Tost & Sandviç": [
-      it("Club Sandviç","3 kat tost ekmeği, dana jambon, tavuk bonfile, cheddar, turşu, marul, mayonez, hardal — patates kızartması, coleslaw ile",720),
-      it("Karışık Ayvalık Tostu","Ayvalık ekmeği, kaşar, sucuk, salam, sosis, turşu, domates, salatalık",660),
-      it("Kaşarlı Sucuklu Tost","Sucuk, kaşar, domates, salatalık, zeytin",610),
-      it("__ANIM_TOAST__"),
-      it("J&B Tost","Kaşar, jambon, domates, salatalık, zeytin",450),
-      it("Diet Tost","Kepek ekmeği, beyaz peynir, domates, salatalık, zeytin",380)
+      it("Club Sandviç","Üç kat beyaz veya kepekli tost ekmeği arasına dana jambon, tavuk bonfile dilimleri, cheddar peyniri, turşu, marul, mayonez, hardal sos. Yanında patates kızartması ve coleslaw ile servis edilir.",720,"1.330","G,S,Y,H"),
+      it("Karışık Ayvalık Tostu","Ayvalık ekmeği, kaşar peyniri, sucuk, salam, sosis, turşu, domates, salatalık.",660,"1.020","G,S"),
+      it("Kaşarlı Sucuklu Tost","Tost ekmeği, kaşar peyniri, sucuk, domates, salatalık, zeytin.",610,"360","G,S"),
+      it("Kaşarlı Tost","Tost ekmeği, kaşar peyniri, domates, salatalık, zeytin.",440,"480","G,S"),
+      it("J&B Tost","Tost ekmeği, kaşar peyniri, jambon, domates, salatalık, zeytin.",450,"410","G,S"),
+      it("Diet Tost","İki dilim kepek ekmeği arasına beyaz peynir, domates, salatalık ve zeytin.",380,"340","G,S")
     ],
     "Ekmek Üstü Lezzetler": [
-      it("Ekmek Üstü Poşe Yumurta","15 dk hazırlanma süresi",420),
-      it("Ekmek Üstü Scrambled",null,420),
-      it("Ekmek Üstü Somon Füme",null,900)
-    ],
-    "Aperatifler": [
-      it("Patates Kızartması",null,420),
-      it("Kajun Baharatlı Patates Kızartması","Kajun baharat ile",480),
-      it("Kajun Baharatlı Chicken Fingers","Kızarmış patates, honey mustard, sweet chilli, kokteyl sos",600),
-      it("Sigara Böreği","4 adet, domates söğüş ile",310),
-      it("Sosis Sepeti","Patates ile",780),
-      it("ZAZ Special","Ev yapımı dana sosis, bonfile, sigara böreği, soğan halkası, chicken fingers, mozzarella sticks, mini parmak köfte",1050,true)
+      it("Ekmek Üstü Poşe Yumurta",null,420,"180","Y,G"),
+      it("Ekmek Üstü Scrambled",null,420,"280","Y,G"),
+      it("Ekmek Üstü Somon Füme",null,900,"160","B,G")
     ],
     "Bowl": [
-      it("Sporcu Tavuk Bowl","Tavuk, nohut, basmati pirinç, avokado, brokoli, yeşillik, mor lahana, havuç",780),
-      it("Yumurta Bowl","Yumurta, nohut, basmati pirinç, avokado, yeşillik, kapya biber, çeri domates, havuç",660),
-      it("Berry Bowl",null,660),
-      it("Choco Bowl",null,660),
-      it("Vejetaryen Bowl","Hellim peyniri, nohut, basmati pirinç, avokado, pancar, yeşillik, kırmızı biber",660),
-      it("Vegan Bowl","Nohut, basmati pirinç, avokado, kapya biber, pancar, yeşillik, kabak çekirdeği",660),
-      it("Izgara Tavuk Bowl","Izgara tavuk göğsü, Akdeniz yeşillikleri, çeri domates, penne makarna",780),
-      it("Chinese Et Bowl","Sotelenmiş bonfile küpleri, renkli biberler, soğan, basmati pirinç, brokoli, nohut, mor lahana, avokado, susam, teriyaki/sweet chilli/soya sos",1320),
-      it("Avokado Bowl","Avokado, Akdeniz yeşillikleri, lor peyniri, haşlanmış yumurta",780),
-      it("Chinese Tavuk Bowl","Küp doğranmış tavuk, renkli biberler, soğan, basmati pirinç, brokoli, nohut, mor lahana, avokado, susam, teriyaki/sweet chilli sos",900)
+      it("Vejetaryen Bowl","Hellim peyniri ve mevsim malzemeleri ile.",660,"500","S,Y,G"),
+      it("Vegan Bowl","Nohut, basmati pirinci, avokado, kapya biber, pancar, yeşillik, kabak çekirdeği.",660,"450",null),
+      it("Sporcu Tavuk Bowl","Tavuk, nohut, basmati pirinci, avokado, brokoli, yeşillikler, mor lahana ve havuç.",780,"550",null),
+      it("Yumurta Bowl","Yumurta, nohut, basmati pirinci, avokado, yeşillikler, kapya biber, çeri domates ve havuç.",660,"500","Y"),
+      it("Izgara Tavuk Bowl","Izgara tavuk göğsü, Akdeniz yeşillikleri, çeri domates ve penne makarna.",780,"550","G"),
+      it("Chinese Et Bowl","Sote küp bonfile, renkli biberler, soğan, basmati pirinci, haşlanmış brokoli, nohut, mor lahana, avokado, kavrulmuş susam, teriyaki sos, sweet chilli sos ve soya sosu.",1320,"600","SO,SU"),
+      it("Chinese Tavuk Bowl","Sote küp tavuk, renkli biberler, soğan, basmati pirinci, haşlanmış brokoli, nohut, mor lahana, avokado, kavrulmuş susam, teriyaki sos, sweet chilli sos ve soya sosu.",900,"600","SO,SU"),
+      it("Avokado Bowl","Avokado, Akdeniz yeşillikleri, lor peyniri ve haşlanmış yumurta.",780,"400","S,Y"),
+      it("Berry Bowl",null,660,"450",null),
+      it("Choco Bowl",null,660,"500",null)
+    ],
+    "Aperatifler": [
+      it("Anne Patates Kızartması",null,450,"330",null),
+      it("Patates Kızartması",null,420,"310",null),
+      it("Kajun Baharatlı Patates Kızartması",null,480,"460",null),
+      it("Parmesanlı Trüf Yağlı Patates Kızartması","Patates kızartması, parmesan peyniri, trüf yağı ve baharatlar.",540,"450","S"),
+      it("Kajun Baharatlı Chicken Fingers","Kızarmış patates ile honey mustard, sweet chilli ve kokteyl sos.",600,"720","Y,H"),
+      it("Sigara Böreği","Domates söğüş tabağı ile.",310,"540","G,S"),
+      it("Sosis Sepeti","Patates ile.",780,"450",null),
+      it("ZAZ Special","Ev yapımı dana sosis, bonfrit, sigara böreği, soğan halkası, chicken fingers, mozzarella sticks, mini parmak köfte.",1050,"2.600–3.550",null,1),
+      it("Yoğurtlama","Biber, patates ve patlıcan kızartması, yoğurt ve domates ile.",550,"550–750","S")
     ],
     "Başlangıçlar": [
-      it("Feta Cheese","Yunan usulü, ballı, susamlı",420),
-      it("Tereyağlı Yaprak Ciğer",null,1100),
-      it("Kavun Peynir",null,420),
-      it("Söğüş Tabağı",null,240),
-      it("Burrata",null,1140),
-      it("Parmesanlı Türüf Yağlı Patates Kızartması",null,540),
-      it("Peynir Tabağı","İsli çerkez, parmesan, eski kaşar, rokfor, beyaz peynir, İzmir tulum, kuru et, mevsim meyveleri",1210),
-      it("Rakı Tabağı","Domates, salatalık, roka, dilim beyaz peynir, meyve",975),
-      it("Mezeler","Günün mezeleri, fiyat değişebilir",420),
-      it("Mozzarella Caprese","Suda mozarella, domates, fesleğen, pesto sos, ceviz",660),
-      it("Güveçte Karışık Deniz Mahsulleri","Kalamar, ahtapot, karides, tereyağı, sarımsak, baharat",1680),
-      it("Bruschetta","Ekşi maya ekmeği, concase domates, zeytin, sarımsak, parmesan, fesleğen",420),
-      it("Fırında Kaşarlı Mantar Güveç","Mantar, kaşar, sarımsak",720),
-      it("Tereyağlı Karides","Tereyağı, baharat, sarımsak",1550),
-      it("Kalamar Tava","Tartar sos, roka, kırmızı soğan, limon",1300),
-      it("Meyve Tabağı","Mevsim meyveleri",730)
+      it("Mezeler","Günün mezelerini lütfen sorunuz. Çeşide göre fiyat değişebilir.",420,null,null),
+      it("Kavun Peynir","Taze kavun dilimleri ve peynir çeşitleri.",420,"250","S"),
+      it("Burrata","Burrata peyniri, zeytinyağı ve taze yeşillikler ile servis edilir.",1140,"300","S"),
+      it("Söğüş Tabağı","Mevsim yeşillikleri, domates, salatalık, biber ve çeşitli taze sebzeler.",240,"150",null),
+      it("Rakı Tabağı","Domates, salatalık, roka, dilim beyaz peynir ve mevsim meyveleri.",750,"250","S"),
+      it("Bruschetta","Özel yapım ekşi maya ekmeği, concassé domates, zeytin, sarımsak, rendelenmiş parmesan, fesleğen ve fesleğen sos.",420,"350","G,S"),
+      it("Peynir Tabağı","İsli çerkez peyniri, parmesan, eski kaşar, rokfor, beyaz peynir, İzmir tulum, kuru et ve mevsim meyveleri.",1210,"450","S"),
+      it("Mozzarella Caprese","Suda mozzarella, dilimlenmiş domates, fesleğen, pesto sos ve ceviz.",660,"350","S,C"),
+      it("Pollo Carciofi","Diet haşlanmış tavuk göğsü, taze enginar kalbi, zeytinyağı, lime, limon, tane karabiber, az tuz, toz parmesan, çeri domates ve mascolin glaze.",1100,"340","S"),
+      it("Domates Carpaccio","Dilimlenmiş domates, fesleğen ve maydanozla harmanlanmış küp mor domates, özel oyster ve soya soslu.",660,"180","SO"),
+      it("Carpaccio di Manzo (Dana Carpaccio)","İnce yaprak açılmış marine bonfile; taze baharat, lime sos, glaze sos, baby roka, çeri domates ve toz parmesan ile.",1300,"420","S")
+    ],
+    "Sıcak Başlangıçlar": [
+      it("Feta Cheese","Feta peyniri, bal, susam ve Yunan usulü baharatlar.",420,"300","S,SU"),
+      it("Susamlı Hellim Tava","4 dilim hellim peyniri, mascolin ve kiraz domates ile.",850,"450","S,SU"),
+      it("Fırında Kaşarlı Mantar Güveç","Mantar, kaşar peyniri, tereyağı ve baharatlar.",720,"350","S"),
+      it("Güveçte Karışık Deniz Mahsulleri","Kalamar, ahtapot, karides, tereyağı, sarımsak ve baharatlar.",1680,"450","K,S"),
+      it("Tereyağlı Karides","Tereyağı, sarımsak ve baharatlar ile.",1550,"350","K,S"),
+      it("Kalamar Tava","Tereyağı ve baharatlar ile.",1300,"350","K,S"),
+      it("Tereyağlı Yaprak Ciğer","İnce dilimlenmiş dana ciğeri, tereyağı, baharatlar ve isteğe bağlı soğan ile servis edilir.",1100,"400","S"),
+      it("Tai Usulü Ballı Susamlı Acılı Tavuk","Tempura soslu kızartılmış Tai usulü tavuk parçaları; sweet chilli, hot chilli sos, bal, göbek otu ve susam ile.",900,"640","SO,SU")
+    ],
+    "Çorba": [
+      it("Günün Çorbası","Lütfen sorunuz.",360,null,null)
     ],
     "Salatalar": [
-      it("Ton Balıklı Salata","Akdeniz yeşilliği, ton balığı, kapari, kırmızı soğan, özel sos",780),
-      it("Somon Füme Salata","Füme somon (100gr), Akdeniz yeşilliği, kapari, kırmızı soğan, özel sos",990),
-      it("Ilık Et Salatası","Akdeniz yeşilliği, salatalık, köz biber, avokado, parmesan, bonfile, balzamik glaze",1050),
-      it("Izgara Tavuk Salata","Akdeniz yeşilliği, köz biber, domates, tavuk göğüs",675),
-      it("Izgara Hellim Salata","Akdeniz yeşilliği, yeşil elma, ceviz, köz biber, çeri domates, ızgara hellim",620),
-      it("Sezar Salata","Marul, kruton ekmek, sezar sos, parmesan, tavuk göğüs",675),
-      it("Levrek Salata","Akdeniz yeşillikleri, kırmızı soğan, dereotu, kapari, domates, levrek fileto",780),
-      it("Roka Parmesan Salata","Roka, parmesan, siyah zeytin, çeri domates, zeytinyağlı limon sos",630),
-      it("Kabak Sıyırma Salata","Marine kabak, susam, ay çekirdeği, zeytinyağlı limon sos",480)
+      it("Roka Parmesan Salata","Roka, parmesan peyniri, siyah zeytin, kiraz domates ve zeytinyağlı limon sos.",630,"300","S"),
+      it("Mevsim Salata","Mevsim yeşillikleri, sirkeli kırmızı lahana ve özel sos ile.",620,"120",null),
+      it("Kabak Sıyırma Salata","Marine edilmiş kabak, susam, ay çekirdeği ve zeytinyağlı limon sos.",480,"250","SU"),
+      it("Greek Salata","Beyaz peynir, kırmızı soğan, domates, salatalık, zeytin ve biber.",650,null,"S"),
+      it("İstanbul Salatası","Domates, kırmızı soğan ve özel sos ile.",500,"180",null),
+      it("Izgara Hellim Salata","Akdeniz yeşillikleri, yeşil elma, ceviz, köz biber, çeri domates ve ızgara hellim peyniri.",620,"450","S,C"),
+      it("Sezar Salata","Marul, kruton, Sezar sos, parmesan peyniri ve tavuk göğsü.",675,"450","G,S"),
+      it("Izgara Tavuk Salata","Akdeniz yeşillikleri, köz biber, domates ve tavuk göğsü.",675,"350",null),
+      it("Ilık Et Salatası","Akdeniz yeşillikleri, salatalık, köz biber, avokado, parmesan, bonfile dilimleri ve balzamik glaze.",1050,"500","S"),
+      it("Levrek Salata","Akdeniz yeşillikleri, kırmızı soğan, dereotu, kapari, domates ve levrek fileto.",780,"400","B"),
+      it("Somon Füme Salata","Füme somon (100 gr), Akdeniz yeşillikleri, kapari karpuzu, kırmızı soğan, kapari ve özel sos.",990,"400","B"),
+      it("Ton Balıklı Salata","Akdeniz yeşillikleri, ton balığı, kapari, kırmızı soğan ve özel salata sosu.",780,"350","B")
     ],
     "Burgerler": [
-      it("Zaz Burger","Özel hamburger köftesi, marul, domates, turşu — patates kızartması ile",840,true),
-      it("Cheeseburger","Burger köftesi, kıvırcık marul, domates, salatalık turşusu, cheddar sos, patates kızartması, özel burger sosları",900),
-      it("Chicken Burger","Panelenmiş özel tavuk, kıvırcık marul, domates, salatalık turşusu, patates kızartması, özel burger sosları",780)
+      it("Zaz Burger","Özel hamburger köftesi, marul, domates, turşu ve patates kızartması.",840,"800","G,S,Y",1),
+      it("Cheeseburger","Burger köftesi, kıvırcık marul, domates, salatalık turşusu, cheddar sos, patates kızartması ve özel burger sosları.",900,"850","G,S,Y,SO"),
+      it("Chicken Burger","Panelenmiş özel tavuk, kıvırcık marul, domates, salatalık turşusu, patates kızartması ve özel burger sosları.",780,"850","G,Y,S,SO"),
+      it("Şefin Burger","Özel burger köftesi, cheddar peyniri, mantar, karamelize soğan ve soslarla kapalı ekmek içinde servis edilir. Pişirme süresi 20–25 dk.",1100,"850","G,S,SO,Y",1)
     ],
     "Pizzalar": [
-      it("Pizza ZAZ","Domates sosu, mozzarella, dana füme et, roka, domates, parmesan",1150,true),
-      it("Pizza Mista","Mozzarella, sucuk, salam, sosis, mantar, domates, yeşil biber, siyah zeytin, domates sosu",950),
-      it("Pizza Margarita","Domates sos, mozzarella, kiraz domates",720),
-      it("Pizza Vejeteryan","Mevsim sebzeleri ile",720),
-      it("Pizza Al Pollo","Meksikan tavuklu, acılı",900),
-      it("Pizza Luna","Sucuk ve mozzarella",840)
+      it("Pizza Burrata","Domates sos, burrata peyniri, pesto sos, kiraz domates ve roka.",1440,"700","G,S"),
+      it("Pizza Mozzarella","Domates sos, mozzarella peyniri ve kiraz domates.",935,"650","G,S"),
+      it("Pizza Margarita","Domates sos, mozzarella peyniri ve kiraz domates.",720,"650","G,S"),
+      it("Pizza Vejeteryan","Domates sos, mozzarella peyniri ve mevsim sebzeleri.",720,"700","G,S"),
+      it("Pizza Al Pollo","Domates sos, mozzarella peyniri, baharatlı tavuk parçaları, Meksika usulü sebzeler ve acılı sos.",900,"750","G,S"),
+      it("Pizza Luna","Domates sos, mozzarella peyniri ve sucuk.",840,"750","G,S"),
+      it("Pizza Four Cheese","4 çeşit peynir ile.",850,"900","S,G"),
+      it("Pizza Funghi","Domates sos, mozzarella peyniri ve mantar.",780,"650","G,S"),
+      it("Pizza ZAZ","Domates sosu, mozzarella peyniri, dana füme et, roka, domates ve parmesan peyniri.",1150,"750","G,S",1),
+      it("Pizza Mista","Mozzarella peyniri, sucuk, salam, sosis, mantar, domates, yeşil biber, siyah zeytin ve domates sosu.",950,"850","G,S,SO")
     ],
     "Makarnalar": [
-      it("Enginar Kalpli Fettuccine Alfredo","Enginar kalbi, tavuk, makarna ve sosları ile (şarapta pişirilir)",780),
-      it("Karides Linguine",null,1350),
-      it("Spaghetti Bolognese","Kıymalı domates sos ile",710),
-      it("Penne Arabiata","Chili biberi, zeytin, parmesan, napoliten sos",660),
-      it("Penne Romano","Tavuk göğsü, kültür mantarı, krema soya sosu",750),
-      it("Mantı Ev Yapımı",null,840)
+      it("Enginar Kalpli Fettuccine Alfredo","Enginar kalbi, tavuk, makarna ve özel soslar. Ürün şarap ile pişirilir.",780,"650","G"),
+      it("Karides Linguine","Linguine makarna, karides, özel sos ve baharatlar.",1350,"650","G,K"),
+      it("Spaghetti Alnero di Mare","Özel deniz sosu, karides, kalamar, ahtapot, sarımsak, şarap ve napoliten sos.",1500,"450","G,K"),
+      it("Tagliatelle Bonfile","Tagliatelle makarna, mantar, lokum bonfile parçaları, hafif krema, soya sos, oyster sos, sweet chilli sos, maydanozlu tereyağı ve parmesan ile.",1450,"750","G,S,SO"),
+      it("Penne Romano","Tavuk göğsü, kültür mantarı, krema ve soya sosu.",750,"550","G,S,SO"),
+      it("Penne Arabiata","Domates sosu (napoliten), chili biberi, zeytin ve parmesan peyniri.",660,"650","G,S"),
+      it("Spaghetti Bolognese","Makarna, kıyma, domates sosu ve özel baharatlar.",710,"650","G"),
+      it("Mantı Ev Yapımı","El açması hamur, kıyma harcı, yoğurt, sarımsak, tereyağı ve özel baharatlar.",840,"700","G,S,Y")
     ],
     "Et Yemekleri": [
-      it("Yağlı Kara","Patates kızartması ile servis edilir",1650),
-      it("Çökertme Kebabı",null,1440),
-      it("Izgara Köfte","Patates kızartması, ızgara domates, biber",900),
-      it("Kuzu Pirzola","4 adet pirzola, roka, maydanoz, kırmızı soğan, baby patates",1800),
-      it("Tereyağlı Yaprak Bonfile","Marine yaprak bonfile, arpacık soğan, baby patates, çeri domates, sarımsak",1740),
-      it("Naturel Bonfile","Sebze ile",1680),
-      it("Zaz Usulü Lokum","Sarımsaklı krema sos ile pişirilmiş dana bonfile, mevsim sebzeleri ile",1680,true),
-      it("Mantar Soslu Antrikot",null,1300)
+      it("Naturel Bonfile","Izgara dana bonfile, mevsim garnitürü ve özel baharatlar.",1680,"650",null),
+      it("Zaz Usulü Lokum","Sarımsaklı krema sos ile pişirilmiş dana bonfile, mevsim sebzeleri ve özel baharatlar.",1680,"750","S",1),
+      it("Tereyağlı Yaprak Bonfile","Marine edilmiş yaprak bonfile, arpacık soğan, baby patates, çeri domates ve sarımsak.",1740,"700",null),
+      it("Mantar Soslu Antrikot","Izgara antrikot, mantar sosu ve mevsim sebzeleri.",1300,"800","S"),
+      it("Kuzu Pirzola","4 adet kuzu pirzola, roka, maydanoz, kırmızı soğan ve baby patates.",1800,"850",null),
+      it("Çökertme Kebabı","İnce dilimlenmiş dana eti, çıtır patates, sarımsaklı yoğurt ve özel soslar.",1440,"750","S"),
+      it("Yağlı Kara","Yağlı kara et dilimleri ve patates kızartması.",1650,"700",null),
+      it("Sweet Chili Beef","Bonfile parçaları, California biber çeşitleri, mantar ve beşamel sos; üzerine susam ve çörek otu.",980,"580","S,G,SU,SO"),
+      it("Viyana Usulü Et Schnitzel","Patates kızartması, tereyağı ve limon ile.",1380,"980","G,Y,S"),
+      it("Izgara Köfte","Izgara köfte, patates kızartması, ızgara domates ve ızgara biber.",900,"700",null)
     ],
     "Tavuk Yemekleri": [
-      it("Zaz Usulü Tavuk","Sarımsaklı krema sos ile pişirilmiş tavuk bonfile",780,true),
-      it("Tavuk Schnitzel","Patates kızartması, tavuk şnitzel, tereyağı",780),
-      it("Tavuk Külbastı","Baby patates, haşlanmış sebze",780),
-      it("Köri Soslu Tavuk","Tavuk dilimleri, mantar, kremalı köri sos, patates kızartma",850),
-      it("Diet Izgara Tavuk","Tavuk bonfile, haşlanmış sebze, patates",780),
-      it("Mantar Soslu Tavuk","Izgara tavuk, kremalı mantar sos, baby patates",850),
-      it("Mexican Tavuk","Tavuk külbastı, acılı mexican sos, patates kızartması",850)
+      it("Tavuk Külbastı","Izgara tavuk külbastı, mevsim garnitürü ve özel baharatlar.",780,"550",null),
+      it("Diet Izgara Tavuk","Izgara tavuk bonfile, haşlanmış sebzeler ve patates.",780,"550",null),
+      it("Mantar Soslu Tavuk","Izgara tavuk, kremalı mantar sos ve baby patates.",850,"650","S"),
+      it("Zaz Usulü Tavuk","Sarımsaklı krema sos ile pişirilmiş tavuk bonfile ve özel baharatlar.",780,"600","S",1),
+      it("Tavuk Schnitzel","Pane tavuk şnitzel, patates kızartması ve tereyağı.",780,"800","G,Y,S"),
+      it("Köri Soslu Tavuk","Tavuk dilimleri, mantar, kremalı köri sos ve patates kızartması.",850,"700","S"),
+      it("Mexican Tavuk","Tavuk külbastı, acılı Mexican sos ve patates kızartması.",850,"650",null)
     ],
-    "Wrapler": [
-      it("Wrap Et","İnce küp bonfile, renkli biberler, jalapeno biber, mantar, kaşar, özel sos",950),
-      it("Wrap Tavuk","İnce küp tavuk, renkli biberler, jalapeno biber, mantar, kaşar, özel sos",780)
+    "Wraplar": [
+      it("Wrap Et","İnce küp bonfile, renkli biberler, jalapeño biber, mantar, kaşar peyniri ve özel sos.",950,"700","S,G"),
+      it("Wrap Tavuk","İnce küp tavuk, renkli biberler, jalapeño biber, mantar, kaşar peyniri ve özel sos.",780,"650","S,G")
     ],
     "Balık": [
-      it("Somon Izgara","Kabak sıyırma, baby patates",1320),
-      it("Levrek Izgara","Roka, baby patates, kırmızı soğan",1050),
-      it("Marine Edilmiş Levrek Şefin Speciali","Özel soslarla marine edilmiş fileto levrek",1050)
+      it("Somon Izgara","Izgara somon, kabak sıyırma ve baby patates.",1320,"550","B"),
+      it("Levrek Izgara","Izgara levrek, roka, baby patates ve kırmızı soğan.",1050,"500","B"),
+      it("Marine Edilmiş Levrek Şefin Speciali","Özel soslarla marine edilmiş fileto levrek ve baharatlar.",1050,"400","B",1)
     ],
     "Çocuk Menü": [
-      it("Çıtır Tavuk Parçaları","Panelenmiş çıtır tavuk, patates kızartması",480),
-      it("Spagetti Bolonez","Kıymalı domates sos, peynir",540),
-      it("Mini Pizza","Domates sos, mozzarella, sucuk, sosis, salam",480),
-      it("Tavuk Schnitzel","Patates kızartması ile",480),
-      it("Makarna","Domates sos, peynir",480),
-      it("Izgara Köfte","Ev yapımı, patates kızartması",600),
-      it("Mini Hamburger","Ev yapımı köfte, yeşillik, domates, patates kızartması",600),
-      it("Mini Sosis","Patates kızartması ile",540)
+      it("Çıtır Tavuk Parçaları","Panelenmiş çıtır tavuk parçaları ve patates kızartması.",480,"750","G,Y,S"),
+      it("Spagetti Bolonez","Makarna, kıymalı domates sos ve peynir.",540,"700","G,S"),
+      it("Mini Pizza","Domates sos, mozzarella peyniri, sucuk, sosis ve salam.",480,"850","G,S,SO"),
+      it("Tavuk Schnitzel (Çocuk)","Panelenmiş tavuk schnitzel ve patates kızartması.",480,"450","G,Y,S"),
+      it("Makarna","Makarna, domates sos ve peynir.",480,"400","G,S"),
+      it("Izgara Köfte (Çocuk)","Ev yapımı ızgara köfte ve patates kızartması.",600,"600",null),
+      it("Mini Hamburger","Ev yapımı köfte, yeşillikler, domates ve patates kızartması.",600,"650","G,Y,S"),
+      it("Mini Sosis","Mini sosis ve isteğe bağlı patates kızartması ile servis edilir.",540,"350",null)
     ],
     "Tatlılar": [
-      it("Cheesecake","Lütfen sorunuz",490),
-      it("Çilekli Magnolia",null,490),
-      it("Mozaik Pasta",null,490),
-      it("San Sebastian Cheesecake",null,490),
-      it("Banana Roll",null,490)
-    ],
-    "Sporcu Protein Bowl": [
-      it("Tavuk Bowl","Tavuk, nohut, basmati pirinci, avokado, brokoli, yeşillik, mor lahana, havuç · 567 kalori, 63g karb, 19,3g lif, 36g protein, 19g yağ",null),
-      it("Yumurta Bowl","Yumurta, nohut, basmati pirinci, avokado, kapya biber, yeşillik, çeri domates, havuç · 586 kalori, 60g karb, 18,8g lif, 37g protein, 22g yağ",null),
-      it("Vegan Bowl","Nohut, basmati pirinci, avokado, pancar, yeşillik, kapya biber, kabak çekirdeği · 539 kalori, 61g karb, 19g lif, 22g protein, 23g yağ",null),
-      it("Vejetaryen Bowl","Hellim peyniri, nohut, basmati pirinci, avokado, pancar, yeşillik, kırmızı biber · 559 kalori, 61g karb, 18g lif, 36g protein, 19g yağ",null)
+      it("Meyve Tabağı","Mevsimine uygun taze meyve çeşitleri.",730,"150",null),
+      it("Cheesecake","Krem peynir, bisküvi tabanı ve özel cheesecake sosu.",490,"490","S,G"),
+      it("Çilekli Magnolia","Süt, krema, muhallebi kreması, bisküvi ve taze çilek.",490,"450","S,G"),
+      it("Mozaik Pasta","Kakao, bisküvi, tereyağı, süt ve çikolata.",490,"500","G,S,SO"),
+      it("San Sebastian Cheesecake","Krem peynir, krema, yumurta, şeker ve özel cheesecake karışımı.",490,"550","S,Y"),
+      it("Banana Roll","Muz, krema, çikolata sos ve özel rulo kek.",490,"450","G,S,Y")
     ]
   },
   "İçecek": {
     "Çaylar": [
-      it("Kuşburnu Çayı",null,250), it("Rezene Çayı",null,250), it("Papatya Çayı",null,250),
-      it("Nane Çayı",null,250), it("Limonlu Yeşil Çay",null,250), it("Soğuk Matcha Çayı",null,280),
-      it("Matcha Çayı",null,280), it("Klasik Harman Çay",null,70), it("Duble Çay",null,180),
-      it("Ada Çayı",null,250), it("Ihlamur",null,250), it("Elmalı Tarçın Çayı",null,250), it("Kış Çayı",null,280)
+      it("Klasik Harman Çay",null,90,null,null),
+      it("Double Çay",null,180,null,null),
+      it("Nane Çayı",null,250,null,null),
+      it("Kuşburnu Çayı",null,250,null,null),
+      it("Rezene Çayı",null,250,null,null),
+      it("Papatya Çayı",null,250,null,null),
+      it("Limonlu Yeşil Çay",null,250,null,null),
+      it("Yeşil Çay",null,250,null,null),
+      it("Ada Çayı",null,250,null,null),
+      it("Ihlamur",null,250,null,null),
+      it("Elmalı Tarçın Çayı",null,250,null,null),
+      it("Matcha Çayı",null,280,null,null),
+      it("Soğuk Matcha Çayı",null,280,null,null),
+      it("Kış Çayı",null,280,null,null)
     ],
     "Kahveler": [
-      it("Cortado",null,260),
-      it("Kurşun Geçirmez Kahve İlavesi","Ara öğün, iştah/ketozis destekleyici",95),
-      it("Matcha Latte",null,330), it("Flat White",null,310), it("Proteinli Sıcak Çikolata",null,530),
-      it("Türk Kahvesi",null,160), it("Duble Türk Kahvesi",null,260), it("Espresso",null,210),
-      it("Double Espresso",null,260), it("Cappuccino",null,270), it("Cafe Latte",null,280),
-      it("Cafe Mocha",null,240), it("Nescafe",null,240), it("Nescafe Sütten",null,270),
-      it("Americano",null,260), it("Filtre Kahve",null,260), it("Sıcak Çikolata",null,380), it("Salep",null,380)
+      it("Türk Kahvesi",null,160,null,null),
+      it("Duble Türk Kahvesi",null,260,null,null),
+      it("Espresso",null,210,null,null),
+      it("Double Espresso",null,260,null,null),
+      it("Americano",null,260,null,null),
+      it("Cortado",null,260,null,"S"),
+      it("Filtre Kahve",null,260,null,null),
+      it("Capuccino",null,270,null,"S"),
+      it("Cafe Latte",null,270,null,"S"),
+      it("Cafe Mocha",null,280,null,"S"),
+      it("Flat White",null,310,null,"S"),
+      it("Matcha Latte",null,330,null,"S"),
+      it("Nescafe",null,240,null,null),
+      it("Nescafe Sütlü",null,270,null,"S"),
+      it("Sıcak Çikolata",null,380,null,"S"),
+      it("Proteinli Sıcak Çikolata",null,530,null,"S"),
+      it("Salep",null,380,null,"S"),
+      it("Kurşun Geçirmez Kahve İlavesi","Kahvenize eklenir.",95,null,"S")
     ],
     "Soğuk İçecekler": [
-      it("Fanta",null,180), it("Züber Ice Tea","Şeftali - Limon - Tropik meyveler",200),
-      it("Şalgam","Acılı / Acısız",330), it("Coca Cola / Light / Zero",null,180), it("Sprite",null,180),
-      it("Fuse Tea","Şeftali - Limon - Mango",140), it("Cappy Meyve Suyu","Vişne - Şeftali - Kayısı - Karışık",180),
-      it("Schweppes","Limon - Mandalina - Tonik",245), it("Red Bull",null,245),
-      it("San Pellegrino 250ml",null,245), it("San Pellegrino 750ml",null,370),
-      it("Soda",null,160), it("Meyveli Soda","Çilek - Elma - Vişne - Limon",170), it("Soda Limon Suyu",null,190),
-      it("Ayran",null,180), it("Naneli - Fesleğenli Ayran",null,210), it("Su 1.5L",null,130), it("Su 0.5L",null,70)
+      it("Su","0,5 cl",null,null,null,0,"₺70 / ₺130"),
+      it("Soda",null,160,null,null),
+      it("Meyveli Soda",null,170,null,null),
+      it("Soda Limon Suyu",null,190,null,null),
+      it("Coca Cola","Coca Cola veya Zero",180,null,null),
+      it("Sprite",null,180,null,null),
+      it("Fanta",null,180,null,null),
+      it("Fuse Tea","Şeftali, limon veya mango",180,null,null),
+      it("Cappy Meyve Suyu",null,180,null,null),
+      it("Ayran",null,180,null,"S"),
+      it("Züber Ice Tea","Şeftali, limon veya tropikal meyveler",200,null,null),
+      it("Naneli Fesleğenli Ayran",null,210,null,"S"),
+      it("Schweppes",null,245,null,null),
+      it("Red Bull",null,245,null,null),
+      it("San Pellegrino 250 ml",null,245,null,null),
+      it("San Pellegrino 750 ml",null,370,null,null),
+      it("Şalgam","Acılı veya acısız",330,null,null)
     ],
     "Taze Meyve Suları": [
-      it("Fresh Meyve","Portakal - Elma - Havuç",360),
-      it("Ice Hibiskus",null,430),
-      it("Zaz Cool Lime",null,320,true),
-      it("Günün Detoksu","Lütfen sorunuz",430),
-      it("Ev Yapımı Limonata",null,275),
-      it("Taze Meyve Suyu","İsteğe göre: Portakal - Elma - Havuç",360)
+      it("Ev Yapımı Limonata",null,275,null,null),
+      it("Zaz Cool Lime",null,320,null,null,1),
+      it("Fresh Meyve","Havuç, elma veya portakal",360,null,null),
+      it("Taze Meyve Suyu","Portakal, havuç, elma suyu",360,null,null),
+      it("Ice Hibisküs",null,430,null,null),
+      it("Günün Detoksu","Lütfen sorunuz.",430,null,null)
     ],
     "Soğuk Kahveler": [
-      it("Ice Mocha",null,310), it("Ice Filtre",null,310), it("Ice Matcha Latte",null,360),
-      it("Ice Americano",null,310), it("Frappe",null,320), it("Ice Chocolate Mocha",null,340), it("Ice Latte",null,310)
+      it("Ice Mocha",null,310,null,"S"),
+      it("Ice Filtre",null,310,null,null),
+      it("Ice Americano",null,310,null,null),
+      it("Ice Latte",null,310,null,"S"),
+      it("Frappe",null,320,null,"S"),
+      it("Ice Chocolate Mocha",null,340,null,"S"),
+      it("Ice Matcha Latte",null,360,null,"S")
     ],
     "Milk Shake": [
-      it("Berry Milkshake Protein","40g protein, sütlü orman meyveli",490),
-      it("Choco Milkshake Protein","40g protein, kakaolu sütlü",490),
-      it("Çikolatalı Milkshake",null,420), it("Vanilyalı Milkshake",null,420), it("Çilekli Milkshake",null,420)
+      it("Çikolatalı Milkshake",null,420,null,"S"),
+      it("Vanilyalı Milkshake",null,420,null,"S"),
+      it("Çilekli Milkshake",null,420,null,"S"),
+      it("Berry Milkshake Protein",null,490,null,"S"),
+      it("Chocco Milkshake Protein",null,490,null,"S")
     ]
   },
   "Alkollü İçecekler": {
-    "Alkolsüz Kokteyl": [
-      it("Alkolsüz Kokteyl","Damak tadınıza göre isteğinizi garsona bildiriniz",490)
-    ],
-    "Biralar": [
-      it("Stella Artois 44cl",null,460), it("Bud 33cl",null,340), it("Belfast 50cl","Yeni",380),
-      it("Efes Klasik 50cl",null,360), it("Efes Malt 50cl",null,360), it("Efes Özel Seri 50cl",null,380),
-      it("Efes Glutensiz 50cl",null,400), it("Bomonti Filtresiz 50cl",null,380), it("Bud 50cl",null,380),
-      it("Beck's 50cl",null,300), it("Amsterdam 50cl",null,460), it("Efes Serçe 30cl",null,330),
-      it("Miller 33cl",null,360), it("Beck's 33cl",null,340), it("Corona 33cl",null,380),
-      it("Duvel 33cl",null,500), it("Erdinger 33cl",null,420), it("Lüks Çerez",null,270)
+    "Alkollü Kahveler": [
+      it("Irish Coffee",null,800,null,"S"),
+      it("Caffe Bailey's",null,800,null,"S")
     ],
     "Fıçı Biralar": [
-      it("Bavyera Bira (1LT)",null,550),
-      it("Mexican Bardak","Tekilasız",90),
-      it("Mexican Bardak Tekilalı","4,5cl tekila, tuz ve limon ile",400),
-      it("Fıçı Bira 33cl",null,325), it("Fıçı Bira 50cl",null,360)
+      it("Mexican Bardak",null,90,null,"G"),
+      it("Fıçı Bira 33 cl",null,325,null,"G"),
+      it("Fıçı Bira 50 cl",null,360,null,"G"),
+      it("Mexican Bardak Tekilalı",null,400,null,"G"),
+      it("Bavyera Bira (1 lt)",null,550,null,"G")
     ],
-    "İmza Kokteyler": [
-      it("Ladybird","Jägermeister, portakal likörü, yaban mersini sos, limon suyu",630),
-      it("Danube","Beefeater Gin, Chambord böğürtlen, limon suyu, simple şurup",630),
-      it("First Light","Beefeater Gin, portakal likörü, lavanta sos, limon suyu, mavi kelebek çayı",630),
-      it("Plane","Beefeater Gin, limoncello, salatalık, fesleğen sos",630),
-      it("Kuzukulağı","Beefeater Gin, portakal likörü, yeşil elma, limon suyu",630),
-      it("Hope","Jameson, Martini Rosso, ananas sos, limon suyu",630)
+    "Biralar": [
+      it("Luks Çerez",null,270,null,"C"),
+      it("Efes Şerçe 30cl",null,330,null,"G"),
+      it("Bud 33cl",null,340,null,"G"),
+      it("Becks 33cl",null,340,null,"G"),
+      it("Efes Klasik 50cl",null,360,null,"G"),
+      it("Efes Malt 50cl",null,360,null,"G"),
+      it("Miller 33cl",null,360,null,"G"),
+      it("Belfast 50cl",null,380,null,"G"),
+      it("Efes Özel Seri 50cl",null,380,null,"G"),
+      it("Bomonti Filtresiz 50cl",null,380,null,"G"),
+      it("Bud 50cl",null,380,null,"G"),
+      it("Beck's 50cl",null,380,null,"G"),
+      it("Corona 33cl",null,380,null,"G"),
+      it("Efes Glutensiz 50cl",null,400,null,null),
+      it("Erdinger 33cl",null,420,null,"G"),
+      it("Stella Artois",null,420,null,"G"),
+      it("Amsterdam 50cl",null,460,null,"G"),
+      it("Duvel 33cl",null,500,null,"G")
+    ],
+    "İmza Kokteyller": [
+      it("Ladybird",null,630,null,null),
+      it("Danube",null,630,null,null),
+      it("First Light",null,630,null,null),
+      it("Plane",null,630,null,null),
+      it("Kuzukulağı",null,630,null,null),
+      it("Hope",null,630,null,null)
     ],
     "Klasik Kokteyller": [
-      it("Negroni","Gin, Martini Rosso, Campari",610),
-      it("Dirty Martini",null,590),
-      it("Old Fashion",null,610),
-      it("Martini","Votka / Dry / Pornstar — garsona belirtiniz",610),
-      it("Espresso Martini","Votka, kahve likörü, espresso",620),
-      it("__ANIM_COCKTAIL__"),
-      it("Tekila Sunrise","Tekila, portakal suyu, nar şurubu",630),
-      it("Lynchburg Lemonede","Jack Daniels, portakal likörü, tatlı ekşi sos, sprite",710),
-      it("Whiskey Sour","Bulleit bourbon, limon suyu, şeker şurubu, bitter, foam",710),
-      it("Long Island Iced Tea","Gin, votka, rom, tekila, portakal likörü, limon suyu, cola",720),
-      it("Aperol Spritz","Aperol, prosecco, San Pellegrino",750),
-      it("Mojito Çeşitleri","Jager, çilek, elma, ananas",600)
+      it("Dry Martini",null,590,null,null),
+      it("Mojito Çeşitleri",null,600,null,null),
+      it("Negroni",null,610,null,null),
+      it("Old Fashion",null,610,null,null),
+      it("Martini",null,610,null,null),
+      it("Espresso Martini",null,620,null,null),
+      it("Margarita",null,630,null,null),
+      it("Tekila Sunrise",null,630,null,null),
+      it("Whiskey Sour",null,710,null,"Y"),
+      it("Lynchburg Lemonade",null,710,null,null),
+      it("Long Island Iced Tea",null,720,null,null),
+      it("Aperol Spritz",null,750,null,"SF")
     ],
-    "Likörler": [ it("Bakers Field 7cl",null,600) ],
     "Shotlar": [
-      it("Bumbu Rom",null,400), it("Bakers Field 3cl",null,360), it("Tekila Olmeca Gold",null,420),
-      it("Tekila Olmeca Silver",null,380), it("Jägermeister",null,380)
+      it("Bakers Field (Shot)",null,360,null,null),
+      it("Tekila Olmeca Silver",null,380,null,null),
+      it("Jägermeister",null,380,null,null),
+      it("Bumbu Rom",null,400,null,null),
+      it("Tekila Olmeca Gold",null,420,null,null)
+    ],
+    "Likörler": [
+      it("Bakers Field",null,600,null,null)
+    ],
+    "Rakılar": [
+      it("Efe Gold 5cl",null,500,null,null),
+      it("Efe Gold 10cl",null,750,null,null),
+      it("Efe Gold 20cl",null,1750,null,null),
+      it("Efe Gold 35cl",null,2500,null,null),
+      it("Efe Gold 50cl",null,3250,null,null),
+      it("Efe Gold 70cl",null,4100,null,null),
+      it("Efe Gold 100cl",null,4900,null,null),
+      it("Yeni Rakı 35cl",null,2470,null,null),
+      it("Yeni Rakı 50cl",null,3250,null,null),
+      it("Yeni Rakı 70cl",null,3600,null,null),
+      it("Yeni Rakı 100cl",null,4500,null,null),
+      it("Beylerbeyi Göbek 20cl",null,2150,null,null),
+      it("Beylerbeyi Göbek 35cl",null,3500,null,null),
+      it("Beylerbeyi Göbek 50cl",null,3900,null,null),
+      it("Beylerbeyi Göbek 70cl",null,4500,null,null),
+      it("Beylerbeyi Göbek 100cl",null,5500,null,null),
+      it("Sarı Zeybek 20cl",null,2200,null,null),
+      it("Sarı Zeybek 35cl",null,3200,null,null),
+      it("Sarı Zeybek 50cl",null,3900,null,null),
+      it("Sarı Zeybek 70cl",null,4500,null,null),
+      it("Tekirdağ Altın Seri 35cl",null,3150,null,null),
+      it("Tekirdağ Altın Seri 50cl",null,3600,null,null),
+      it("Tekirdağ Altın Seri 70cl",null,4100,null,null),
+      it("Tekirdağ Altın Seri 100cl",null,4600,null,null)
     ],
     "Whisky": [
-      it("Jameson Black Barrel 10cl",null,850), it("Jameson Black Barrel 5cl",null,600),
-      it("Chivas 12 Years 70cl","Meyve, çerez, soft drink ile",8500), it("Chivas 12 Years 35cl","Meyve, çerez, soft drink ile",4800),
-      it("Chivas 18 Years 70cl","Meyve, çerez, soft drink ile",12000),
-      it("Jack Daniel's 70cl",null,8500), it("Jack Daniel's 35cl",null,4800),
-      it("Black Label 70cl",null,8500), it("Jameson 70cl",null,8000),
-      it("Chivas Regal 12 Years 5cl",null,700), it("Chivas Regal 12 Years 10cl",null,1100),
-      it("Jack Daniel's 10cl",null,1100), it("Black Label 5cl",null,700), it("Black Label 10cl",null,1100),
-      it("Jameson 5cl",null,700), it("Jameson 10cl",null,1100)
+      it("Jameson Black Barrel 5cl",null,600,null,"G"),
+      it("Chivas Regal 12 Years 5cl",null,700,null,"G"),
+      it("Black Label 5cl",null,700,null,"G"),
+      it("Jameson 5cl",null,700,null,"G"),
+      it("Jack Daniel's 5cl",null,700,null,"G"),
+      it("Jameson Black Barrel 10cl",null,850,null,"G"),
+      it("Chivas Regal 12 Years 10cl",null,1100,null,"G"),
+      it("Jack Daniel's 10cl",null,1100,null,"G"),
+      it("Black Label 10cl",null,1100,null,"G"),
+      it("Jameson 10cl",null,1100,null,"G"),
+      it("Chivas 12 Years 35cl",null,4800,null,"G"),
+      it("Jack Daniels 35cl",null,4800,null,"G"),
+      it("Jameson 70cl",null,8000,null,"G"),
+      it("Chivas 12 Years 70cl",null,8500,null,"G"),
+      it("Jack Daniels 70cl",null,8500,null,"G"),
+      it("Black Label",null,8500,null,"G"),
+      it("Chivas 18 Years 70cl",null,12000,null,"G")
     ],
-    "Vodka": [ it("Absolut 35cl",null,4200), it("Absolut 70cl",null,7800) ],
-    "Gin": [
-      it("Beefeater Pink 10cl",null,750),
-      it("Tanqueray No.Ten 10cl","Tonik-soda ile",1100),
-      it("Beefeater 35cl",null,4200), it("Beefeater 70cl",null,7800)
+    "Vodka": [
+      it("Absolut 35cl",null,4200,null,null),
+      it("Absolut 70cl",null,7800,null,null)
     ],
-    "Konyak": [ it("Remy Martin VSOP 5cl",null,1000), it("Remy Martin VSOP 10cl",null,1300) ],
-    "Şarap": [
-      it("M Porta Diverti Kırmızı",null,3000), it("M Porta Diverti Roze",null,3000),
-      it("M Porta Diverti Sauvignon Blanc",null,3000), it("Garrone Prosecco 75cl",null,5850),
-      it("Urla Tempus 1.5L",null,10000), it("Urla Tempus 75cl",null,5100),
-      it("Urla Vourla 1.5L",null,10000), it("Urla Vourla 75cl",null,4600),
-      it("Urla Chardonnay 75cl",null,4600), it("Urla Serendias (Roze)",null,4600), it("Urla Nexsus 70cl",null,4600),
-      it("Lucien Arkas Blush Smyrna 75cl",null,2800),
-      it("Lucien Arkas Consensus Shiraz-Cabernet-Merlot 75cl",null,5450),
-      it("Lucien Arkas Smyrna Merlot 75cl",null,2800),
-      it("Lucien Arkas İdol Chardonnay-Ugni Blanc 70cl",null,2800),
-      it("İdol Kalecik Karası",null,2800), it("İsabey Merlot 75cl",null,2800),
-      it("İsabey Kırmızı",null,2800), it("İsabey Beyaz",null,2800), it("İsabey Blush",null,2800),
-      it("Verona Roze 75cl",null,2800), it("DLC Verona Blush 75cl",null,2800),
-      it("DLC Cabernet-Merlot 75cl",null,2800), it("DLC Boğazkere 75cl",null,2800),
-      it("DLC Narince 75cl",null,2800), it("DLC Sauvignon Blanc 75cl",null,2800),
-      it("Kırmızı Şarap (kadeh)",null,560), it("Beyaz Şarap (kadeh)",null,560), it("Rose Şarap (kadeh)",null,560)
+    "Cin": [
+      it("Beefeater Pink 10cl",null,750,null,null),
+      it("Tanqueray No. Ten 10cl",null,1100,null,null),
+      it("Beefeater 35cl",null,4200,null,null),
+      it("Beefeater 70cl",null,7800,null,null)
     ],
-    "Rakı": [
-      it("Sarı Zeybek 100cl",null,5500),
-      it("Efe Gold 5cl (kadeh)",null,500), it("Efe Gold 10cl (double)",null,750),
-      it("Efe Gold 20cl",null,1750), it("Efe Gold 35cl",null,2500), it("Efe Gold 50cl",null,3250),
-      it("Efe Gold 70cl",null,4100), it("Efe Gold 100cl",null,4900),
-      it("Yeni Rakı 35cl",null,2470), it("Yeni Rakı 50cl",null,3250), it("Yeni Rakı 70cl",null,3600), it("Yeni Rakı 100cl",null,4500),
-      it("Beylerbeyi Göbek 20cl",null,2150), it("Beylerbeyi Göbek 35cl",null,3500),
-      it("Beylerbeyi Göbek 50cl",null,3900), it("Beylerbeyi Göbek 70cl",null,4500), it("Beylerbeyi Göbek 100cl",null,5500),
-      it("Sarı Zeybek 20cl",null,2200), it("Sarı Zeybek 35cl",null,3200), it("Sarı Zeybek 50cl",null,3900), it("Sarı Zeybek 70cl",null,4500),
-      it("Tekirdağ Altın Seri 35cl",null,3150), it("Tekirdağ Altın Seri 50cl",null,3600),
-      it("Tekirdağ Altın Seri 70cl",null,4100), it("Tekirdağ Altın Seri 100cl",null,4600)
+    "Konyak": [
+      it("Remy Martin VSOP 35cl",null,1000,null,null),
+      it("Remy Martin VSOP 70cl",null,1300,null,null)
+    ],
+    "Şaraplar": [
+      it("Kırmızı Şarap (Kadeh)",null,560,null,"SF"),
+      it("Beyaz Şarap (Kadeh)",null,560,null,"SF"),
+      it("Rose Şarap (Kadeh)",null,560,null,"SF"),
+      it("Lucien Arkas Blush",null,2800,null,"SF"),
+      it("Lucien Arkas Smyrna Merlot",null,2800,null,"SF"),
+      it("Lucien Arkas Idol Chardonnay",null,2800,null,"SF"),
+      it("DLC Kalecik Karası",null,2800,null,"SF"),
+      it("DLC Verona Blush",null,2800,null,"SF"),
+      it("DLC Cabernet-Merlot",null,2800,null,"SF"),
+      it("DLC Boğazkere",null,2800,null,"SF"),
+      it("DLC Narince",null,2800,null,"SF"),
+      it("DLC Sauvignon Blanc",null,2800,null,"SF"),
+      it("İsabey Beyaz",null,2800,null,"SF"),
+      it("İsabey Blush",null,2800,null,"SF"),
+      it("M. Porta Diverti Kırmızı",null,3000,null,"SF"),
+      it("M. Porta Diverti Roze",null,3000,null,"SF"),
+      it("M. Porta Diverti Sauvignon",null,3000,null,"SF"),
+      it("Urla Nexsus 70cl",null,4600,null,"SF"),
+      it("Urla Vourla",null,4600,null,"SF"),
+      it("Urla Chardonnay",null,4600,null,"SF"),
+      it("Urla Serendias",null,4600,null,"SF"),
+      it("Urla Tempus",null,5100,null,"SF"),
+      it("Lucien Arkas Consensus S",null,5450,null,"SF"),
+      it("Garrone Prosecco",null,5850,null,"SF"),
+      it("Urla Tempus 1,5 lt",null,10000,null,"SF"),
+      it("Urla Voura 1,5 lt",null,10000,null,"SF")
     ],
     "Şampanya": [
-      it("Moët & Chandon Brut Imperial",null,13000),
-      it("Moët & Chandon Ice Imperial 75cl",null,15000)
+      it("Moët & Chandon Brut Impérial",null,13000,null,"SF"),
+      it("Moët & Chandon Ice Impérial 75cl",null,15000,null,"SF")
     ]
   }
 };
@@ -1170,188 +1314,290 @@ let LANG = 'tr';
 const T_GROUP = {"Yemek":"Food","İçecek":"Drinks","Alkollü İçecekler":"Alcoholic Drinks"};
 const T_CHAP = {"Bölüm I":"Chapter I","Bölüm II":"Chapter II","Bölüm III":"Chapter III"};
 const T_CAT = {
-"Kahvaltı":"Breakfast","Tost & Sandviç":"Toast & Sandwich","Ekmek Üstü Lezzetler":"On Toast",
-"Aperatifler":"Starters to Share","Bowl":"Bowls","Başlangıçlar":"Appetizers","Salatalar":"Salads",
-"Burgerler":"Burgers","Pizzalar":"Pizzas","Makarnalar":"Pasta","Et Yemekleri":"Meat Dishes",
-"Tavuk Yemekleri":"Chicken Dishes","Wrapler":"Wraps","Balık":"Fish","Çocuk Menü":"Kids Menu",
-"Tatlılar":"Desserts","Sporcu Protein Bowl":"Protein Bowls","Çaylar":"Teas","Kahveler":"Coffees",
-"Soğuk İçecekler":"Cold Drinks","Taze Meyve Suları":"Fresh Juices","Soğuk Kahveler":"Iced Coffees",
-"Milk Shake":"Milkshakes","Alkolsüz Kokteyl":"Mocktails","Biralar":"Beers","Fıçı Biralar":"Draft Beers",
-"İmza Kokteyler":"Signature Cocktails","Klasik Kokteyller":"Classic Cocktails","Likörler":"Liqueurs",
-"Shotlar":"Shots","Whisky":"Whisky","Vodka":"Vodka","Gin":"Gin","Konyak":"Cognac","Şarap":"Wine",
-"Rakı":"Rakı","Şampanya":"Champagne"};
+"Kahvaltı":"Breakfast",
+"Tost & Sandviç":"Toast & Sandwich",
+"Ekmek Üstü Lezzetler":"On Toast",
+"Bowl":"Bowls",
+"Aperatifler":"Sharing Plates",
+"Başlangıçlar":"Cold Starters",
+"Sıcak Başlangıçlar":"Hot Starters",
+"Çorba":"Soup",
+"Salatalar":"Salads",
+"Burgerler":"Burgers",
+"Pizzalar":"Pizzas",
+"Makarnalar":"Pasta",
+"Et Yemekleri":"Meat Dishes",
+"Tavuk Yemekleri":"Chicken Dishes",
+"Wraplar":"Wraps",
+"Balık":"Fish",
+"Çocuk Menü":"Kids Menu",
+"Tatlılar":"Desserts",
+"Çaylar":"Teas",
+"Kahveler":"Coffees",
+"Soğuk İçecekler":"Cold Drinks",
+"Taze Meyve Suları":"Fresh Juices",
+"Soğuk Kahveler":"Iced Coffees",
+"Milk Shake":"Milkshakes",
+"Alkollü Kahveler":"Alcoholic Coffees",
+"Fıçı Biralar":"Draft Beers",
+"Biralar":"Beers",
+"İmza Kokteyller":"Signature Cocktails",
+"Klasik Kokteyller":"Classic Cocktails",
+"Shotlar":"Shots",
+"Likörler":"Liqueurs",
+"Rakılar":"Rakı",
+"Whisky":"Whisky",
+"Vodka":"Vodka",
+"Cin":"Gin",
+"Konyak":"Cognac",
+"Şaraplar":"Wines",
+"Şampanya":"Champagne"
+};
 
 /* ürün adı -> [İngilizce ad, İngilizce açıklama] */
 const T_ITEM = {
-"Sade Omlet":["Plain Omelette"],"Kaşar Peynirli Omlet":["Cheddar Omelette"],
-"Beyaz Omlet":["Egg White Omelette","3 egg whites, white cheese, avocado, olives, fresh vegetables"],
-"Beyaz Peynirli Omlet":["White Cheese Omelette","2 eggs, white cheese, fresh vegetables, olives"],
-"Sebzeli Omlet":["Vegetable Omelette","2 eggs, seasonal vegetables, sliced tomato"],
-"Karışık Omlet":["Mixed Omelette","2 eggs, sucuk, salami, sausage, mushrooms"],
-"Menemen":["Menemen","Turkish scrambled eggs with tomato & pepper · onion optional"],
-"Pankek":["Pancakes"],"Sahanda Yumurta":["Fried Eggs","2 eggs, butter, salt"],
-"Sucuklu Yumurta":["Eggs with Sucuk","2 eggs, butter, Turkish sucuk"],
-"Sucuk":["Sucuk","Turkish spiced sausage, butter"],
-"Yumurtalı Ekmek":["Turkish Eggy Bread","Egg, bread slice, spices"],
-"Pişi":["Pişi","Traditional fried dough"],"Gevrek":["Gevrek","İzmir-style sesame bagel"],
-"Bal":["Honey"],"Kaymak":["Clotted Cream"],
-"Döküm Tavada Sıcak Kahvaltı":["Hot Breakfast Skillet","Grilled halloumi, homemade beef sausage, fried egg, sucuk, spiced baby potatoes, cherry tomatoes, served with tea"],
-"Zaz Serpme Kahvaltı (Kişi Başı)":["Zaz Spread Breakfast (per person)","Minimum 2 people, unlimited tea included per person"],
-"Club Sandviç":["Club Sandwich","Triple-layer toast, beef ham, chicken fillet, cheddar, pickles, lettuce, mayo, mustard — with fries and coleslaw"],
-"Karışık Ayvalık Tostu":["Mixed Ayvalık Toast","Ayvalık bread, cheddar, sucuk, salami, sausage, pickles, tomato, cucumber"],
-"Kaşarlı Sucuklu Tost":["Cheese & Sucuk Toast","Sucuk, cheddar, tomato, cucumber, olives"],
-"Kaşarlı Tost":["Cheese Toast","Toast bread with cheddar, tomato, cucumber, olives"],
-"J&B Tost":["Ham & Cheese Toast","Cheddar, ham, tomato, cucumber, olives"],
-"Diet Tost":["Diet Toast","Wholegrain bread, white cheese, tomato, cucumber, olives"],
-"Ekmek Üstü Poşe Yumurta":["Poached Eggs on Toast","15 min preparation time"],
-"Ekmek Üstü Scrambled":["Scrambled Eggs on Toast"],"Ekmek Üstü Somon Füme":["Smoked Salmon on Toast"],
+"Zaz Serpme Kahvaltı (Kişi Başı)":["Zaz Spread Breakfast (per person)", "White cheese, tulum cheese, olives, spicy curd cheese, çemen, fried potatoes, butter, honey, clotted cream, jam, fresh vegetable plate, boiled egg, warm bread basket. Unlimited tea per person. Minimum 2 people."],
+"Döküm Tavada Sıcak Kahvaltı":["Hot Breakfast Skillet", "Grilled halloumi, homemade beef sausage, fried egg, sucuk, spiced baby potatoes, cherry tomatoes. Served with a glass of tea."],
+"Diet Kahvaltı":["Diet Breakfast", "2 boiled eggs, walnuts, curd cheese, avocado, fresh vegetable plate. Served with a glass of tea."],
+"Hızlı Kahvaltı":["Quick Breakfast", "White cheese, tulum cheese, olives, butter, jam, tomato, cucumber, boiled egg. Served with a glass of tea."],
+"Gevrek Tost":["Gevrek Toast", "İzmir sesame bagel with melted kaşar cheese, olives, fresh vegetable plate. Served with a glass of tea."],
+"Pankek":["Pancakes"],
+"Sade Omlet":["Plain Omelette"],
+"Kaşar Peynirli Omlet":["Kaşar Cheese Omelette"],
+"Beyaz Omlet":["Egg White Omelette", "3 egg whites, white cheese, avocado, olives, fresh vegetable plate."],
+"Beyaz Peynirli Omlet":["White Cheese Omelette", "2 eggs, white cheese. Served with fresh vegetable plate and olives."],
+"Sebzeli Omlet":["Vegetable Omelette", "2 eggs, seasonal vegetables, served with sliced tomato plate."],
+"Karışık Omlet":["Mixed Omelette", "2 eggs, sucuk, salami, sausage, mushrooms."],
+"Menemen":["Menemen", "2 eggs, onion, tomato, pepper, spices, sunflower oil."],
+"Sahanda Yumurta":["Fried Eggs", "2 eggs, butter, salt."],
+"Sucuklu Yumurta":["Eggs with Sucuk", "2 eggs, butter, Turkish spiced sausage."],
+"Sucuk":["Sucuk", "Turkish spiced sausage, butter."],
+"Yumurtalı Ekmek":["Turkish Eggy Bread", "Egg, bread slice and spices."],
+"Pişi":["Pişi", "Traditional fried dough (8 pieces, 285 kcal total)."],
+"Gevrek":["Gevrek", "İzmir-style sesame bagel (per piece)."],
+"Bal":["Honey", "20 g portion."],
+"Kaymak":["Clotted Cream", "30 g portion."],
+"Club Sandviç":["Club Sandwich", "Triple-layer white or wholemeal toast with beef ham, chicken fillet, cheddar, pickles, lettuce, mayonnaise and mustard sauce. Served with fries and coleslaw."],
+"Karışık Ayvalık Tostu":["Mixed Ayvalık Toast", "Ayvalık bread, kaşar cheese, sucuk, salami, sausage, pickles, tomato, cucumber."],
+"Kaşarlı Sucuklu Tost":["Kaşar & Sucuk Toast", "Toast bread, kaşar cheese, sucuk, tomato, cucumber, olives."],
+"Kaşarlı Tost":["Kaşar Cheese Toast", "Toast bread, kaşar cheese, tomato, cucumber, olives."],
+"J&B Tost":["J&B Toast", "Toast bread, kaşar cheese, ham, tomato, cucumber, olives."],
+"Diet Tost":["Diet Toast", "Two slices of wholemeal bread with white cheese, tomato, cucumber and olives."],
+"Ekmek Üstü Poşe Yumurta":["Poached Eggs on Toast"],
+"Ekmek Üstü Scrambled":["Scrambled Eggs on Toast"],
+"Ekmek Üstü Somon Füme":["Smoked Salmon on Toast"],
+"Vejetaryen Bowl":["Vegetarian Bowl", "With halloumi cheese and seasonal ingredients."],
+"Vegan Bowl":["Vegan Bowl", "Chickpeas, basmati rice, avocado, red pepper, beetroot, greens, pumpkin seeds."],
+"Sporcu Tavuk Bowl":["Athlete's Chicken Bowl", "Chicken, chickpeas, basmati rice, avocado, broccoli, greens, red cabbage and carrot."],
+"Yumurta Bowl":["Egg Bowl", "Egg, chickpeas, basmati rice, avocado, greens, red pepper, cherry tomatoes and carrot."],
+"Izgara Tavuk Bowl":["Grilled Chicken Bowl", "Grilled chicken breast, Mediterranean greens, cherry tomatoes and penne pasta."],
+"Chinese Et Bowl":["Chinese Beef Bowl", "Sautéed beef tenderloin cubes, mixed peppers, onion, basmati rice, steamed broccoli, chickpeas, red cabbage, avocado, roasted sesame, teriyaki, sweet chilli and soy sauce."],
+"Chinese Tavuk Bowl":["Chinese Chicken Bowl", "Sautéed chicken cubes, mixed peppers, onion, basmati rice, steamed broccoli, chickpeas, red cabbage, avocado, roasted sesame, teriyaki, sweet chilli and soy sauce."],
+"Avokado Bowl":["Avocado Bowl", "Avocado, Mediterranean greens, curd cheese and boiled egg."],
+"Anne Patates Kızartması":["Homestyle Fries"],
 "Patates Kızartması":["French Fries"],
-"Kajun Baharatlı Patates Kızartması":["Cajun Fries","With cajun spices"],
-"Kajun Baharatlı Chicken Fingers":["Cajun Chicken Fingers","Fries, honey mustard, sweet chilli, cocktail sauce"],
-"Sigara Böreği":["Cheese Rolls","4 pieces, served with sliced tomato"],
-"Sosis Sepeti":["Sausage Basket","With fries"],
-"ZAZ Special":["ZAZ Special","Homemade beef sausage, tenderloin, cheese rolls, onion rings, chicken fingers, mozzarella sticks, mini meatballs"],
-"Sporcu Tavuk Bowl":["Athlete's Chicken Bowl","Chicken, chickpeas, basmati rice, avocado, broccoli, greens, red cabbage, carrot"],
-"Yumurta Bowl":["Egg Bowl","Egg, chickpeas, basmati rice, avocado, greens, red pepper, cherry tomatoes, carrot"],
-"Berry Bowl":["Berry Bowl"],"Choco Bowl":["Choco Bowl"],
-"Vejetaryen Bowl":["Vegetarian Bowl","Halloumi, chickpeas, basmati rice, avocado, beetroot, greens, red pepper"],
-"Vegan Bowl":["Vegan Bowl","Chickpeas, basmati rice, avocado, red pepper, beetroot, greens, pumpkin seeds"],
-"Izgara Tavuk Bowl":["Grilled Chicken Bowl","Grilled chicken breast, Mediterranean greens, cherry tomatoes, penne"],
-"Chinese Et Bowl":["Chinese Beef Bowl","Sautéed beef cubes, bell peppers, onion, basmati rice, broccoli, chickpeas, red cabbage, avocado, sesame, teriyaki/sweet chilli/soy sauce"],
-"Avokado Bowl":["Avocado Bowl","Avocado, Mediterranean greens, curd cheese, boiled egg"],
-"Chinese Tavuk Bowl":["Chinese Chicken Bowl","Diced chicken, bell peppers, onion, basmati rice, broccoli, chickpeas, red cabbage, avocado, sesame, teriyaki/sweet chilli sauce"],
-"Feta Cheese":["Feta Cheese","Greek style, with honey and sesame"],
-"Tereyağlı Yaprak Ciğer":["Pan-Fried Liver in Butter"],"Kavun Peynir":["Melon & White Cheese"],
-"Söğüş Tabağı":["Fresh Vegetable Plate"],"Burrata":["Burrata"],
-"Parmesanlı Türüf Yağlı Patates Kızartması":["Truffle & Parmesan Fries"],
-"Peynir Tabağı":["Cheese Platter","Smoked Circassian, parmesan, aged cheddar, blue cheese, white cheese, İzmir tulum, cured beef, seasonal fruit"],
-"Rakı Tabağı":["Rakı Platter","Tomato, cucumber, rocket, sliced white cheese, fruit"],
-"Mezeler":["Mezes","Meze of the day, price may vary"],
-"Mozzarella Caprese":["Mozzarella Caprese","Fresh mozzarella, tomato, basil, pesto, walnuts"],
-"Güveçte Karışık Deniz Mahsulleri":["Mixed Seafood Casserole","Calamari, octopus, shrimp, butter, garlic, spices"],
-"Bruschetta":["Bruschetta","Sourdough bread, tomato concasse, olives, garlic, parmesan, basil"],
-"Fırında Kaşarlı Mantar Güveç":["Baked Mushroom & Cheese Casserole","Mushrooms, cheddar, garlic"],
-"Tereyağlı Karides":["Shrimp in Butter","Butter, spices, garlic"],
-"Kalamar Tava":["Fried Calamari","Tartar sauce, rocket, red onion, lemon"],
-"Meyve Tabağı":["Fruit Platter","Seasonal fruit"],
-"Ton Balıklı Salata":["Tuna Salad","Mediterranean greens, tuna, capers, red onion, house dressing"],
-"Somon Füme Salata":["Smoked Salmon Salad","Smoked salmon (100g), Mediterranean greens, capers, red onion, house dressing"],
-"Ilık Et Salatası":["Warm Beef Salad","Mediterranean greens, cucumber, roasted pepper, avocado, parmesan, tenderloin, balsamic glaze"],
-"Izgara Tavuk Salata":["Grilled Chicken Salad","Mediterranean greens, roasted pepper, tomato, chicken breast"],
-"Izgara Hellim Salata":["Grilled Halloumi Salad","Mediterranean greens, green apple, walnuts, roasted pepper, cherry tomatoes, grilled halloumi"],
-"Sezar Salata":["Caesar Salad","Lettuce, croutons, caesar dressing, parmesan, chicken breast"],
-"Levrek Salata":["Sea Bass Salad","Mediterranean greens, red onion, dill, capers, tomato, sea bass fillet"],
-"Roka Parmesan Salata":["Rocket & Parmesan Salad","Rocket, parmesan, black olives, cherry tomatoes, olive oil & lemon dressing"],
-"Kabak Sıyırma Salata":["Shaved Zucchini Salad","Marinated zucchini, sesame, sunflower seeds, olive oil & lemon dressing"],
-"Zaz Burger":["Zaz Burger","House beef patty, lettuce, tomato, pickles — served with fries"],
-"Cheeseburger":["Cheeseburger","Beef patty, curly lettuce, tomato, pickles, cheddar sauce, fries, house burger sauces"],
-"Chicken Burger":["Chicken Burger","Breaded chicken, curly lettuce, tomato, pickles, fries, house burger sauces"],
-"Pizza ZAZ":["Pizza ZAZ","Tomato sauce, mozzarella, smoked beef, rocket, tomato, parmesan"],
-"Pizza Mista":["Pizza Mista","Mozzarella, sucuk, salami, sausage, mushrooms, tomato, green pepper, black olives, tomato sauce"],
-"Pizza Margarita":["Pizza Margherita","Tomato sauce, mozzarella, cherry tomatoes"],
-"Pizza Vejeteryan":["Vegetarian Pizza","With seasonal vegetables"],
-"Pizza Al Pollo":["Pizza Al Pollo","Mexican chicken, spicy"],
-"Pizza Luna":["Pizza Luna","Sucuk and mozzarella"],
-"Enginar Kalpli Fettuccine Alfredo":["Artichoke Fettuccine Alfredo","Artichoke hearts, chicken, pasta in its sauce (cooked in wine)"],
-"Karides Linguine":["Shrimp Linguine"],
-"Spaghetti Bolognese":["Spaghetti Bolognese","With minced beef tomato sauce"],
-"Penne Arabiata":["Penne Arrabbiata","Chilli, olives, parmesan, napoletana sauce"],
-"Penne Romano":["Penne Romano","Chicken breast, button mushrooms, cream & soy sauce"],
-"Mantı Ev Yapımı":["Homemade Mantı","Turkish dumplings with yoghurt"],
-"Yağlı Kara":["Yağlı Kara","Grilled beef, served with fries"],
-"Çökertme Kebabı":["Çökertme Kebab","Beef strips over straw potatoes and yoghurt"],
-"Izgara Köfte":["Grilled Meatballs","Fries, grilled tomato and pepper"],
-"Kuzu Pirzola":["Lamb Chops","4 chops, rocket, parsley, red onion, baby potatoes"],
-"Tereyağlı Yaprak Bonfile":["Butter-Basted Sliced Tenderloin","Marinated sliced tenderloin, shallots, baby potatoes, cherry tomatoes, garlic"],
-"Naturel Bonfile":["Grilled Tenderloin","With vegetables"],
-"Zaz Usulü Lokum":["Zaz Style Beef Medallions","Beef tenderloin cooked in garlic cream sauce, with seasonal vegetables"],
-"Mantar Soslu Antrikot":["Rib-Eye with Mushroom Sauce"],
-"Zaz Usulü Tavuk":["Zaz Style Chicken","Chicken fillet cooked in garlic cream sauce"],
-"Tavuk Schnitzel":["Chicken Schnitzel","Fries, chicken schnitzel, butter"],
-"Tavuk Külbastı":["Grilled Chicken Külbastı","Baby potatoes and steamed vegetables"],
-"Köri Soslu Tavuk":["Chicken in Curry Sauce","Sliced chicken, mushrooms, creamy curry sauce, fries"],
-"Diet Izgara Tavuk":["Diet Grilled Chicken","Chicken fillet, steamed vegetables, potatoes"],
-"Mantar Soslu Tavuk":["Chicken in Mushroom Sauce","Grilled chicken, creamy mushroom sauce, baby potatoes"],
-"Mexican Tavuk":["Mexican Chicken","Grilled chicken with spicy mexican sauce and fries"],
-"Wrap Et":["Beef Wrap","Diced tenderloin, bell peppers, jalapeño, mushrooms, cheddar, house sauce"],
-"Wrap Tavuk":["Chicken Wrap","Diced chicken, bell peppers, jalapeño, mushrooms, cheddar, house sauce"],
-"Somon Izgara":["Grilled Salmon","Shaved zucchini, baby potatoes"],
-"Levrek Izgara":["Grilled Sea Bass","Rocket, baby potatoes, red onion"],
-"Marine Edilmiş Levrek Şefin Speciali":["Marinated Sea Bass — Chef's Special","Sea bass fillet marinated in house sauces"],
-"Çıtır Tavuk Parçaları":["Crispy Chicken Bites","Breaded crispy chicken with fries"],
-"Spagetti Bolonez":["Spaghetti Bolognese","Minced beef tomato sauce, cheese"],
-"Mini Pizza":["Mini Pizza","Tomato sauce, mozzarella, sucuk, sausage, salami"],
-"Makarna":["Pasta","Tomato sauce, cheese"],
-"Mini Hamburger":["Mini Burger","Homemade patty, greens, tomato, fries"],
-"Mini Sosis":["Mini Sausages","With fries"],
-"Cheesecake":["Cheesecake","Please ask your server"],
-"Çilekli Magnolia":["Strawberry Magnolia"],"Mozaik Pasta":["Mosaic Cake"],
-"San Sebastian Cheesecake":["San Sebastian Cheesecake"],"Banana Roll":["Banana Roll"],
-"Tavuk Bowl":["Chicken Bowl","Chicken, chickpeas, basmati rice, avocado, broccoli, greens, red cabbage, carrot · 567 kcal, 63g carbs, 19.3g fibre, 36g protein, 19g fat"],
-"Kuşburnu Çayı":["Rosehip Tea"],"Rezene Çayı":["Fennel Tea"],"Papatya Çayı":["Chamomile Tea"],
-"Nane Çayı":["Mint Tea"],"Limonlu Yeşil Çay":["Green Tea with Lemon"],"Soğuk Matcha Çayı":["Iced Matcha Tea"],
-"Matcha Çayı":["Matcha Tea"],"Klasik Harman Çay":["Turkish Black Tea"],"Duble Çay":["Large Turkish Tea"],
-"Ada Çayı":["Sage Tea"],"Ihlamur":["Linden Tea"],"Elmalı Tarçın Çayı":["Apple & Cinnamon Tea"],
+"Kajun Baharatlı Patates Kızartması":["Cajun Spiced Fries"],
+"Parmesanlı Trüf Yağlı Patates Kızartması":["Truffle & Parmesan Fries", "French fries, parmesan cheese, truffle oil and spices."],
+"Kajun Baharatlı Chicken Fingers":["Cajun Chicken Fingers", "Served with fries, honey mustard, sweet chilli and cocktail sauce."],
+"Sigara Böreği":["Cheese Rolls (Sigara Böreği)", "Served with a sliced tomato plate."],
+"Sosis Sepeti":["Sausage Basket", "Served with fries."],
+"ZAZ Special":["ZAZ Special Platter", "Homemade beef sausage, fries, cheese rolls, onion rings, chicken fingers, mozzarella sticks and mini meatballs."],
+"Yoğurtlama":["Yoğurtlama", "Fried peppers, potatoes and aubergine with yoghurt and tomato."],
+"Mezeler":["Meze Selection", "Please ask for today's selection. Price may vary by choice."],
+"Kavun Peynir":["Melon & Cheese", "Fresh melon slices with a selection of cheeses."],
+"Burrata":["Burrata", "Burrata cheese served with olive oil and fresh greens."],
+"Söğüş Tabağı":["Fresh Vegetable Plate", "Seasonal greens, tomato, cucumber, pepper and assorted fresh vegetables."],
+"Rakı Tabağı":["Rakı Plate", "Tomato, cucumber, rocket, sliced white cheese and seasonal fruit."],
+"Bruschetta":["Bruschetta", "House sourdough bread, tomato concassé, olives, garlic, grated parmesan, basil and basil sauce."],
+"Peynir Tabağı":["Cheese Platter", "Smoked Circassian cheese, parmesan, aged kaşar, blue cheese, white cheese, İzmir tulum, cured beef and seasonal fruit."],
+"Mozzarella Caprese":["Mozzarella Caprese", "Fresh mozzarella, sliced tomato, basil, pesto sauce and walnuts."],
+"Pollo Carciofi":["Pollo Carciofi", "Poached chicken breast, fresh artichoke hearts, olive oil, lime, lemon, cracked black pepper, light salt, grated parmesan, cherry tomatoes and mesclun glaze."],
+"Domates Carpaccio":["Tomato Carpaccio", "Sliced tomato with diced purple tomato tossed in basil and parsley, house oyster and soy dressing."],
+"Carpaccio di Manzo (Dana Carpaccio)":["Carpaccio di Manzo", "Thinly sliced marinated beef tenderloin with fresh herbs, lime dressing, glaze, baby rocket, cherry tomatoes and grated parmesan."],
+"Feta Cheese":["Baked Feta", "Feta cheese, honey, sesame and Greek-style herbs."],
+"Susamlı Hellim Tava":["Sesame Halloumi", "Four slices of pan-fried halloumi with mesclun and cherry tomatoes."],
+"Fırında Kaşarlı Mantar Güveç":["Baked Mushroom & Kaşar Casserole", "Mushrooms, kaşar cheese, butter and spices."],
+"Güveçte Karışık Deniz Mahsulleri":["Mixed Seafood Casserole", "Calamari, octopus, prawns, butter, garlic and spices."],
+"Tereyağlı Karides":["Butter Prawns", "With butter, garlic and spices."],
+"Kalamar Tava":["Pan-Fried Calamari", "With butter and spices."],
+"Tereyağlı Yaprak Ciğer":["Butter-Fried Liver", "Thinly sliced beef liver with butter, spices and onion on request."],
+"Tai Usulü Ballı Susamlı Acılı Tavuk":["Thai Honey Sesame Chilli Chicken", "Tempura-fried chicken pieces with sweet chilli, hot chilli sauce, honey, coriander and sesame."],
+"Günün Çorbası":["Soup of the Day", "Please ask."],
+"Roka Parmesan Salata":["Rocket & Parmesan Salad", "Rocket, parmesan, black olives, cherry tomatoes and lemon–olive oil dressing."],
+"Mevsim Salata":["Seasonal Salad", "Seasonal greens, pickled red cabbage and house dressing."],
+"Kabak Sıyırma Salata":["Marinated Courgette Salad", "Marinated courgette, sesame, sunflower seeds and lemon–olive oil dressing."],
+"Greek Salata":["Greek Salad", "White cheese, red onion, tomato, cucumber, olives and peppers."],
+"İstanbul Salatası":["İstanbul Salad", "Tomato, red onion and house dressing."],
+"Izgara Hellim Salata":["Grilled Halloumi Salad", "Mediterranean greens, green apple, walnuts, roasted pepper, cherry tomatoes and grilled halloumi."],
+"Sezar Salata":["Caesar Salad", "Lettuce, croutons, Caesar dressing, parmesan and chicken breast."],
+"Izgara Tavuk Salata":["Grilled Chicken Salad", "Mediterranean greens, roasted pepper, tomato and chicken breast."],
+"Ilık Et Salatası":["Warm Beef Salad", "Mediterranean greens, cucumber, roasted pepper, avocado, parmesan, sliced beef tenderloin and balsamic glaze."],
+"Levrek Salata":["Sea Bass Salad", "Mediterranean greens, red onion, dill, capers, tomato and sea bass fillet."],
+"Somon Füme Salata":["Smoked Salmon Salad", "Smoked salmon (100 g), Mediterranean greens, caper berries, red onion, capers and house dressing."],
+"Ton Balıklı Salata":["Tuna Salad", "Mediterranean greens, tuna, capers, red onion and house dressing."],
+"Zaz Burger":["Zaz Burger", "House beef patty, lettuce, tomato, pickles and fries."],
+"Cheeseburger":["Cheeseburger", "Beef patty, curly lettuce, tomato, pickles, cheddar sauce, fries and house burger sauces."],
+"Chicken Burger":["Chicken Burger", "Breaded chicken fillet, curly lettuce, tomato, pickles, fries and house burger sauces."],
+"Şefin Burger":["Chef's Burger", "House beef patty, cheddar, mushrooms, caramelised onion and sauces in a closed bun. Cooking time 20–25 min."],
+"Pizza Burrata":["Pizza Burrata", "Tomato sauce, burrata, pesto, cherry tomatoes and rocket."],
+"Pizza Mozzarella":["Pizza Mozzarella", "Tomato sauce, mozzarella and cherry tomatoes."],
+"Pizza Margarita":["Pizza Margherita", "Tomato sauce, mozzarella and cherry tomatoes."],
+"Pizza Vejeteryan":["Vegetarian Pizza", "Tomato sauce, mozzarella and seasonal vegetables."],
+"Pizza Al Pollo":["Pizza Al Pollo", "Tomato sauce, mozzarella, spiced chicken, Mexican-style vegetables and chilli sauce."],
+"Pizza Luna":["Pizza Luna", "Tomato sauce, mozzarella and Turkish sucuk."],
+"Pizza Four Cheese":["Four Cheese Pizza", "With four kinds of cheese."],
+"Pizza Funghi":["Pizza Funghi", "Tomato sauce, mozzarella and mushrooms."],
+"Pizza ZAZ":["Pizza ZAZ", "Tomato sauce, mozzarella, smoked beef, rocket, tomato and parmesan."],
+"Pizza Mista":["Pizza Mista", "Mozzarella, sucuk, salami, sausage, mushrooms, tomato, green pepper, black olives and tomato sauce."],
+"Enginar Kalpli Fettuccine Alfredo":["Artichoke Fettuccine Alfredo", "Artichoke hearts, chicken, pasta and house sauces. Cooked with wine."],
+"Karides Linguine":["Prawn Linguine", "Linguine, prawns, house sauce and spices."],
+"Spaghetti Alnero di Mare":["Spaghetti Nero di Mare", "House seafood sauce, prawns, calamari, octopus, garlic, wine and napolitan sauce."],
+"Tagliatelle Bonfile":["Beef Tagliatelle", "Tagliatelle, mushrooms, tender beef pieces, light cream, soy sauce, oyster sauce, sweet chilli, parsley butter and parmesan."],
+"Penne Romano":["Penne Romano", "Chicken breast, button mushrooms, cream and soy sauce."],
+"Penne Arabiata":["Penne Arrabbiata", "Tomato (napolitan) sauce, chilli, olives and parmesan."],
+"Spaghetti Bolognese":["Spaghetti Bolognese", "Pasta, minced beef, tomato sauce and house spices."],
+"Mantı Ev Yapımı":["Homemade Mantı", "Hand-rolled dumplings with minced beef, yoghurt, garlic, butter and house spices."],
+"Naturel Bonfile":["Grilled Beef Tenderloin", "Grilled beef tenderloin, seasonal garnish and house spices."],
+"Zaz Usulü Lokum":["Zaz Style Beef Lokum", "Beef tenderloin in garlic cream sauce with seasonal vegetables and house spices."],
+"Tereyağlı Yaprak Bonfile":["Butter-Basted Sliced Tenderloin", "Marinated sliced beef tenderloin, shallots, baby potatoes, cherry tomatoes and garlic."],
+"Mantar Soslu Antrikot":["Ribeye with Mushroom Sauce", "Grilled ribeye, mushroom sauce and seasonal vegetables."],
+"Kuzu Pirzola":["Lamb Chops", "Four lamb chops with rocket, parsley, red onion and baby potatoes."],
+"Çökertme Kebabı":["Çökertme Kebab", "Thinly sliced beef, crispy potatoes, garlic yoghurt and house sauces."],
+"Yağlı Kara":["Yağlı Kara", "Marbled beef slices with fries."],
+"Sweet Chili Beef":["Sweet Chilli Beef", "Beef tenderloin pieces, California peppers, mushrooms and béchamel, topped with sesame and nigella seeds."],
+"Viyana Usulü Et Schnitzel":["Wiener Schnitzel", "Served with fries, butter and lemon."],
+"Izgara Köfte":["Grilled Meatballs", "Grilled meatballs with fries, grilled tomato and pepper."],
+"Tavuk Külbastı":["Grilled Chicken Külbastı", "Grilled chicken with seasonal garnish and house spices."],
+"Diet Izgara Tavuk":["Diet Grilled Chicken", "Grilled chicken fillet with steamed vegetables and potatoes."],
+"Mantar Soslu Tavuk":["Chicken with Mushroom Sauce", "Grilled chicken, creamy mushroom sauce and baby potatoes."],
+"Zaz Usulü Tavuk":["Zaz Style Chicken", "Chicken fillet in garlic cream sauce with house spices."],
+"Tavuk Schnitzel":["Chicken Schnitzel", "Breaded chicken schnitzel with fries and butter."],
+"Köri Soslu Tavuk":["Curry Chicken", "Sliced chicken, mushrooms, creamy curry sauce and fries."],
+"Mexican Tavuk":["Mexican Chicken", "Grilled chicken with spicy Mexican sauce and fries."],
+"Wrap Et":["Beef Wrap", "Diced beef tenderloin, mixed peppers, jalapeño, mushrooms, kaşar cheese and house sauce."],
+"Wrap Tavuk":["Chicken Wrap", "Diced chicken, mixed peppers, jalapeño, mushrooms, kaşar cheese and house sauce."],
+"Somon Izgara":["Grilled Salmon", "Grilled salmon with courgette ribbons and baby potatoes."],
+"Levrek Izgara":["Grilled Sea Bass", "Grilled sea bass with rocket, baby potatoes and red onion."],
+"Marine Edilmiş Levrek Şefin Speciali":["Chef's Marinated Sea Bass", "Sea bass fillet marinated in house sauces with herbs."],
+"Çıtır Tavuk Parçaları":["Crispy Chicken Bites", "Breaded crispy chicken pieces with fries."],
+"Spagetti Bolonez":["Spaghetti Bolognese", "Pasta, minced beef tomato sauce and cheese."],
+"Mini Pizza":["Mini Pizza", "Tomato sauce, mozzarella, sucuk, sausage and salami."],
+"Tavuk Schnitzel (Çocuk)":["Chicken Schnitzel (Kids)", "Breaded chicken schnitzel with fries."],
+"Makarna":["Pasta", "Pasta with tomato sauce and cheese."],
+"Izgara Köfte (Çocuk)":["Grilled Meatballs (Kids)", "Homemade grilled meatballs with fries."],
+"Mini Hamburger":["Mini Hamburger", "Homemade patty, greens, tomato and fries."],
+"Mini Sosis":["Mini Sausages", "Mini sausages, served with fries on request."],
+"Meyve Tabağı":["Fruit Platter", "A selection of fresh seasonal fruit."],
+"Cheesecake":["Cheesecake", "Cream cheese, biscuit base and house cheesecake sauce."],
+"Çilekli Magnolia":["Strawberry Magnolia", "Milk, cream, custard, biscuits and fresh strawberries."],
+"Mozaik Pasta":["Mosaic Cake", "Cocoa, biscuits, butter, milk and chocolate."],
+"San Sebastian Cheesecake":["San Sebastián Cheesecake", "Cream cheese, cream, egg, sugar and house cheesecake mix."],
+"Banana Roll":["Banana Roll", "Banana, cream, chocolate sauce and house roll cake."],
+"Klasik Harman Çay":["Classic Turkish Tea"],
+"Double Çay":["Double Turkish Tea"],
+"Nane Çayı":["Mint Tea"],
+"Kuşburnu Çayı":["Rosehip Tea"],
+"Rezene Çayı":["Fennel Tea"],
+"Papatya Çayı":["Chamomile Tea"],
+"Limonlu Yeşil Çay":["Green Tea with Lemon"],
+"Yeşil Çay":["Green Tea"],
+"Ada Çayı":["Sage Tea"],
+"Ihlamur":["Linden Tea"],
+"Elmalı Tarçın Çayı":["Apple & Cinnamon Tea"],
+"Matcha Çayı":["Matcha Tea"],
+"Soğuk Matcha Çayı":["Iced Matcha Tea"],
 "Kış Çayı":["Winter Tea"],
-"Kurşun Geçirmez Kahve İlavesi":["Bulletproof Coffee Add-on","Supports appetite control and ketosis between meals"],
-"Proteinli Sıcak Çikolata":["Protein Hot Chocolate"],"Türk Kahvesi":["Turkish Coffee"],
-"Duble Türk Kahvesi":["Double Turkish Coffee"],"Filtre Kahve":["Filter Coffee"],
-"Sıcak Çikolata":["Hot Chocolate"],"Salep":["Salep"],"Nescafe Sütten":["Nescafé with Milk"],
-"Züber Ice Tea":["Züber Ice Tea","Peach - Lemon - Tropical fruits"],
-"Şalgam":["Şalgam (Turnip Juice)","Spicy / Mild"],
-"Fuse Tea":["Fuse Tea","Peach - Lemon - Mango"],
-"Cappy Meyve Suyu":["Cappy Fruit Juice","Sour cherry - Peach - Apricot - Mixed"],
-"Schweppes":["Schweppes","Lemon - Mandarin - Tonic"],
-"Soda":["Sparkling Water"],"Meyveli Soda":["Flavoured Sparkling Water","Strawberry - Apple - Sour cherry - Lemon"],
-"Soda Limon Suyu":["Sparkling Water with Lemon"],"Ayran":["Ayran"],
-"Naneli - Fesleğenli Ayran":["Ayran with Mint & Basil"],"Su 1.5L":["Water 1.5L"],"Su 0.5L":["Water 0.5L"],
-"Fresh Meyve":["Fresh Juice","Orange - Apple - Carrot"],"Ice Hibiskus":["Iced Hibiscus"],
-"Zaz Cool Lime":["Zaz Cool Lime"],"Günün Detoksu":["Detox of the Day","Please ask your server"],
+"Türk Kahvesi":["Turkish Coffee"],
+"Duble Türk Kahvesi":["Double Turkish Coffee"],
+"Filtre Kahve":["Filter Coffee"],
+"Capuccino":["Cappuccino"],
+"Cafe Latte":["Café Latte"],
+"Cafe Mocha":["Café Mocha"],
+"Nescafe":["Nescafé"],
+"Nescafe Sütlü":["Nescafé with Milk"],
+"Sıcak Çikolata":["Hot Chocolate"],
+"Proteinli Sıcak Çikolata":["Protein Hot Chocolate"],
+"Kurşun Geçirmez Kahve İlavesi":["Bulletproof Coffee Add-On", "Added to your coffee."],
+"Su":["Water", "0.5 cl"],
+"Soda":["Sparkling Water"],
+"Meyveli Soda":["Fruit Soda"],
+"Soda Limon Suyu":["Soda with Lemon"],
+"Coca Cola":["Coca Cola", "Regular or Zero"],
+"Fuse Tea":["Fuse Tea", "Peach, lemon or mango"],
+"Cappy Meyve Suyu":["Cappy Fruit Juice"],
+"Züber Ice Tea":["Züber Iced Tea", "Peach, lemon or tropical fruits"],
+"Naneli Fesleğenli Ayran":["Ayran with Mint & Basil"],
+"Şalgam":["Şalgam", "Spicy or mild turnip juice"],
 "Ev Yapımı Limonata":["Homemade Lemonade"],
-"Taze Meyve Suyu":["Freshly Squeezed Juice","Your choice: Orange - Apple - Carrot"],
+"Fresh Meyve":["Fresh Juice", "Carrot, apple or orange"],
+"Taze Meyve Suyu":["Freshly Squeezed Juice", "Orange, carrot or apple"],
+"Ice Hibisküs":["Iced Hibiscus"],
+"Günün Detoksu":["Detox of the Day", "Please ask."],
+"Ice Mocha":["Iced Mocha"],
 "Ice Filtre":["Iced Filter Coffee"],
-"Berry Milkshake Protein":["Berry Protein Milkshake","40g protein, forest fruits with milk"],
-"Choco Milkshake Protein":["Choco Protein Milkshake","40g protein, cocoa with milk"],
-"Çikolatalı Milkshake":["Chocolate Milkshake"],"Vanilyalı Milkshake":["Vanilla Milkshake"],
+"Ice Americano":["Iced Americano"],
+"Ice Latte":["Iced Latte"],
+"Frappe":["Frappé"],
+"Ice Chocolate Mocha":["Iced Chocolate Mocha"],
+"Ice Matcha Latte":["Iced Matcha Latte"],
+"Çikolatalı Milkshake":["Chocolate Milkshake"],
+"Vanilyalı Milkshake":["Vanilla Milkshake"],
 "Çilekli Milkshake":["Strawberry Milkshake"],
-"Alkolsüz Kokteyl":["Mocktail","Tell your server what you feel like and we'll make it"],
-"Belfast 50cl":["Belfast 50cl","New"],"Efes Klasik 50cl":["Efes Classic 50cl"],
-"Efes Özel Seri 50cl":["Efes Special Series 50cl"],"Efes Glutensiz 50cl":["Efes Gluten-Free 50cl"],
-"Bomonti Filtresiz 50cl":["Bomonti Unfiltered 50cl"],"Lüks Çerez":["Premium Nut Platter"],
-"Bavyera Bira (1LT)":["Bavarian Beer (1L)"],
-"Mexican Bardak":["Mexican Glass","Without tequila"],
-"Mexican Bardak Tekilalı":["Mexican Glass with Tequila","With 4.5cl tequila, salt and lemon"],
-"Fıçı Bira 33cl":["Draft Beer 33cl"],"Fıçı Bira 50cl":["Draft Beer 50cl"],
-"Ladybird":["Ladybird","Jägermeister, orange liqueur, blueberry sauce, lemon juice"],
-"Danube":["Danube","Beefeater Gin, Chambord blackberry, lemon juice, simple syrup"],
-"First Light":["First Light","Beefeater Gin, orange liqueur, lavender sauce, lemon juice, butterfly pea tea"],
-"Plane":["Plane","Beefeater Gin, limoncello, cucumber, basil sauce"],
-"Kuzukulağı":["Sorrel","Beefeater Gin, orange liqueur, green apple, lemon juice"],
-"Hope":["Hope","Jameson, Martini Rosso, pineapple sauce, lemon juice"],
-"Negroni":["Negroni","Gin, Martini Rosso, Campari"],
-"Martini":["Martini","Vodka / Dry / Pornstar — please tell your server"],
-"Espresso Martini":["Espresso Martini","Vodka, coffee liqueur, espresso"],
-"Margarita":["Margarita","Tequila, orange liqueur, lime juice"],
-"Tekila Sunrise":["Tequila Sunrise","Tequila, orange juice, grenadine"],
-"Lynchburg Lemonede":["Lynchburg Lemonade","Jack Daniel's, orange liqueur, sweet & sour, sprite"],
-"Whiskey Sour":["Whiskey Sour","Bulleit bourbon, lemon juice, sugar syrup, bitters, foam"],
-"Long Island Iced Tea":["Long Island Iced Tea","Gin, vodka, rum, tequila, orange liqueur, lemon juice, cola"],
-"Aperol Spritz":["Aperol Spritz","Aperol, prosecco, San Pellegrino"],
-"Mojito Çeşitleri":["Mojito Selection","Jager, strawberry, apple, pineapple"],
-"Bumbu Rom":["Bumbu Rum"],"Tekila Olmeca Gold":["Olmeca Gold Tequila"],
+"Berry Milkshake Protein":["Berry Protein Milkshake"],
+"Chocco Milkshake Protein":["Choco Protein Milkshake"],
+"Caffe Bailey's":["Caffè Bailey's"],
+"Mexican Bardak":["Mexican Glass"],
+"Fıçı Bira 33 cl":["Draft Beer 33 cl"],
+"Fıçı Bira 50 cl":["Draft Beer 50 cl"],
+"Mexican Bardak Tekilalı":["Mexican Glass with Tequila"],
+"Bavyera Bira (1 lt)":["Bavarian Beer (1 lt)"],
+"Luks Çerez":["Mixed Nuts"],
+"Becks 33cl":["Beck's 33cl"],
+"Efes Klasik 50cl":["Efes Classic 50cl"],
+"Efes Özel Seri 50cl":["Efes Special Series 50cl"],
+"Bomonti Filtresiz 50cl":["Bomonti Unfiltered 50cl"],
+"Efes Glutensiz 50cl":["Efes Gluten-Free 50cl"],
+"Mojito Çeşitleri":["Mojito Varieties"],
+"Old Fashion":["Old Fashioned"],
+"Tekila Sunrise":["Tequila Sunrise"],
 "Tekila Olmeca Silver":["Olmeca Silver Tequila"],
-"Chivas 12 Years 70cl":["Chivas 12 Years 70cl","With fruit, nuts and soft drink"],
-"Chivas 12 Years 35cl":["Chivas 12 Years 35cl","With fruit, nuts and soft drink"],
-"Chivas 18 Years 70cl":["Chivas 18 Years 70cl","With fruit, nuts and soft drink"],
-"Tanqueray No.Ten 10cl":["Tanqueray No.Ten 10cl","With tonic or soda"],
-"M Porta Diverti Kırmızı":["M Porta Diverti Red"],"M Porta Diverti Roze":["M Porta Diverti Rosé"],
-"Urla Serendias (Roze)":["Urla Serendias (Rosé)"],"İdol Kalecik Karası":["İdol Kalecik Karası (Red)"],
-"İsabey Kırmızı":["İsabey Red"],"İsabey Beyaz":["İsabey White"],"Verona Roze 75cl":["Verona Rosé 75cl"],
-"Kırmızı Şarap (kadeh)":["Red Wine (glass)"],"Beyaz Şarap (kadeh)":["White Wine (glass)"],
-"Rose Şarap (kadeh)":["Rosé Wine (glass)"],
-"Efe Gold 5cl (kadeh)":["Efe Gold 5cl (glass)"],"Efe Gold 10cl (double)":["Efe Gold 10cl (double)"]
+"Bumbu Rom":["Bumbu Rum"],
+"Tekila Olmeca Gold":["Olmeca Gold Tequila"],
+"Jack Daniels 35cl":["Jack Daniel's 35cl"],
+"Jack Daniels 70cl":["Jack Daniel's 70cl"],
+"Remy Martin VSOP 35cl":["Rémy Martin VSOP 35cl"],
+"Remy Martin VSOP 70cl":["Rémy Martin VSOP 70cl"],
+"Kırmızı Şarap (Kadeh)":["Red Wine (Glass)"],
+"Beyaz Şarap (Kadeh)":["White Wine (Glass)"],
+"Rose Şarap (Kadeh)":["Rosé Wine (Glass)"],
+"İsabey Beyaz":["İsabey White"],
+"M. Porta Diverti Kırmızı":["M. Porta Diverti Red"],
+"M. Porta Diverti Roze":["M. Porta Diverti Rosé"],
+"Urla Nexsus 70cl":["Urla Nexus 70cl"],
+"Urla Tempus 1,5 lt":["Urla Tempus 1.5 lt"],
+"Urla Voura 1,5 lt":["Urla Voura 1.5 lt"]
 };
 function tName(n){ return (LANG==='en' && T_ITEM[n] && T_ITEM[n][0]) ? T_ITEM[n][0] : n; }
+const ALRG = {
+  G:  ["Gluten","Gluten"],
+  S:  ["Süt","Milk"],
+  Y:  ["Yumurta","Egg"],
+  B:  ["Balık","Fish"],
+  K:  ["Kabuklu deniz ürünü","Shellfish"],
+  SO: ["Soya","Soy"],
+  SU: ["Susam","Sesame"],
+  C:  ["Sert kabuklu yemiş","Nuts"],
+  H:  ["Hardal","Mustard"],
+  SF: ["Sülfit","Sulphites"]
+};
+function alrgText(kod){
+  const bas = (LANG==='en') ? 'Allergens: ' : 'Alerjen: ';
+  const ad = String(kod).split(',').map(k=>{
+    const v = ALRG[k.trim()];
+    return v ? (LANG==='en' ? v[1] : v[0]) : k.trim();
+  });
+  return bas + ad.join(' · ');
+}
 function tDesc(n,d){ return (LANG==='en' && T_ITEM[n] && T_ITEM[n][1]) ? T_ITEM[n][1] : d; }
 function tCat(c){ return (LANG==='en' && T_CAT[c]) ? T_CAT[c] : c; }
 function tGroup(g){ return (LANG==='en' && T_GROUP[g]) ? T_GROUP[g] : g; }
@@ -1400,7 +1646,13 @@ function pageHTML(p, idx){
   }
   const rows = p.items.map(i=>{
     if(String(i.n).startsWith('__')) return '';
-    const price = (i.p===null||i.p===undefined)?(LANG==='en'?'Please ask':'Sorunuz'):('₺'+i.p);
+    let price;
+    if(i.pt) price = i.pt;
+    else if(i.p===null||i.p===undefined) price = (LANG==='en'?'Please ask':'Sorunuz');
+    else price = '₺' + Number(i.p).toLocaleString('tr-TR');
+    const meta = [];
+    if(i.k) meta.push(`<span class="mi-kcal">${esc(i.k)} kcal</span>`);
+    if(i.a) meta.push(`<span class="mi-alrg">${alrgText(i.a)}</span>`);
     return `<div class="mi ${i.s?'sig':''}">
       <div class="mi-top">
         <span class="mi-name">${esc(tName(i.n))}${i.s?' <span class="star">★</span>':''}</span>
@@ -1408,12 +1660,16 @@ function pageHTML(p, idx){
         <span class="mi-price">${price}</span>
       </div>
       ${tDesc(i.n,i.d)?`<div class="mi-desc">${esc(tDesc(i.n,i.d))}</div>`:''}
+      ${meta.length?`<div class="mi-meta">${meta.join('')}</div>`:''}
     </div>`;
   }).join('');
+  const dipnot = LANG==='en'
+    ? 'Dishes may contain traces of other allergens depending on preparation. Please inform our team of any allergies.'
+    : 'Hazırlanışa bağlı olarak eser miktarda başka alerjenler bulunabilir. Alerjiniz varsa lütfen ekibimize bildirin.';
   return `<div class="page-pad">
     <div class="page-group">${esc(tGroup(p.group))}</div>
     <div class="page-cat">${esc(tCat(p.cat))}</div>
-    <div class="page-items">${rows}</div>
+    <div class="page-items">${rows}<div class="page-note">${dipnot}</div></div>
     <div class="scroll-hint"><span class="chip">${LANG==='en'?'▼ SCROLL':'▼ KAYDIRIN'}</span></div>
   </div>
   <span class="page-num">${idx}</span>
@@ -1454,11 +1710,21 @@ function mUpdateState(){
 }
 
 /* Çevirme sırasında HİÇBİR yazı oluşturulmaz — sayfalar zaten hazır, sadece rol değişir */
+let mTimer = null;
 function mGoTo(target){
   target = Math.max(0, Math.min(M_LAST, target));
-  if(target === mCur || mBusy) return;
-  const dir = target > mCur ? 1 : -1;
+  if(target === mCur) return;
   const jump = Math.abs(target - mCur) > 1;
+  /* Sayfa çevirme animasyonu sürerken komşu sayfaya geçiş yok sayılır (üst üste binmesin).
+     Ama kategoriye atlama beklemez: süren animasyon iptal edilip anında geçilir —
+     aksi halde animasyon sırasında kategori seçen kullanıcıya site donmuş gibi görünüyordu. */
+  if(mBusy && !jump) return;
+  if(mBusy){
+    if(mTimer){ clearTimeout(mTimer); mTimer = null; }
+    mLayers.forEach(l=>{ if(l) l.className = 'mp'; });
+    mBusy = false;
+  }
+  const dir = target > mCur ? 1 : -1;
 
   const from = mBuild(mCur);
   const to   = mBuild(target);
@@ -1476,7 +1742,8 @@ function mGoTo(target){
     to.className = 'mp mp-under active';
     void to.offsetWidth;
     from.classList.add('turning-out');
-    setTimeout(()=>{
+    mTimer = setTimeout(()=>{
+      mTimer = null;
       to.className = 'mp mp-top';
       from.className = 'mp no-anim';
       void from.offsetWidth;
@@ -1492,7 +1759,8 @@ function mGoTo(target){
     void to.offsetWidth;
     requestAnimationFrame(()=>{
       to.classList.remove('turning-out');
-      setTimeout(()=>{
+      mTimer = setTimeout(()=>{
+        mTimer = null;
         from.className = 'mp';
         mCur = target; mBusy = false; mUpdateState();
       }, M_DUR);
@@ -1618,6 +1886,24 @@ function goTo(target){
   target = Math.max(0, Math.min(numLeaves, target));
   if(target === flipped) return;
   const step = target > flipped ? 1 : -1;
+
+  /* UZAĞA ATLAMA: aradaki yaprakları animasyonsuz çevir.
+     Tek tek çevirmek 20+ yaprakta arka arkaya 3B animasyon demekti;
+     telefonlarda gözle görülür takılmaya yol açıyordu. Sadece son yaprak animasyonlu döner. */
+  if(Math.abs(target - flipped) > 2){
+    const durak = target - step;
+    book.classList.add('no-anim');
+    while(flipped !== durak){
+      const i = step===1 ? flipped : flipped-1;
+      book.children[i].classList.toggle('flipped', step===1);
+      flipped += step;
+    }
+    zSort();
+    updateVisibility();
+    void book.offsetWidth;            /* stiller animasyonsuz uygulansın */
+    book.classList.remove('no-anim');
+  }
+
   const single = Math.abs(target - flipped) === 1;
   const doFlip = ()=>{
     if(flipped === target) return;
