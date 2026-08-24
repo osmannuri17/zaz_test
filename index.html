@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
 <title>Zaz Cafe Bar Restaurant — Karşıyaka, Mavişehir | İzmir</title>
-<meta name="description" content="Zaz Cafe Bar — Karşıyaka Mavişehir'de deniz kenarı cafe, bar ve restaurant. Serpme kahvaltı, imza kokteyller, canlı müzik (Çarşamba & Cuma & Cumartesi) ve her akşam DJ performansı. Her gün 09:00–01:00.">
+<meta name="description" content="Zaz Cafe Bar — Karşıyaka Mavişehir'de deniz kenarı cafe, bar ve restaurant. Serpme kahvaltı, imza kokteyller, canlı müzik (Çarşamba, Cuma & Cumartesi) ve her akşam DJ performansı. Her gün 09:00–01:00.">
 <meta name="theme-color" content="#16233A">
 <meta property="og:title" content="Zaz Cafe Bar Restaurant — Karşıyaka, İzmir">
 <meta property="og:description" content="Deniz kenarında kahvaltıdan gece kokteyline. Canlı müzik, her akşam DJ performansı.">
@@ -167,7 +167,7 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; transition:top .5s cubi
 
 /* ---------- INFO STRIP ---------- */
 .strip{background:var(--navy); color:#E9EDF4; padding:16px 5vw; display:flex; justify-content:center; gap:14px 40px; flex-wrap:wrap;}
-.strip div{display:flex; align-items:center; gap:10px; font-size:0.85rem; letter-spacing:0.02em;}
+.strip div{display:flex; align-items:center; gap:10px; font-size:0.85rem; letter-spacing:0.02em; white-space:nowrap;}
 .strip i{width:5px; height:5px; border-radius:50%; background:var(--red); flex:none;}
 .strip b{font-weight:600; color:#fff;}
 
@@ -723,6 +723,7 @@ footer{background:var(--navy); color:#E9EDF4; padding:60px 5vw 30px; display:fle
   .hero-meta{gap:14px 20px; margin-top:30px;}
   .hm b{font-size:0.95rem;}
   .strip{padding:13px 4vw; font-size:0.8rem; gap:8px 20px;}
+  .strip div{font-size:0.74rem; gap:7px;}
   .book-section{padding:70px 0 50px;}
   .book-head p{font-size:0.9rem; padding:0 14px;}
   .jump-select{max-width:70vw;}
@@ -906,7 +907,7 @@ body.cb-open .wa-fab{bottom:150px;}
     </div>
     <div class="hero-meta">
       <div class="hm" data-en="<b>09:00 – 01:00</b><span>Every day of the week</span>"><b>09:00 – 01:00</b><span>Haftanın her günü</span></div>
-      <div class="hm" data-en="<b>Live Music</b><span>Thursday &amp; Friday</span>"><b>Canlı Müzik</b><span>Perşembe &amp; Cuma</span></div>
+      <div class="hm" data-en="<b>Live Music</b><span>Wednesday, Friday &amp; Saturday</span>"><b>Canlı Müzik</b><span>Çarşamba, Cuma &amp; Cumartesi</span></div>
       <div class="hm" data-en="<b>DJ Performance</b><span>Every evening</span>"><b>DJ Performansı</b><span>Her akşam</span></div>
     </div>
   </div>
@@ -927,7 +928,7 @@ body.cb-open .wa-fab{bottom:150px;}
 
 <div class="strip">
   <div data-en="<i></i><b>Every day</b> 09:00 – 01:00"><i></i><b>Her gün</b> 09:00 – 01:00</div>
-  <div data-en="<i></i><b>Live music</b> Thursday &amp; Friday 21:00"><i></i><b>Canlı müzik</b> Perşembe &amp; Cuma 21:00</div>
+  <div data-en="<i></i><b>Live music</b> Wednesday, Friday &amp; Saturday 21:00"><i></i><b>Canlı müzik</b> Çarşamba, Cuma &amp; Cumartesi 21:00</div>
   <div data-en="<i></i><b>DJ</b> every evening"><i></i><b>DJ</b> her akşam</div>
   <div data-en="<i></i><b>Free</b> parking"><i></i><b>Ücretsiz</b> otopark</div>
 </div>
@@ -1135,7 +1136,7 @@ body.cb-open .wa-fab{bottom:150px;}
     <button onclick="openLegal('kvkk')" data-en="Privacy &amp; Data Protection Notice">Gizlilik &amp; KVKK Aydınlatma Metni</button>
     <button onclick="openLegal('cerez')" data-en="Cookie Policy">Çerez Politikası</button>
   </div>
-  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v38
+  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v40
 </div>
 
 
@@ -2572,8 +2573,8 @@ const DUYURU = {
   id: 'canli-muzik-1',
   baslangic: '',            /* örn: '2026-08-01' */
   bitis:     '',            /* örn: '2026-08-13' */
-  tr: 'Perşembe & Cuma akşamları <b>canlı müzik</b> · 21:00',
-  en: 'Live music every Thursday & Friday · 21:00',
+  tr: 'Çarşamba, Cuma & Cumartesi akşamları <b>canlı müzik</b> · 21:00',
+  en: 'Live music every Wednesday, Friday & Saturday · 21:00',
   butonTR: 'Yer Ayırt',
   butonEN: 'Book',
   link: '#rezervasyon'      /* boş bırakılırsa buton çıkmaz */
