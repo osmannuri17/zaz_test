@@ -406,6 +406,22 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; transition:top .5s cubi
 .board-row.bugun .board-gun::after{
   content:' ← bugün'; font-size:0.86rem; color:#FFD98A; opacity:.9;}
 html[lang="en"] .board-row.bugun .board-gun::after{content:' ← today';}
+.board-row.gecmis{display:block; padding:11px 12px;}
+.board-ust{display:flex; align-items:baseline; justify-content:space-between;}
+.board-ust .board-gun em{font-style:normal; font-family:'Caveat',cursive; font-weight:500;
+  font-size:0.86em; color:#B9C2BB; margin-left:6px;}
+.board-sanatci{font-family:'Caveat',cursive; font-weight:700; color:#FFE9A8;
+  font-size:1.5rem; line-height:1.15; margin-top:2px;
+  text-shadow:0 0 1px rgba(255,255,255,0.45), 0 0 9px rgba(255,255,255,0.14);}
+.board-altyazi{font-family:'Caveat',cursive; font-size:1.02rem; color:#C6CEC7;
+  font-style:italic; margin-top:1px;}
+.board-saatler{display:flex; gap:16px; margin-top:5px; flex-wrap:wrap;}
+.board-saat-etiket{font-family:'Caveat',cursive; font-size:1.1rem; color:#DFE4DE;}
+@media (max-width:880px){
+  .board-sanatci{font-size:1.32rem;}
+  .board-saat-etiket{font-size:1rem;}
+  .board-saatler{gap:12px;}
+}
 .board-row.ozel .board-ne{color:#FFDCA0;}
 
 .board-foot{
@@ -1119,7 +1135,7 @@ body.cb-open .wa-fab{bottom:150px;}
     <button onclick="openLegal('kvkk')" data-en="Privacy &amp; Data Protection Notice">Gizlilik &amp; KVKK Aydınlatma Metni</button>
     <button onclick="openLegal('cerez')" data-en="Cookie Policy">Çerez Politikası</button>
   </div>
-  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v37
+  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v38
 </div>
 
 
@@ -2748,11 +2764,20 @@ const ONERI_ANAHTAR = '58b94524-7c92-4b98-b9a9-4fedfb62ce21';
 const PROGRAM = [
   {gun:1, tr:'Pazartesi', en:'Monday',    neTR:'DJ Performansı',      neEN:'DJ Set',            saat:'21:00'},
   {gun:2, tr:'Salı',      en:'Tuesday',   neTR:'DJ Performansı',      neEN:'DJ Set',            saat:'21:00'},
-  {gun:3, tr:'Çarşamba',  en:'Wednesday', neTR:'Akustik Gece',        neEN:'Acoustic Night',    saat:'21:00'},
-  {gun:4, tr:'Perşembe',  en:'Thursday',  neTR:'Canlı Müzik',         neEN:'Live Music',        saat:'21:00', ozel:true},
-  {gun:5, tr:'Cuma',      en:'Friday',    neTR:'Canlı Müzik',         neEN:'Live Music',        saat:'21:00', ozel:true},
-  {gun:6, tr:'Cumartesi', en:'Saturday',  neTR:'DJ Performansı',      neEN:'DJ Set',            saat:'22:00'},
-  {gun:0, tr:'Pazar',     en:'Sunday',    neTR:'Gün Batımı Seansı',   neEN:'Sunset Session',    saat:'19:00'}
+  {gun:3, tr:'Çarşamba',  en:'Wednesday', tarih:'26 Ağustos', tarihEN:'August 26',
+   sanatci:'UnderCover & Gupse', neTR:'Canlı Müzik', neEN:'Live Music',
+   yemekSaat:'20:00', muzikSaat:'21:00'},
+  {gun:4, tr:'Perşembe',  en:'Thursday',  tarih:'27 Ağustos', tarihEN:'August 27',
+   sanatci:'Burak Toktamış', altYazi:'Akustik Şarkılar', altYaziEN:'Acoustic Songs',
+   neTR:'Canlı Müzik', neEN:'Live Music', yemekSaat:'20:00', muzikSaat:'21:00', ozel:true},
+  {gun:5, tr:'Cuma',      en:'Friday',    tarih:'28 Ağustos', tarihEN:'August 28',
+   sanatci:'Billur Koyuncu', neTR:'Canlı Müzik', neEN:'Live Music',
+   yemekSaat:'20:00', muzikSaat:'20:00', ozel:true},
+  {gun:6, tr:'Cumartesi', en:'Saturday',  tarih:'29 Ağustos', tarihEN:'August 29',
+   sanatci:'DJ Avni Emektar', altYazi:'Zamansız Şarkılar', altYaziEN:'Timeless Songs',
+   neTR:'DJ Performansı', neEN:'DJ Set', yemekSaat:'20:00', muzikSaat:'20:00'},
+  {gun:0, tr:'Pazar',     en:'Sunday',    tarih:'30 Ağustos', tarihEN:'August 30',
+   neTR:'Pazar Kahvaltısı · Pazar Keyfi', neEN:'Sunday Breakfast · Sunday Mood'}
 ];
 
 function programCiz(){
@@ -2760,13 +2785,29 @@ function programCiz(){
   if(!kap) return;
   const bugun = new Date().getDay();
   kap.innerHTML = PROGRAM.map(p=>{
-    const sinif = 'board-row' + (p.gun===bugun ? ' bugun' : '') + (p.ozel ? ' ozel' : '');
+    const sinif = 'board-row' + (p.gun===bugun ? ' bugun' : '') + (p.ozel ? ' ozel' : '')
+      + (p.sanatci ? ' gecmis' : '');
     const gun = LANG==='en' ? p.en : p.tr;
     const ne  = LANG==='en' ? p.neEN : p.neTR;
+    const tarih = LANG==='en' ? p.tarihEN : p.tarih;
+    const altYazi = LANG==='en' ? p.altYaziEN : p.altYazi;
+    if(p.sanatci){
+      return `<div class="${sinif}">
+        <div class="board-ust">
+          <span class="board-gun">${gun}${tarih?` <em>${tarih}</em>`:''}</span>
+        </div>
+        <div class="board-sanatci">${p.sanatci}</div>
+        ${altYazi?`<div class="board-altyazi">${altYazi}</div>`:''}
+        <div class="board-saatler">
+          <span class="board-saat-etiket">🍽️ ${p.yemekSaat} ${LANG==='en'?'Dinner':'Yemek'}</span>
+          <span class="board-saat-etiket">🎵 ${p.muzikSaat} ${LANG==='en'?'Music':'Müzik'}</span>
+        </div>
+      </div>`;
+    }
     return `<div class="${sinif}">
-      <span class="board-gun">${gun}</span>
+      <span class="board-gun">${gun}${tarih?` <em>${tarih}</em>`:''}</span>
       <span class="board-ne">${ne}</span>
-      <span class="board-saat">${p.saat}</span>
+      ${p.saat?`<span class="board-saat">${p.saat}</span>`:''}
     </div>`;
   }).join('');
   const b = document.getElementById('boardTitle');
