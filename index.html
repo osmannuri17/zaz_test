@@ -931,6 +931,7 @@ body.cb-open .wa-fab{bottom:150px;}
 }
 @media (max-width:620px){
   body{padding-bottom:calc(68px + env(safe-area-inset-bottom));}
+  input,select,textarea{font-size:16px !important;}
   .tonight-card{display:block;}
   .tonight-card .btn{margin-top:18px; width:100%; text-align:center;}
   .package-grid,.faq-list{grid-template-columns:1fr;}
@@ -2674,6 +2675,12 @@ function closeRes(){
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeRes(); });
 window.addEventListener('pageshow', ()=>{
   if(document.getElementById('resOverlay').classList.contains('show')) closeRes();
+  document.documentElement.scrollLeft = 0;
+  document.body.scrollLeft = 0;
+  setTimeout(()=>{
+    document.documentElement.scrollLeft = 0;
+    document.body.scrollLeft = 0;
+  }, 100);
 });
 
 document.getElementById('resSubmit').addEventListener('click', ()=>{
@@ -2709,8 +2716,11 @@ document.getElementById('resSubmit').addEventListener('click', ()=>{
   if(note) msg += (EN?`\nNote: `:`\nNot: `) + note;
 
   const whatsappUrl = 'https://wa.me/' + RES_WHATSAPP + '?text=' + encodeURIComponent(msg);
+  if(document.activeElement instanceof HTMLElement) document.activeElement.blur();
   closeRes();
-  window.location.href = whatsappUrl;
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{ window.location.href = whatsappUrl; }, 50);
+  });
 });
 
 
