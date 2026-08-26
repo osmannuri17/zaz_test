@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Zaz Cafe Bar Restaurant — Karşıyaka, Mavişehir | İzmir</title>
 <meta name="description" content="Zaz Cafe Bar — Karşıyaka Mavişehir'de deniz kenarı cafe, bar ve restaurant. Serpme kahvaltı, imza kokteyller, canlı müzik (Çarşamba, Cuma & Cumartesi) ve her akşam DJ performansı. Her gün 09:00–01:00.">
@@ -82,7 +82,8 @@
   --wine-soft:#FBEAEB;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth; color-scheme:light only;}
+html{scroll-behavior:smooth; color-scheme:light only; overflow-x:hidden;}
+body{overflow-x:hidden;}
 body{font-variant-numeric:tabular-nums; background:var(--bg)!important; color:var(--ink)!important; font-family:'Poppins',sans-serif; font-size:16px; line-height:1.6; overflow-x:hidden;}
 a{color:inherit; text-decoration:none;}
 h1,h2,h3{font-family:'Bodoni Moda',serif; font-weight:600; color:var(--ink); line-height:1.1;}
@@ -930,9 +931,9 @@ body.cb-open .wa-fab{bottom:150px;}
   .package-grid{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:620px){
-  body{padding-bottom:68px;}
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom, 0px));}
   /* bağlantıyla bir bölüme atlarken çubuğun altında kalmasın */
-  html{scroll-padding-bottom:78px;}
+  html{scroll-padding-bottom:calc(78px + env(safe-area-inset-bottom, 0px));}
   /* dokunmayı engellemesin: çubuğun kendisi tıklanabilir, arka planı değil */
   .mobile-actions{pointer-events:none;}
   .mobile-actions a,.mobile-actions button{pointer-events:auto;}
@@ -940,7 +941,7 @@ body.cb-open .wa-fab{bottom:150px;}
   .tonight-card .btn{margin-top:18px; width:100%; text-align:center;}
   .package-grid,.faq-list{grid-template-columns:1fr;}
   .package-card{min-height:0;}
-  .mobile-actions{position:fixed; display:grid; grid-template-columns:1fr 1fr 1.15fr; left:0; right:0; bottom:0; height:66px; z-index:690; background:rgba(255,255,255,.97); border-top:1px solid var(--line); box-shadow:0 -8px 24px rgba(10,17,34,.10); padding:7px 8px calc(7px + env(safe-area-inset-bottom));}
+  .mobile-actions{position:fixed; display:grid; grid-template-columns:1fr 1fr 1.15fr; left:0; right:0; bottom:0; height:calc(66px + env(safe-area-inset-bottom, 0px)); z-index:690; background:rgba(255,255,255,.97); border-top:1px solid var(--line); box-shadow:0 -8px 24px rgba(10,17,34,.10); padding:7px 8px calc(7px + env(safe-area-inset-bottom));}
   .mobile-actions a,.mobile-actions button{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; border-radius:10px; font-size:.66rem; font-weight:600; color:var(--navy);}
   .mobile-actions b{font-size:1.08rem; line-height:1; font-weight:400;}
   .mobile-actions .mobile-res{background:var(--red); color:#fff; margin-left:5px;}
@@ -1288,7 +1289,7 @@ body.cb-open .wa-fab{bottom:150px;}
     <button onclick="openLegal('kvkk')" data-en="Privacy &amp; Data Protection Notice">Gizlilik &amp; KVKK Aydınlatma Metni</button>
     <button onclick="openLegal('cerez')" data-en="Cookie Policy">Çerez Politikası</button>
   </div>
-  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v43
+  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v44
 </div>
 
 
@@ -2578,15 +2579,59 @@ const LEGAL = {
     <p>Tarayıcınızın ayarlar bölümünden site verilerini temizleyerek çerez tercihinizi sıfırlayabilir, bir sonraki ziyaretinizde yeniden seçim yapabilirsiniz. Tarayıcı ayarlarından tüm çerezleri engellemeniz de mümkündür.</p>`
 };
 
+/* Sayfa kaydırma kilidi — iOS Safari uyumlu.
+   overflow:hidden iOS'ta konumu bozduğu için sayfa position:fixed ile sabitlenir
+   ve kapanışta tam olarak aynı yere geri dönülür. */
+let __kilitSayaci = 0, __kilitY = 0;
+function sayfaKilitle(){
+  if(__kilitSayaci++ > 0) return;
+  __kilitY = window.scrollY || window.pageYOffset || 0;
+  const b = document.body;
+  b.style.position = 'fixed';
+  b.style.top = (-__kilitY) + 'px';
+  b.style.left = '0';
+  b.style.right = '0';
+  b.style.width = '100%';
+  b.style.overflow = 'hidden';
+}
+function sayfaKilidiAc(){
+  if(__kilitSayaci === 0) return;
+  if(--__kilitSayaci > 0) return;
+  const b = document.body;
+  b.style.position = '';
+  b.style.top = '';
+  b.style.left = '';
+  b.style.right = '';
+  b.style.width = '';
+  b.style.overflow = '';
+  /* Sayfada yumuşak kaydırma açık; geri dönüş animasyonlu olursa
+     hızlı aç-kapa'da yarıda kalıp konum kayıyordu. Anlık geri dönülür. */
+  const kok = document.documentElement;
+  const eskiDavranis = kok.style.scrollBehavior;
+  kok.style.scrollBehavior = 'auto';
+  window.scrollTo(0, __kilitY);
+  /* Sayfa yüksekliği bir sonraki karede oturuyor; tek seferlik geri dönüş
+     bazen birkaç on piksel şaşıyordu. İkinci karede konum teyit edilir. */
+  requestAnimationFrame(()=>{
+    window.scrollTo(0, __kilitY);
+    /* Sayfa sonuna yakın açılan pencerelerde yükseklik biraz gecikmeli
+       oturuyor; son bir teyit ile konum kesinleşir. */
+    setTimeout(()=>{
+      if(Math.abs((window.scrollY||0) - __kilitY) > 2) window.scrollTo(0, __kilitY);
+      kok.style.scrollBehavior = eskiDavranis;
+    }, 60);
+  });
+}
+
 function openLegal(key){
   const src = (LANG==='en' && typeof LEGAL_EN!=='undefined') ? LEGAL_EN : LEGAL;
   document.getElementById('legalContent').innerHTML = src[key] || LEGAL[key] || '';
   document.getElementById('legalOverlay').classList.add('show');
-  document.body.style.overflow = 'hidden';
+  sayfaKilitle();
 }
 function closeLegal(){
   document.getElementById('legalOverlay').classList.remove('show');
-  document.body.style.overflow = '';
+  sayfaKilidiAc();
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLegal(); });
 
@@ -2667,11 +2712,11 @@ function chooseSpecialPackage(key){
 
 function openRes(){
   document.getElementById('resOverlay').classList.add('show');
-  document.body.style.overflow = 'hidden';
+  sayfaKilitle();
 }
 function closeRes(){
   document.getElementById('resOverlay').classList.remove('show');
-  document.body.style.overflow = '';
+  sayfaKilidiAc();
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeRes(); });
 
