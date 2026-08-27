@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Zaz Cafe Bar Restaurant — Karşıyaka, Mavişehir | İzmir</title>
 <meta name="description" content="Zaz Cafe Bar — Karşıyaka Mavişehir'de deniz kenarı cafe, bar ve restaurant. Serpme kahvaltı, imza kokteyller, canlı müzik (Çarşamba, Cuma & Cumartesi) ve her akşam DJ performansı. Her gün 09:00–01:00.">
@@ -92,7 +92,7 @@
   --wine-soft:#FBEAEB;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth; color-scheme:light only;}
+html{scroll-behavior:smooth; color-scheme:light only; overflow-x:hidden;}
 body{font-variant-numeric:tabular-nums; background:var(--bg)!important; color:var(--ink)!important; font-family:'Poppins',sans-serif; font-size:16px; line-height:1.6; overflow-x:hidden;}
 a{color:inherit; text-decoration:none;}
 h1,h2,h3{font-family:'Bodoni Moda',serif; font-weight:600; color:var(--ink); line-height:1.1;}
@@ -233,28 +233,27 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; transition:top .5s cubi
 
 /* ================= NE YESEM? — ÖNERİ ================= */
 .pick{padding:88px 5vw 20px; background:var(--bg);}
-.pick-in{max-width:940px; margin:0 auto; text-align:center;}
+.pick-in{max-width:840px; margin:0 auto; text-align:center;}
 .pick h2{font-size:clamp(1.6rem,3.6vw,2.4rem); margin:14px 0 10px; font-weight:600; line-height:1.2;}
 .pick h2 em{font-family:'Alex Brush',cursive; font-style:normal; font-weight:400;
   color:var(--red); font-size:1.3em; line-height:.95;}
 .pick-sub{color:var(--muted); font-size:0.97rem; margin-bottom:8px; line-height:1.55;}
 .pick-say{font-family:'Poppins',sans-serif; font-size:0.78rem; font-weight:600;
-  color:var(--red); margin:8px 0 18px; min-height:20px;}
+  color:var(--red); margin-bottom:18px; min-height:20px;}
 
-.pick-grid{display:grid; gap:12px; margin-bottom:22px; text-align:left;}
-.pick-group{background:rgba(255,255,255,.72); border:1px solid var(--line); border-radius:16px; padding:16px;}
-.pick-group-head{display:flex; align-items:baseline; justify-content:space-between; gap:14px; margin-bottom:11px;}
-.pick-group-title{font-size:.82rem; font-weight:700; color:var(--navy);}
-.pick-group-note{font-size:.68rem; color:var(--muted);}
-.pick-options{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px;}
-.pick-chip{display:flex; align-items:center; justify-content:center; gap:7px; cursor:pointer; user-select:none;
-  font-family:'Poppins',sans-serif; font-size:0.78rem; font-weight:500; color:var(--ink);
-  background:var(--surface); border:1px solid var(--line); border-radius:11px;
-  min-height:44px; padding:9px 10px; text-align:center; transition:border-color .2s, background .2s, color .2s, transform .15s;}
-.pick-chip:hover{border-color:var(--red); transform:translateY(-1px);}
+.pick-grid{display:flex; flex-wrap:wrap; gap:9px; justify-content:center; margin-bottom:22px;}
+.pick-chip{display:inline-flex; align-items:center; gap:7px; cursor:pointer; user-select:none;
+  font-family:'Poppins',sans-serif; font-size:0.82rem; font-weight:500; color:var(--ink);
+  background:var(--surface); border:1px solid var(--line); border-radius:999px;
+  padding:9px 15px; transition:border-color .2s, background .2s, color .2s, transform .15s;}
+.pick-chip:hover{border-color:var(--red); transform:translateY(-2px);}
 .pick-chip .ik{font-size:1rem; line-height:1;}
-.pick-chip.on{background:var(--navy); border-color:var(--navy); color:#fff; box-shadow:0 6px 16px rgba(16,24,40,.13);}
+.pick-chip.on{background:var(--red); border-color:var(--red); color:#fff;}
+.pick-chip.kapali{opacity:.3; cursor:not-allowed; text-decoration:line-through;
+  text-decoration-thickness:1px; text-decoration-color:rgba(95,108,128,.5);}
+.pick-chip.kapali:hover{border-color:var(--line); transform:none;}
 .pick-chip:focus-visible{outline:2px solid var(--red); outline-offset:3px;}
+
 .pick-actions{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:8px;}
 .pick-actions .btn{min-width:190px;}
 .pick-actions .btn[disabled]{opacity:.4; cursor:not-allowed;}
@@ -302,16 +301,12 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; transition:top .5s cubi
 .pick-alt-ad{font-size:0.9rem; font-weight:600; line-height:1.3; margin-bottom:4px;}
 .pick-alt-meta{font-size:0.72rem; color:var(--muted);}
 .pick-alt-fiyat{font-size:0.84rem; font-weight:600; color:var(--red); margin-top:5px;}
-.pick-more{display:flex; justify-content:center; margin-top:14px;}
-.pick-more .btn{min-width:220px;}
 .pick-not{font-size:0.72rem; color:var(--muted); text-align:center; margin-top:16px; line-height:1.5;}
 
 @media (max-width:880px){
   .pick{padding:64px 4vw 14px;}
-  .pick-chip{font-size:0.74rem; padding:8px; gap:5px;}
-  .pick-options{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .pick-group-head{display:block;}
-  .pick-group-note{display:block; margin-top:3px;}
+  .pick-chip{font-size:0.76rem; padding:8px 12px; gap:6px;}
+  .pick-grid{gap:7px;}
   .pick-actions{flex-direction:column; align-items:stretch;}
   .pick-actions .btn{width:100%; min-width:0;}
   .pick-alt{grid-template-columns:1fr;}
@@ -877,20 +872,6 @@ body.cb-open .wa-fab{bottom:150px;}
 
 
 /* ---------- ORGANİZASYON (kompakt) ---------- */
-.events{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-.ev-inner{max-width:900px; margin:0 auto; padding:76px 5vw; text-align:center;}
-.ev-inner .eyebrow{justify-content:center;}
-.ev-inner h2{font-size:clamp(1.8rem,3.8vw,2.5rem); margin:16px 0 12px;}
-.ev-inner h2 em{font-style:italic; font-weight:300; color:var(--red);}
-.ev-inner p{color:var(--muted); font-size:0.98rem; max-width:48ch; margin:0 auto 26px;}
-.ev-tags{display:flex; flex-wrap:wrap; gap:9px; justify-content:center; margin-bottom:30px;}
-.ev-tags span{
-  background:var(--surface); border:1px solid var(--line); border-radius:22px;
-  padding:10px 20px; font-size:0.85rem; font-weight:500; color:var(--navy);
-  transition:transform .2s, border-color .2s;
-}
-.ev-tags span:hover{transform:translateY(-2px); border-color:var(--red);}
-@media (max-width:520px){ .ev-inner{padding:60px 5vw;} .ev-tags span{padding:9px 16px; font-size:0.8rem;} }
 
 /* ---------- YENİ DENEYİM ALANLARI ---------- */
 .tonight-shell{padding:34px 5vw 12px; background:var(--bg);}
@@ -918,7 +899,7 @@ body.cb-open .wa-fab{bottom:150px;}
 .package-icon{font-size:1.7rem; margin-bottom:16px;}
 .package-card h3{font-size:1.03rem; color:var(--navy); margin-bottom:8px;}
 .package-card p{font-size:.78rem; line-height:1.65; color:var(--muted); margin-bottom:18px;}
-.package-card button{margin-top:auto; align-self:flex-start; color:var(--red); font-size:.78rem; font-weight:700;}
+.package-card button{margin-top:auto; align-self:flex-start; color:var(--red); font-size:.78rem; font-weight:700; min-height:40px; padding:9px 2px 3px; display:inline-flex; align-items:center;}
 
 .faq{padding:76px 5vw; background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .faq-in{max-width:900px; margin:0 auto;}
@@ -941,6 +922,9 @@ body.cb-open .wa-fab{bottom:150px;}
 }
 @media (max-width:620px){
   body{padding-bottom:calc(68px + env(safe-area-inset-bottom));}
+  html{scroll-padding-bottom:calc(78px + env(safe-area-inset-bottom));}
+  .mobile-actions{pointer-events:none;}
+  .mobile-actions a,.mobile-actions button{pointer-events:auto;}
   input,select,textarea{font-size:16px !important;}
   .cookie-banner{bottom:calc(76px + env(safe-area-inset-bottom));}
   .tonight-card{display:block;}
@@ -955,6 +939,43 @@ body.cb-open .wa-fab{bottom:150px;}
   .wa-fab{display:none;}
 }
 
+
+@media (max-width:620px) {
+  .mobile-actions .mobile-menu-book {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:25px;
+    height:28px;
+    overflow:hidden;
+    border-radius:3px;
+    background:#1a140e;
+    color:#fff;
+    box-shadow:0 1px 3px rgba(10,17,34,.25);
+    font-style:normal;
+    line-height:1;
+  }
+
+  .mobile-menu-book span {
+    padding-bottom:3px;
+    border-bottom:1px solid #c92d3a;
+    font-family:Arial,sans-serif;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:-.8px;
+  }
+
+  .mobile-menu-book small {
+    margin-top:2px;
+    color:#cbb486;
+    font-family:Georgia,serif;
+    font-size:3.7px;
+    font-weight:700;
+    letter-spacing:.8px;
+    line-height:1;
+  }
+}
 </style>
 </head>
 <body>
@@ -968,7 +989,7 @@ body.cb-open .wa-fab{bottom:150px;}
   <div class="nav-links" id="navLinks">
     <a href="#menu" data-en="Menu Book">Menü Kitabı</a>
     <a href="#muzik" data-en="Music">Müzik</a><a href="#program" data-en="Weekly Plan">Haftalık Program</a>
-    <a href="#organizasyon" data-en="Events">Organizasyon</a>
+    <a href="#ozelgunler" data-en="Events">Organizasyon</a>
     <a href="#konum" data-en="Location">Konum</a>
     <button class="btn btn-red" onclick="openRes()" data-en="Reservation">Rezervasyon</button>
     <div class="lang-switch">
@@ -1055,7 +1076,7 @@ body.cb-open .wa-fab{bottom:150px;}
   <div class="pick-in">
     <div class="eyebrow" data-en="Can't Decide?">Karar Veremiyor musun?</div>
     <h2 data-en="Tell us what you like, <em>we'll choose</em>">Ne sevdiğini söyle, <em>biz seçelim</em></h2>
-    <p class="pick-sub" data-en="Make three quick choices — we'll find the best main recommendation and two alternatives from our menu.">Üç kısa seçim yap — menümüzden sana en uygun ana öneriyi ve iki alternatifi bulalım.</p>
+    <p class="pick-sub" data-en="Pick at least 3 things you feel like today — we'll find the dish that fits you best. We only suggest dishes matching at least two thirds of your choices.">En az 3 şey seç — menümüzde sana en çok yakışan yemeği bulalım. Yalnızca seçimlerinin en az üçte ikisini karşılayan yemekleri öneriyoruz.</p>
     <div class="pick-say" id="pickSay"></div>
     <div class="pick-grid" id="pickGrid"></div>
     <div class="pick-actions">
@@ -1112,21 +1133,7 @@ body.cb-open .wa-fab{bottom:150px;}
   </div>
 </section>
 
-<section class="events reveal" id="organizasyon">
-  <div class="ev-inner">
-    <div class="eyebrow" data-en="Events">Organizasyon</div>
-    <h2 data-en="Leave the celebration <em>to us</em>">Kutlamanı <em>bize bırak</em></h2>
-    <p data-en="We host your special events on our sea-view terrace — we take care of the setup, the menu and the music.">Deniz manzaralı terasımızda özel günlerinizi ağırlıyoruz — kurulum, menü ve müzik bizden.</p>
-    <div class="ev-tags">
-      <span data-en="Company Party">Şirket Partisi</span>
-      <span data-en="Bachelor / Bachelorette Party">Bekarlığa Veda</span>
-      <span data-en="After Party">After Party</span>
-      <span data-en="Wedding Events">Düğün Organizasyonu</span>
-      <span data-en="Gender Reveal">Cinsiyet Öğrenme Partisi</span>
-    </div>
-    <a href="https://wa.me/905336689929?text=Merhaba%2C%20organizasyon%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" class="btn btn-outline" data-en="Ask About Events">Organizasyon için Yaz</a>
-  </div>
-</section>
+
 
 
 
@@ -1296,7 +1303,7 @@ body.cb-open .wa-fab{bottom:150px;}
     <button onclick="openLegal('kvkk')" data-en="Privacy &amp; Data Protection Notice">Gizlilik &amp; KVKK Aydınlatma Metni</button>
     <button onclick="openLegal('cerez')" data-en="Cookie Policy">Çerez Politikası</button>
   </div>
-  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v41
+  © 2026 Zaz Cafe Bar Restaurant · Tüm hakları saklıdır. · v48
 </div>
 
 
@@ -1306,7 +1313,13 @@ body.cb-open .wa-fab{bottom:150px;}
 </a>
 
 <div class="mobile-actions" aria-label="Hızlı işlemler">
-  <a href="#menu"><b>☰</b><span data-en="Menu">Menü</span></a>
+  <a href="#menu">
+  <b class="mobile-menu-book" aria-hidden="true">
+    <span>zaz</span>
+    <small>MENÜ</small>
+  </b>
+  <span data-en="Menu">Menü</span>
+</a>
   <a href="https://www.google.com/maps/search/?api=1&query=Zaz+Cafe+Bar+Karşıyaka+İzmir" target="_blank" rel="noopener"><b>⌖</b><span data-en="Directions">Yol Tarifi</span></a>
   <button type="button" class="mobile-res" onclick="openRes()"><b>◷</b><span data-en="Reservation">Rezervasyon</span></button>
 </div>
@@ -2586,15 +2599,55 @@ const LEGAL = {
     <p>Tarayıcınızın ayarlar bölümünden site verilerini temizleyerek çerez tercihinizi sıfırlayabilir, bir sonraki ziyaretinizde yeniden seçim yapabilirsiniz. Tarayıcı ayarlarından tüm çerezleri engellemeniz de mümkündür.</p>`
 };
 
+/* Sayfa kaydırma kilidi — iOS Safari uyumlu.
+   overflow:hidden iOS'ta konumu bozduğu için sayfa position:fixed ile sabitlenir
+   ve kapanışta tam olarak aynı yere geri dönülür. */
+let __kilitSayaci = 0, __kilitY = 0;
+function sayfaKilitle(){
+  if(__kilitSayaci++ > 0) return;
+  __kilitY = window.scrollY || window.pageYOffset || 0;
+  const b = document.body;
+  b.style.position = 'fixed';
+  b.style.top = (-__kilitY) + 'px';
+  b.style.left = '0';
+  b.style.right = '0';
+  b.style.width = '100%';
+  b.style.overflow = 'hidden';
+}
+function sayfaKilidiAc(){
+  if(__kilitSayaci === 0) return;
+  if(--__kilitSayaci > 0) return;
+  const b = document.body;
+  b.style.position = '';
+  b.style.top = '';
+  b.style.left = '';
+  b.style.right = '';
+  b.style.width = '';
+  b.style.overflow = '';
+  /* Sayfada yumuşak kaydırma açık; geri dönüş animasyonlu olursa
+     hızlı aç-kapa'da yarıda kalıp konum kayıyordu. Anlık geri dönülür. */
+  const kok = document.documentElement;
+  const eskiDavranis = kok.style.scrollBehavior;
+  kok.style.scrollBehavior = 'auto';
+  window.scrollTo(0, __kilitY);
+  requestAnimationFrame(()=>{
+    window.scrollTo(0, __kilitY);
+    setTimeout(()=>{
+      if(Math.abs((window.scrollY||0) - __kilitY) > 2) window.scrollTo(0, __kilitY);
+      kok.style.scrollBehavior = eskiDavranis;
+    }, 60);
+  });
+}
+
 function openLegal(key){
   const src = (LANG==='en' && typeof LEGAL_EN!=='undefined') ? LEGAL_EN : LEGAL;
   document.getElementById('legalContent').innerHTML = src[key] || LEGAL[key] || '';
   document.getElementById('legalOverlay').classList.add('show');
-  document.body.style.overflow = 'hidden';
+  sayfaKilitle();
 }
 function closeLegal(){
   document.getElementById('legalOverlay').classList.remove('show');
-  document.body.style.overflow = '';
+  sayfaKilidiAc();
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLegal(); });
 
@@ -2676,12 +2729,12 @@ function chooseSpecialPackage(key){
 function openRes(){
   document.getElementById('resOverlay').classList.add('show');
   document.body.classList.add('res-open');
-  document.body.style.overflow = 'hidden';
+  sayfaKilitle();
 }
 function closeRes(){
   document.getElementById('resOverlay').classList.remove('show');
   document.body.classList.remove('res-open');
-  document.body.style.overflow = '';
+  sayfaKilidiAc();
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeRes(); });
 window.addEventListener('pageshow', ()=>{
@@ -3115,129 +3168,149 @@ window.addEventListener('pageshow', programGununuKontrolEt);
 
 
 /* ================= NE YESEM? — ÖNERİ =================
-   Üç genel tercihe göre menüdeki yemekleri puanlar.
-   Ana tercih korunur; lezzet ve sunum tercihi en yakın eşleşmeyi belirler. */
+   Seçilen 4 tada göre menüdeki yemekleri puanlar.
+   Ağırlık: 3 = ürünün adında geçiyor, 2 = ana malzeme, 1 = yardımcı malzeme. */
 const PICK_YEMEK = [{"n":"Döküm Tavada Sıcak Kahvaltı","c":"Kahvaltı","p":935,"t":{"kirmizi_et":2,"peynir":2,"yumurta":2,"sebze":1,"patates":2,"aci":2,"izgara":2,"kizartma":2,"firin":3}},{"n":"Diet Kahvaltı","c":"Kahvaltı","p":575,"t":{"peynir":2,"yumurta":2,"avokado":2,"hafif":3}},{"n":"Hızlı Kahvaltı","c":"Kahvaltı","p":480,"t":{"peynir":2,"yumurta":1,"sebze":2,"hafif":1,"kremali":2}},{"n":"Gevrek Tost","c":"Kahvaltı","p":420,"t":{"peynir":2,"sebze":2,"ekmek":3}},{"n":"Pankek","c":"Kahvaltı","p":385,"t":{"tatli":3}},{"n":"Sade Omlet","c":"Kahvaltı","p":360,"t":{"yumurta":3}},{"n":"Kaşar Peynirli Omlet","c":"Kahvaltı","p":390,"t":{"peynir":3,"yumurta":3}},{"n":"Beyaz Omlet","c":"Kahvaltı","p":450,"t":{"peynir":2,"yumurta":3,"avokado":2,"sebze":1}},{"n":"Beyaz Peynirli Omlet","c":"Kahvaltı","p":420,"t":{"peynir":3,"yumurta":3,"sebze":1}},{"n":"Sebzeli Omlet","c":"Kahvaltı","p":450,"t":{"yumurta":3,"sebze":3}},{"n":"Karışık Omlet","c":"Kahvaltı","p":480,"t":{"yumurta":3,"mantar":1}},{"n":"Menemen","c":"Kahvaltı","p":450,"t":{"yumurta":3,"sebze":2}},{"n":"Sahanda Yumurta","c":"Kahvaltı","p":330,"t":{"yumurta":3,"kremali":2}},{"n":"Sucuklu Yumurta","c":"Kahvaltı","p":480,"t":{"yumurta":3,"kremali":2}},{"n":"Sucuk","c":"Kahvaltı","p":450,"t":{"kremali":2}},{"n":"Yumurtalı Ekmek","c":"Kahvaltı","p":240,"t":{"yumurta":3,"ekmek":3}},{"n":"Pişi","c":"Kahvaltı","p":240,"t":{"ekmek":3}},{"n":"Gevrek","c":"Kahvaltı","p":95,"t":{"ekmek":3}},{"n":"Bal","c":"Kahvaltı","p":180,"t":{"tatli":3}},{"n":"Kaymak","c":"Kahvaltı","p":180,"t":{"tatli":3}},{"n":"Club Sandviç","c":"Tost & Sandviç","p":720,"t":{"tavuk":2,"kirmizi_et":2,"peynir":2,"sebze":2,"patates":1,"ekmek":3,"kizartma":1}},{"n":"Karışık Ayvalık Tostu","c":"Tost & Sandviç","p":660,"t":{"peynir":2,"sebze":1,"ekmek":3}},{"n":"Kaşarlı Sucuklu Tost","c":"Tost & Sandviç","p":610,"t":{"peynir":3,"sebze":2,"ekmek":3}},{"n":"Kaşarlı Tost","c":"Tost & Sandviç","p":440,"t":{"peynir":3,"sebze":2,"ekmek":3}},{"n":"J&B Tost","c":"Tost & Sandviç","p":450,"t":{"peynir":2,"sebze":2,"ekmek":3}},{"n":"Diet Tost","c":"Tost & Sandviç","p":380,"t":{"peynir":2,"sebze":2,"hafif":3,"ekmek":3}},{"n":"Ekmek Üstü Poşe Yumurta","c":"Ekmek Üstü Lezzetler","p":420,"t":{"yumurta":3,"ekmek":3}},{"n":"Ekmek Üstü Scrambled","c":"Ekmek Üstü Lezzetler","p":420,"t":{"yumurta":3,"ekmek":3}},{"n":"Ekmek Üstü Somon Füme","c":"Ekmek Üstü Lezzetler","p":900,"t":{"deniz":3,"ekmek":3}},{"n":"Vejetaryen Bowl","c":"Bowl","p":660,"t":{"peynir":2,"hafif":3,"sebze":1}},{"n":"Vegan Bowl","c":"Bowl","p":660,"t":{"avokado":2,"sebze":2,"hafif":3}},{"n":"Sporcu Tavuk Bowl","c":"Bowl","p":780,"t":{"tavuk":3,"avokado":2,"sebze":2,"hafif":3}},{"n":"Yumurta Bowl","c":"Bowl","p":660,"t":{"yumurta":3,"avokado":2,"sebze":2,"hafif":3}},{"n":"Izgara Tavuk Bowl","c":"Bowl","p":780,"t":{"tavuk":3,"sebze":2,"hafif":3,"izgara":3}},{"n":"Chinese Et Bowl","c":"Bowl","p":1320,"t":{"kirmizi_et":3,"avokado":2,"sebze":2,"aci":1,"hafif":3,"uzakdogu":3}},{"n":"Chinese Tavuk Bowl","c":"Bowl","p":900,"t":{"tavuk":3,"avokado":2,"sebze":2,"aci":1,"hafif":3,"uzakdogu":3}},{"n":"Avokado Bowl","c":"Bowl","p":780,"t":{"peynir":2,"yumurta":1,"avokado":3,"sebze":2,"hafif":3}},{"n":"Berry Bowl","c":"Bowl","p":660,"t":{"tatli":3,"hafif":3,"sebze":1}},{"n":"Choco Bowl","c":"Bowl","p":660,"t":{"tatli":3,"hafif":3,"sebze":1}},{"n":"Anne Patates Kızartması","c":"Aperatifler","p":450,"t":{"patates":3,"kizartma":3}},{"n":"Patates Kızartması","c":"Aperatifler","p":420,"t":{"patates":3,"kizartma":3}},{"n":"Kajun Baharatlı Patates Kızartması","c":"Aperatifler","p":480,"t":{"patates":3,"aci":3,"kizartma":3}},{"n":"Parmesanlı Trüf Yağlı Patates Kızartması","c":"Aperatifler","p":540,"t":{"peynir":3,"patates":3,"kizartma":3}},{"n":"Kajun Baharatlı Chicken Fingers","c":"Aperatifler","p":600,"t":{"tavuk":3,"patates":2,"aci":3,"uzakdogu":2,"kizartma":3}},{"n":"Sigara Böreği","c":"Aperatifler","p":310,"t":{"sebze":2,"kizartma":3}},{"n":"Sosis Sepeti","c":"Aperatifler","p":780,"t":{"patates":2}},{"n":"ZAZ Special","c":"Aperatifler","p":1050,"t":{"tavuk":2,"kirmizi_et":2,"peynir":1,"sebze":2,"patates":2,"kizartma":2}},{"n":"Yoğurtlama","c":"Aperatifler","p":550,"t":{"sebze":2,"patates":2,"kremali":3,"kizartma":2}},{"n":"Mezeler","c":"Başlangıçlar","p":420,"t":{"hafif":1}},{"n":"Kavun Peynir","c":"Başlangıçlar","p":420,"t":{"peynir":3,"hafif":1}},{"n":"Burrata","c":"Başlangıçlar","p":1140,"t":{"peynir":3,"sebze":2,"hafif":1}},{"n":"Söğüş Tabağı","c":"Başlangıçlar","p":240,"t":{"sebze":2,"hafif":1}},{"n":"Rakı Tabağı","c":"Başlangıçlar","p":750,"t":{"peynir":1,"sebze":2,"hafif":1}},{"n":"Bruschetta","c":"Başlangıçlar","p":420,"t":{"peynir":2,"sebze":2,"ekmek":3,"sarimsak":2,"hafif":1}},{"n":"Peynir Tabağı","c":"Başlangıçlar","p":1210,"t":{"kirmizi_et":1,"peynir":3,"hafif":1}},{"n":"Mozzarella Caprese","c":"Başlangıçlar","p":660,"t":{"peynir":3,"sebze":2,"hafif":1}},{"n":"Pollo Carciofi","c":"Başlangıçlar","p":1100,"t":{"tavuk":3,"peynir":1,"sebze":2,"hafif":2}},{"n":"Domates Carpaccio","c":"Başlangıçlar","p":660,"t":{"kirmizi_et":3,"sebze":3,"uzakdogu":1,"hafif":1}},{"n":"Carpaccio di Manzo (Dana Carpaccio)","c":"Başlangıçlar","p":1300,"t":{"kirmizi_et":3,"peynir":1,"sebze":2,"hafif":2}},{"n":"Feta Cheese","c":"Sıcak Başlangıçlar","p":420,"t":{"peynir":3,"uzakdogu":2,"firin":1}},{"n":"Susamlı Hellim Tava","c":"Sıcak Başlangıçlar","p":850,"t":{"peynir":3,"sebze":1,"uzakdogu":3,"firin":3}},{"n":"Fırında Kaşarlı Mantar Güveç","c":"Sıcak Başlangıçlar","p":720,"t":{"peynir":3,"mantar":3,"kremali":2,"firin":3}},{"n":"Güveçte Karışık Deniz Mahsulleri","c":"Sıcak Başlangıçlar","p":1680,"t":{"deniz":3,"sarimsak":1,"kremali":2,"firin":3}},{"n":"Tereyağlı Karides","c":"Sıcak Başlangıçlar","p":1550,"t":{"deniz":3,"sarimsak":2,"kremali":3,"firin":1}},{"n":"Kalamar Tava","c":"Sıcak Başlangıçlar","p":1300,"t":{"deniz":3,"kremali":2,"firin":3}},{"n":"Tereyağlı Yaprak Ciğer","c":"Sıcak Başlangıçlar","p":1100,"t":{"kirmizi_et":2,"sebze":1,"kremali":3,"firin":1}},{"n":"Tai Usulü Ballı Susamlı Acılı Tavuk","c":"Sıcak Başlangıçlar","p":900,"t":{"tavuk":3,"aci":2,"uzakdogu":3,"kizartma":2,"firin":1}},{"n":"Günün Çorbası","c":"Çorba","p":360,"t":{"hafif":1,"firin":1}},{"n":"Roka Parmesan Salata","c":"Salatalar","p":630,"t":{"peynir":3,"sebze":3,"hafif":3}},{"n":"Mevsim Salata","c":"Salatalar","p":620,"t":{"sebze":2,"hafif":3}},{"n":"Kabak Sıyırma Salata","c":"Salatalar","p":480,"t":{"sebze":3,"hafif":3,"uzakdogu":2}},{"n":"Greek Salata","c":"Salatalar","p":650,"t":{"peynir":2,"sebze":2,"hafif":3}},{"n":"İstanbul Salatası","c":"Salatalar","p":500,"t":{"sebze":2,"hafif":3}},{"n":"Izgara Hellim Salata","c":"Salatalar","p":620,"t":{"peynir":3,"sebze":2,"hafif":3,"izgara":3}},{"n":"Sezar Salata","c":"Salatalar","p":675,"t":{"tavuk":1,"peynir":1,"sebze":2,"hafif":3}},{"n":"Izgara Tavuk Salata","c":"Salatalar","p":675,"t":{"tavuk":3,"sebze":2,"hafif":3,"izgara":3}},{"n":"Ilık Et Salatası","c":"Salatalar","p":1050,"t":{"kirmizi_et":3,"peynir":2,"avokado":2,"sebze":2,"hafif":3}},{"n":"Levrek Salata","c":"Salatalar","p":780,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Somon Füme Salata","c":"Salatalar","p":990,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Ton Balıklı Salata","c":"Salatalar","p":780,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Zaz Burger","c":"Burgerler","p":840,"t":{"kirmizi_et":2,"sebze":2,"patates":1,"kizartma":1,"ekmek":1}},{"n":"Cheeseburger","c":"Burgerler","p":900,"t":{"kirmizi_et":2,"peynir":3,"sebze":2,"patates":1,"kizartma":1,"ekmek":1}},{"n":"Chicken Burger","c":"Burgerler","p":780,"t":{"tavuk":3,"sebze":2,"patates":1,"kizartma":2,"ekmek":1}},{"n":"Şefin Burger","c":"Burgerler","p":1100,"t":{"kirmizi_et":2,"peynir":2,"mantar":2,"sebze":2,"ekmek":1}},{"n":"Pizza Burrata","c":"Pizzalar","p":1440,"t":{"peynir":3,"pizza":3,"sebze":2}},{"n":"Pizza Mozzarella","c":"Pizzalar","p":935,"t":{"peynir":3,"pizza":3,"sebze":2}},{"n":"Pizza Margarita","c":"Pizzalar","p":720,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Vejeteryan","c":"Pizzalar","p":720,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Al Pollo","c":"Pizzalar","p":900,"t":{"tavuk":3,"peynir":2,"pizza":3,"sebze":2,"aci":2}},{"n":"Pizza Luna","c":"Pizzalar","p":840,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Four Cheese","c":"Pizzalar","p":850,"t":{"peynir":3,"pizza":3}},{"n":"Pizza Funghi","c":"Pizzalar","p":780,"t":{"peynir":2,"pizza":3,"mantar":3,"sebze":2}},{"n":"Pizza ZAZ","c":"Pizzalar","p":1150,"t":{"kirmizi_et":2,"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Mista","c":"Pizzalar","p":950,"t":{"peynir":2,"pizza":3,"mantar":2,"sebze":2}},{"n":"Enginar Kalpli Fettuccine Alfredo","c":"Makarnalar","p":780,"t":{"tavuk":2,"makarna":3,"sebze":3,"kremali":3}},{"n":"Karides Linguine","c":"Makarnalar","p":1350,"t":{"deniz":3,"makarna":3}},{"n":"Spaghetti Alnero di Mare","c":"Makarnalar","p":1500,"t":{"deniz":3,"makarna":3,"sarimsak":2}},{"n":"Tagliatelle Bonfile","c":"Makarnalar","p":1450,"t":{"kirmizi_et":3,"peynir":1,"makarna":3,"mantar":2,"aci":1,"hafif":2,"kremali":2,"uzakdogu":2}},{"n":"Penne Romano","c":"Makarnalar","p":750,"t":{"tavuk":2,"makarna":3,"mantar":2,"kremali":2,"uzakdogu":1}},{"n":"Penne Arabiata","c":"Makarnalar","p":660,"t":{"peynir":1,"makarna":3,"sebze":2,"aci":3}},{"n":"Spaghetti Bolognese","c":"Makarnalar","p":710,"t":{"kirmizi_et":3,"makarna":3,"sebze":2}},{"n":"Mantı Ev Yapımı","c":"Makarnalar","p":840,"t":{"kirmizi_et":2,"makarna":3,"ekmek":2,"sarimsak":2,"kremali":2}},{"n":"Naturel Bonfile","c":"Et Yemekleri","p":1680,"t":{"kirmizi_et":3,"izgara":2}},{"n":"Zaz Usulü Lokum","c":"Et Yemekleri","p":1680,"t":{"kirmizi_et":3,"sebze":2,"sarimsak":2,"kremali":2}},{"n":"Tereyağlı Yaprak Bonfile","c":"Et Yemekleri","p":1740,"t":{"kirmizi_et":3,"sebze":2,"patates":2,"hafif":2,"sarimsak":1,"kremali":3}},{"n":"Mantar Soslu Antrikot","c":"Et Yemekleri","p":1300,"t":{"kirmizi_et":3,"mantar":3,"sebze":1,"izgara":2}},{"n":"Kuzu Pirzola","c":"Et Yemekleri","p":1800,"t":{"kirmizi_et":3,"sebze":2,"patates":1}},{"n":"Çökertme Kebabı","c":"Et Yemekleri","p":1440,"t":{"kirmizi_et":3,"patates":2,"sarimsak":2,"kremali":2,"kizartma":2}},{"n":"Yağlı Kara","c":"Et Yemekleri","p":1650,"t":{"kirmizi_et":3,"patates":2,"kizartma":2}},{"n":"Sweet Chili Beef","c":"Et Yemekleri","p":980,"t":{"kirmizi_et":2,"mantar":2,"sebze":2,"aci":3,"kremali":2,"uzakdogu":3}},{"n":"Viyana Usulü Et Schnitzel","c":"Et Yemekleri","p":1380,"t":{"kirmizi_et":3,"patates":2,"kremali":2,"kizartma":2}},{"n":"Izgara Köfte","c":"Et Yemekleri","p":900,"t":{"kirmizi_et":3,"sebze":2,"patates":2,"izgara":3,"kizartma":2}},{"n":"Tavuk Külbastı","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"izgara":3}},{"n":"Diet Izgara Tavuk","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"sebze":2,"patates":1,"hafif":3,"izgara":3}},{"n":"Mantar Soslu Tavuk","c":"Tavuk Yemekleri","p":850,"t":{"tavuk":3,"mantar":3,"patates":1,"kremali":2,"izgara":2}},{"n":"Zaz Usulü Tavuk","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"sarimsak":2,"kremali":2}},{"n":"Tavuk Schnitzel","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"patates":2,"kremali":1,"kizartma":2}},{"n":"Köri Soslu Tavuk","c":"Tavuk Yemekleri","p":850,"t":{"tavuk":3,"mantar":2,"patates":1,"kremali":2,"kizartma":1}},{"n":"Mexican Tavuk","c":"Tavuk Yemekleri","p":850,"t":{"tavuk":3,"patates":1,"aci":3,"izgara":2,"kizartma":1}},{"n":"Wrap Et","c":"Wraplar","p":950,"t":{"kirmizi_et":3,"peynir":1,"mantar":2,"sebze":2,"ekmek":3}},{"n":"Wrap Tavuk","c":"Wraplar","p":780,"t":{"tavuk":3,"peynir":1,"mantar":2,"sebze":2,"ekmek":3}},{"n":"Somon Izgara","c":"Balık","p":1320,"t":{"deniz":3,"sebze":2,"patates":1,"izgara":3,"hafif":1}},{"n":"Levrek Izgara","c":"Balık","p":1050,"t":{"deniz":3,"sebze":2,"patates":2,"izgara":3,"hafif":1}},{"n":"Marine Edilmiş Levrek Şefin Speciali","c":"Balık","p":1050,"t":{"deniz":3,"hafif":3,"izgara":1}},{"n":"Çıtır Tavuk Parçaları","c":"Çocuk Menü","p":480,"t":{"tavuk":3,"patates":2,"kizartma":3}},{"n":"Spagetti Bolonez","c":"Çocuk Menü","p":540,"t":{"kirmizi_et":2,"peynir":1,"makarna":3,"sebze":2}},{"n":"Mini Pizza","c":"Çocuk Menü","p":480,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Tavuk Schnitzel (Çocuk)","c":"Çocuk Menü","p":480,"t":{"tavuk":3,"patates":2,"kizartma":2}},{"n":"Makarna","c":"Çocuk Menü","p":480,"t":{"peynir":1,"makarna":3,"sebze":2}},{"n":"Izgara Köfte (Çocuk)","c":"Çocuk Menü","p":600,"t":{"kirmizi_et":3,"patates":2,"izgara":3,"kizartma":2}},{"n":"Mini Hamburger","c":"Çocuk Menü","p":600,"t":{"kirmizi_et":2,"sebze":2,"patates":1,"kizartma":1}},{"n":"Mini Sosis","c":"Çocuk Menü","p":540,"t":{"patates":2,"kizartma":2}},{"n":"Meyve Tabağı","c":"Tatlılar","p":730,"t":{"tatli":3}},{"n":"Cheesecake","c":"Tatlılar","p":490,"t":{"peynir":3,"tatli":3}},{"n":"Çilekli Magnolia","c":"Tatlılar","p":490,"t":{"tatli":3,"kremali":2}},{"n":"Mozaik Pasta","c":"Tatlılar","p":490,"t":{"makarna":3,"tatli":3,"kremali":2}},{"n":"San Sebastian Cheesecake","c":"Tatlılar","p":490,"t":{"peynir":3,"yumurta":2,"tatli":3,"kremali":2}},{"n":"Banana Roll","c":"Tatlılar","p":490,"t":{"tatli":3,"kremali":2}}];
-/* İşlenmiş et içeren fakat kaynak veride ana protein etiketi eksik kalan ürünler. */
-const PICK_ET_DUZELT = {
-  'Sucuklu Yumurta':3,
-  'Sucuk':3,
-  'Kaşarlı Sucuklu Tost':3,
-  'Sosis Sepeti':2,
-  'Mini Sosis':2
-};
-PICK_YEMEK.forEach(y=>{
-  if(PICK_ET_DUZELT[y.n]) y.t.kirmizi_et = PICK_ET_DUZELT[y.n];
-});
+const PICK_SECENEK = [{"k":"kirmizi_et","tr":"Kırmızı Et","en":"Red Meat","i":"🥩"},{"k":"tavuk","tr":"Tavuk","en":"Chicken","i":"🍗"},{"k":"deniz","tr":"Deniz Ürünleri","en":"Seafood","i":"🦐"},{"k":"peynir","tr":"Peynir","en":"Cheese","i":"🧀"},{"k":"makarna","tr":"Makarna","en":"Pasta","i":"🍝"},{"k":"pizza","tr":"Pizza","en":"Pizza","i":"🍕"},{"k":"yumurta","tr":"Yumurta","en":"Egg","i":"🍳"},{"k":"sebze","tr":"Sebze & Yeşillik","en":"Vegetables","i":"🥗"},{"k":"avokado","tr":"Avokado","en":"Avocado","i":"🥑"},{"k":"mantar","tr":"Mantar","en":"Mushroom","i":"🍄"},{"k":"patates","tr":"Patates","en":"Potato","i":"🍟"},{"k":"aci","tr":"Acı & Baharatlı","en":"Spicy","i":"🌶️"},{"k":"kremali","tr":"Kremalı","en":"Creamy","i":"🥛"},{"k":"sarimsak","tr":"Sarımsaklı","en":"Garlicky","i":"🧄"},{"k":"uzakdogu","tr":"Uzak Doğu","en":"Asian","i":"🥢"},{"k":"ekmek","tr":"Ekmek Arası","en":"Bread & Toast","i":"🥪"},{"k":"hafif","tr":"Hafif & Diyet","en":"Light","i":"🌿"},{"k":"tatli","tr":"Tatlı","en":"Sweet","i":"🍰"},{"k":"kizartma","tr":"Kızartma","en":"Fried","i":"🍤"},{"k":"firin","tr":"Fırın & Tava","en":"Baked & Pan","i":"🥘"}];
+const PICK_MIN = 3;   /* en az 3 seçim; üst sınır yok */
+let pickSecim = [];
 
-function pickVejetaryenMi(y){
-  return !y.t.kirmizi_et && !y.t.tavuk && !y.t.deniz &&
-    !/(sucuk|sosis|pastırma|bonfile|köfte|tavuk|somon|levrek|karides|kalamar|balık|ciğer|bolognese)/i.test(y.n);
-}
-
-const PICK_GRUPLAR = [
-  {k:'ana', tr:'1. Ne olsun?', en:'1. What would you like?', noteTR:'Bir ana tercih seç', noteEN:'Choose one main preference', secenek:[
-    {k:'et', tr:'Et', en:'Meat', i:'🥩', puan:y=>y.t.kirmizi_et||0},
-    {k:'tavuk', tr:'Tavuk', en:'Chicken', i:'🍗', puan:y=>y.t.tavuk||0},
-    {k:'deniz', tr:'Deniz Ürünü', en:'Seafood', i:'🦐', puan:y=>y.t.deniz||0},
-    {k:'vejetaryen', tr:'Vejetaryen', en:'Vegetarian', i:'🥬', puan:y=>pickVejetaryenMi(y)?3:0}
-  ]},
-  {k:'tarz', tr:'2. Hangi tarz?', en:'2. Which style?', noteTR:'Sunum ve pişirme tarzını seç', noteEN:'Choose the serving style', secenek:[
-    {k:'izgara', tr:'Izgara & Fırın', en:'Grilled & Baked', i:'🔥', puan:y=>Math.max(y.t.izgara||0,y.t.firin||0,/ızgara|fırın|güveç/i.test(y.n)?3:0)},
-    {k:'citir', tr:'Çıtır & Tava', en:'Crispy & Pan-fried', i:'🍤', puan:y=>Math.max(y.t.kizartma||0,/tava|schnitzel|çıtır|kızart/i.test(y.n)?3:0)},
-    {k:'hamur', tr:'Makarna & Hamur', en:'Pasta & Dough', i:'🍝', puan:y=>Math.max(y.t.makarna||0,y.t.pizza||0,y.t.ekmek||0,['Makarnalar','Pizzalar','Tost & Sandviç','Wraplar'].includes(y.c)?3:0)},
-    {k:'bowl', tr:'Bowl & Salata', en:'Bowls & Salads', i:'🥗', puan:y=>['Bowl','Salatalar'].includes(y.c)?3:Math.min(2,Math.max(y.t.hafif||0,y.t.sebze||0))}
-  ]},
-  {k:'his', tr:'3. Nasıl hissettirsin?', en:'3. What are you in the mood for?', noteTR:'Lezzet karakterini seç', noteEN:'Choose the flavour mood', secenek:[
-    {k:'hafif', tr:'Hafif', en:'Light', i:'🌿', puan:y=>Math.max(y.t.hafif||0, ['Salatalar','Bowl'].includes(y.c)?2:0)},
-    {k:'doyurucu', tr:'Doyurucu', en:'Hearty', i:'🍽️', puan:y=>Math.max(y.t.kirmizi_et||0,y.t.tavuk||0,y.t.makarna||0,y.t.pizza||0,y.t.patates||0,y.t.ekmek||0)},
-    {k:'acili', tr:'Acılı', en:'Spicy', i:'🌶️', puan:y=>y.t.aci||0},
-    {k:'kremali', tr:'Kremalı', en:'Creamy', i:'🥛', puan:y=>y.t.kremali||0}
-  ]}
-];
-
-let pickSecim = {ana:null, his:null, tarz:null};
-let pickSira = 0;
-
-function pickSecenekBul(k){
-  for(const grup of PICK_GRUPLAR){
-    const bulunan = grup.secenek.find(s=>s.k===k);
-    if(bulunan) return bulunan;
+/* Bir etiket, mevcut seçimle birlikte TEK BİR yemekte bulunabiliyor mu?
+   Bulunamıyorsa o seçenek kapatılır — müşteri menüde karşılığı olmayan
+   bir kombinasyon kuramaz, dolayısıyla her öneri %100 eşleşir. */
+function pickUygun(k){
+  if(pickSecim.indexOf(k) > -1) return true;
+  const deneme = pickSecim.concat([k]);
+  for(let i = 0; i < PICK_YEMEK.length; i++){
+    const t = PICK_YEMEK[i].t;
+    let hepsi = true;
+    for(let j = 0; j < deneme.length; j++){ if(!t[deneme[j]]){ hepsi = false; break; } }
+    if(hepsi) return true;
   }
-  return null;
+  return false;
 }
-
-function pickSeciliListe(){
-  return PICK_GRUPLAR.map(g=>g.secenek.find(s=>s.k===pickSecim[g.k])).filter(Boolean);
+function pickKalanSayi(){
+  let n = 0;
+  PICK_SECENEK.forEach(s=>{ if(pickSecim.indexOf(s.k) === -1 && pickUygun(s.k)) n++; });
+  return n;
 }
-
 function pickCizGrid(){
   const kap = document.getElementById('pickGrid');
   if(!kap) return;
-  kap.innerHTML = PICK_GRUPLAR.map(g=>`<div class="pick-group">
-    <div class="pick-group-head">
-      <span class="pick-group-title">${LANG==='en'?g.en:g.tr}</span>
-      <span class="pick-group-note">${LANG==='en'?g.noteEN:g.noteTR}</span>
-    </div>
-    <div class="pick-options">${g.secenek.map(s=>{
-      const secili = pickSecim[g.k]===s.k;
-      return `<button type="button" class="pick-chip${secili?' on':''}" data-grup="${g.k}" data-k="${s.k}" aria-pressed="${secili}">
-        <span class="ik" aria-hidden="true">${s.i}</span><span>${LANG==='en'?s.en:s.tr}</span></button>`;
-    }).join('')}</div>
-  </div>`).join('');
-  kap.querySelectorAll('.pick-chip').forEach(b=>b.addEventListener('click',()=>pickSec(b.dataset.grup,b.dataset.k)));
+  kap.innerHTML = PICK_SECENEK.map(s=>{
+    const secili = pickSecim.indexOf(s.k) > -1;
+    const kapali = !secili && !pickUygun(s.k);
+    const ipucu = kapali
+      ? (LANG==='en' ? 'Not available with your current choices'
+                     : 'Şu anki seçiminle menümüzde bir arada bulunmuyor')
+      : '';
+    return `<button type="button" class="pick-chip${secili?' on':''}${kapali?' kapali':''}"
+      data-k="${s.k}" aria-pressed="${secili}" ${kapali?'aria-disabled="true"':''}
+      ${ipucu?`title="${ipucu}"`:''}>
+      <span class="ik" aria-hidden="true">${s.i}</span>${LANG==='en'?s.en:s.tr}</button>`;
+  }).join('');
+  kap.querySelectorAll('.pick-chip').forEach(b=>{
+    b.addEventListener('click', ()=>pickSec(b.dataset.k));
+  });
   pickDurum();
 }
-
 function pickDurum(){
   const say = document.getElementById('pickSay');
   const btn = document.getElementById('pickBtn');
-  const tamam = PICK_GRUPLAR.filter(g=>pickSecim[g.k]).length;
-  const siradaki = PICK_GRUPLAR.find(g=>!pickSecim[g.k]);
+  const n = pickSecim.length;
+  const kalan = PICK_MIN - n;
   if(say){
-    if(tamam===0) say.textContent = LANG==='en' ? 'Start with your main preference.' : 'Ana tercihinle başla.';
-    else if(siradaki) say.textContent = LANG==='en'
-      ? `${tamam}/3 complete — next: ${siradaki.en.replace(/^\d+\.\s*/, '')}`
-      : `${tamam}/3 tamamlandı — sırada: ${siradaki.tr.replace(/^\d+\.\s*/, '')}`;
-    else say.textContent = LANG==='en' ? '3/3 complete — your recommendation is ready.' : '3/3 tamamlandı — önerin hazır.';
+    if(n === 0) say.textContent = '';
+    else if(kalan > 0) say.textContent = LANG==='en'
+      ? `${n} selected — pick ${kalan} more`
+      : `${n} seçildi — ${kalan} tane daha seç`;
+    else {
+      const kalanSec = pickKalanSayi();
+      say.textContent = LANG==='en'
+        ? (kalanSec ? `${n} selected — ready! ${kalanSec} more you can add.`
+                    : `${n} selected — ready!`)
+        : (kalanSec ? `${n} seçildi — hazır! ${kalanSec} seçenek daha ekleyebilirsin.`
+                    : `${n} seçildi — hazır!`);
+    }
   }
-  if(btn) btn.disabled = tamam<3;
+  if(btn) btn.disabled = n < PICK_MIN;
 }
-
-function pickSec(grup,k){
-  pickSecim[grup] = pickSecim[grup]===k ? null : k;
-  pickSira = 0;
+function pickSec(k){
+  const i = pickSecim.indexOf(k);
+  if(i > -1) pickSecim.splice(i, 1);
+  else { if(!pickUygun(k)) return; pickSecim.push(k); }
   pickCizGrid();
+  /* sonuç açıksa seçim değişince anında güncelle */
   const r = document.getElementById('pickRes');
   if(r && r.classList.contains('show')){
-    if(pickSeciliListe().length===3) pickGoster();
-    else { r.classList.remove('show'); r.innerHTML=''; }
+    if(pickSecim.length >= PICK_MIN) pickGoster();
+    else { r.classList.remove('show'); r.innerHTML = ''; }
   }
 }
-
 function pickTemizle(){
-  pickSecim = {ana:null, his:null, tarz:null};
-  pickSira = 0;
+  pickSecim = [];
   pickCizGrid();
   const r = document.getElementById('pickRes');
-  if(r){ r.classList.remove('show'); r.innerHTML=''; }
+  if(r){ r.classList.remove('show'); r.innerHTML = ''; }
+}
+/* Eşleşme eşiği: seçilenlerin en az %67'si yemekte bulunmalı.
+   Böylece 3 seçimden yalnızca 1'ini karşılayan alakasız öneriler elenir. */
+const PICK_ESIK_ORAN = 2/3;
+function pickEsik(n){
+  /* Eşleşme oranı ASLA %67'nin altına inmez.
+     3 seçim -> 2 (%67), 4 -> 3 (%75), 5 -> 4 (%80), 6 -> 4 (%67) */
+  return Math.max(2, Math.ceil(n * PICK_ESIK_ORAN - 0.0001));
 }
 
-/* Ana tercih her zaman korunur; diğer iki seçim menüdeki en yakın ürünü sıralar.
-   Böylece 4×4×4 = 64 kombinasyonun tamamı sonuç üretir. */
-function pickPuanla(){
-  const secili = pickSeciliListe();
-  if(secili.length<3) return [];
+function pickPuanla(secim){
+  const esik = pickEsik(secim.length);
   const liste = [];
   PICK_YEMEK.forEach(y=>{
-    const puanlar = secili.map(s=>Math.min(3,Number(s.puan(y))||0));
-    if(puanlar[0]===0) return;
-    const kacTane = puanlar.filter(Boolean).length;
-    const skor = (puanlar[0]/3)*50 + (puanlar[1]/3)*28 + (puanlar[2]/3)*22;
-    liste.push({y:y, skor:skor, kacTane:kacTane, eslesen:secili.filter((_,i)=>puanlar[i]>0)});
+    let ham = 0, kacTane = 0, toplam = 0;
+    for(const k in y.t) toplam += y.t[k];
+    secim.forEach(k=>{ if(y.t[k]){ ham += y.t[k]; kacTane++; } });
+    if(kacTane < esik) return;
+    const kapsam = kacTane / secim.length;
+    const odak = toplam ? ham / toplam : 0;
+    const skor = ham * (0.60 + 0.40 * kapsam) * (0.70 + 0.30 * odak);
+    liste.push({y:y, skor:skor, kacTane:kacTane});
   });
-  liste.sort((a,b)=>(b.kacTane-a.kacTane)||(b.skor-a.skor)||(a.y.p-b.y.p));
+  /* Önce EN ÇOK seçimi karşılayan; eşitlikte daha yüksek puanlı.
+     Böylece hepsini içeren bir yemek varken azını içeren öne geçemez. */
+  liste.sort((a,b)=> (b.kacTane - a.kacTane) || (b.skor - a.skor));
   return liste;
+}
+
+/* Eşiği tutturan yemek yoksa: bir seçimi çıkarıp en iyi sonucu arar.
+   Böylece müşteri boş ekranla karşılaşmaz, hangi seçimin uymadığını görür. */
+function pickYedek(secim){
+  /* Önce tek seçim çıkarır; yine bulamazsa iki, üç... diye devam eder.
+     Her adımda %67 kuralı korunur — sadece hangi seçimlerle eşleştiği değişir. */
+  let aday = [{kalan: secim, cikanlar: []}];
+  for(let adim = 1; adim < secim.length - 1; adim++){
+    const yeni = [];
+    let en = null;
+    aday.forEach(a=>{
+      for(let i = 0; i < a.kalan.length; i++){
+        const kalan = a.kalan.filter((_, j) => j !== i);
+        if(kalan.length < 2) continue;
+        const cikanlar = a.cikanlar.concat([a.kalan[i]]);
+        yeni.push({kalan: kalan, cikanlar: cikanlar});
+        const r = pickPuanla(kalan);
+        if(r.length && (!en || r[0].skor > en.sonuc[0].skor)){
+          en = {cikanlar: cikanlar, kalan: kalan, sonuc: r};
+        }
+      }
+    });
+    if(en) return en;
+    if(!yeni.length) break;
+    /* dallanma büyümesin: en umut verici 40 dalı sürdür */
+    const gorulen = {}; const suzulmus = [];
+    yeni.forEach(x=>{ const a = x.kalan.slice().sort().join('|');
+      if(!gorulen[a]){ gorulen[a] = 1; suzulmus.push(x); } });
+    aday = suzulmus.slice(0, 40);
+  }
+  return null;
 }
 /* Yemeğin menüdeki tam kaydını bulur — içerik, kalori ve alerjen için.
    Veriyi tekrar saklamak yerine menünün kendi DATA'sını kullanıyoruz. */
@@ -3263,54 +3336,46 @@ function pickIcerikHTML(ad){
   return `<div class="pick-icerik"><div class="pick-icerik-bas">${bas}</div>${parca.join('')}</div>`;
 }
 function pickAdi(k){
-  const s = pickSecenekBul(k);
+  const s = PICK_SECENEK.find(x=>x.k===k);
   return s ? (LANG==='en' ? s.en : s.tr) : k;
 }
-
-function pickSonraki(){
-  const sonuc = pickPuanla();
-  if(sonuc.length < 2) return;
-  pickSira = (pickSira + 1) % sonuc.length;
-  pickGoster();
-}
-
 function pickGoster(){
-  const secili = pickSeciliListe();
-  if(secili.length < 3) return;
-  const sonuc = pickPuanla();
+  if(pickSecim.length < PICK_MIN) return;
+  let sonuc = pickPuanla(pickSecim);
+  let kullanilan = pickSecim, uyari = '';
   const kap = document.getElementById('pickRes');
   if(!kap) return;
   if(!sonuc.length){
-    kap.innerHTML = `<div class="pick-uyari">${LANG==='en'
-      ? 'We could not find a suitable dish for these choices.'
-      : 'Bu seçimlere uygun bir yemek bulamadık.'}</div>`;
-    kap.classList.add('show');
-    return;
+    const yedek = pickYedek(pickSecim);
+    if(!yedek){
+      kap.innerHTML = `<div class="pick-uyari">${LANG==='en'
+        ? 'These flavours don\'t come together on our menu. Try removing one.'
+        : 'Bu tatlar menümüzde bir arada bulunmuyor. Birini çıkarıp tekrar dene.'}</div>`;
+      kap.classList.add('show');
+      return;
+    }
+    sonuc = yedek.sonuc;
+    kullanilan = yedek.kalan;
+    const cikanAd = yedek.cikanlar.map(pickAdi).join(' + ');
+    uyari = LANG==='en'
+      ? `<div class="pick-uyari"><b>${cikanAd}</b> doesn't pair with your other choices on our menu — here is the closest match without it.</div>`
+      : `<div class="pick-uyari"><b>${cikanAd}</b> diğer seçimlerinle menümüzde bir arada bulunmuyor — onsuz en yakın önerimiz bu.</div>`;
   }
-  pickSira = ((pickSira % sonuc.length) + sonuc.length) % sonuc.length;
-  const en = sonuc[pickSira];
-  /* Ana öneriden sonraki iki uygun alternatifi döngüsel sırayla getirir. */
+  const en = sonuc[0];
+  const enSkor = en.skor;
+  /* ana öneriden farklı kategoriden iki alternatif */
   const alt = [];
-  for(let adim=1; adim<sonuc.length && alt.length<2; adim++){
-    const s = sonuc[(pickSira + adim) % sonuc.length];
+  for(const s of sonuc.slice(1)){
+    if(alt.length >= 2) break;
     if(s.y.c === en.y.c && alt.some(a=>a.y.c === s.y.c)) continue;
     alt.push(s);
   }
-  const uyum = Math.round(en.kacTane / 3 * 100);
-  const eslesen = en.eslesen.map(s=>LANG==='en' ? s.en : s.tr);
-  const secilenAd = secili.map(s=>LANG==='en' ? s.en : s.tr);
+  const uyum = Math.round(en.kacTane / kullanilan.length * 100);
+  const eslesen = kullanilan.filter(k=>en.y.t[k]).map(pickAdi);
   const fiyat = '₺' + Number(en.y.p).toLocaleString('tr-TR');
-  const tamEslesme = en.kacTane===3;
-  const uyari = tamEslesme ? '' : `<div class="pick-uyari">${LANG==='en'
-    ? `There is no exact dish matching <b>${secilenAd.join(' · ')}</b>; however, we found the closest option while keeping your main preference.`
-    : `<b>${secilenAd.join(' · ')}</b> üçlüsüne birebir uyan bir yemeğimiz bulunmuyor; ancak size ana tercihinizi koruyacak şekilde en yakın seçeneği bulduk.`}</div>`;
-  const nicin = tamEslesme
-    ? (LANG==='en'
-      ? `Matches your choices: <b>${eslesen.join('</b>, <b>')}</b>.`
-      : `Seçimlerinle örtüşüyor: <b>${eslesen.join('</b>, <b>')}</b>.`)
-    : (LANG==='en'
-      ? `The closest match while keeping <b>${eslesen[0]}</b> as your main preference.`
-      : `Ana tercihin <b>${eslesen[0]}</b> korunarak bulunan en yakın eşleşme.`);
+  const nicin = LANG==='en'
+    ? `Matches your choice of <b>${eslesen.join('</b>, <b>')}</b>.`
+    : `Seçtiğin <b>${eslesen.join('</b>, <b>')}</b> ile örtüşüyor.`;
 
   kap.innerHTML = `${uyari}
     <div class="pick-main">
@@ -3332,12 +3397,9 @@ function pickGoster(){
         ${(()=>{ const im = pickBul(a.y.n); const ac = im ? tDesc(im.n, im.d) : '';
                  return ac ? `<div class="pick-alt-desc">${esc(ac)}</div>` : ''; })()}
         <div class="pick-alt-fiyat">₺${Number(a.y.p).toLocaleString('tr-TR')}</div>
-      </div>`).join('')}</div>` : ''}
-    ${sonuc.length>1 ? `<div class="pick-more"><button type="button" class="btn btn-outline" id="pickMoreBtn">${LANG==='en' ? 'Show another suggestion' : 'Başka öneri göster'}</button></div>` : ''}`;
+      </div>`).join('')}</div>` : ''}`;
   kap.classList.add('show');
-  const devam = document.getElementById('pickMoreBtn');
-  if(devam) devam.addEventListener('click', pickSonraki);
-  zazTrack('oneri_yemek', {secim:Object.values(pickSecim).filter(Boolean).join(','), sonuc:en.y.n});
+  zazTrack('oneri_yemek', {secim: pickSecim.join(','), sonuc: en.y.n});
 }
 window.pickDilGuncelle = function(){
   if(document.getElementById('pickGrid')){
@@ -3350,7 +3412,7 @@ window.pickDilGuncelle = function(){
   if(!document.getElementById('pickGrid')) return;
   pickCizGrid();
   const b = document.getElementById('pickBtn');
-  if(b) b.addEventListener('click', ()=>{ pickSira=0; pickGoster(); });
+  if(b) b.addEventListener('click', pickGoster);
   const t = document.getElementById('pickReset');
   if(t) t.addEventListener('click', pickTemizle);
 })();
