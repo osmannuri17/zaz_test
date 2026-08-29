@@ -1337,6 +1337,12 @@ body.cb-open .wa-fab{bottom:150px;}
       <div class="rf-err" id="errName" data-en="Please enter your full name.">Lütfen ad ve soyadını yaz.</div>
     </div>
 
+    <div class="rf">
+      <label for="rfPhone" data-en="Mobile Phone">Cep Telefonu</label>
+      <input type="tel" id="rfPhone" placeholder="05xx xxx xx xx" data-en-ph="05xx xxx xx xx" inputmode="tel" autocomplete="tel" maxlength="19" aria-describedby="errPhone" required>
+      <div class="rf-err" id="errPhone" data-en="Please enter a valid Turkish mobile number.">Lütfen geçerli bir Türkiye cep telefonu numarası yaz.</div>
+    </div>
+
     <div class="rf-row">
       <div class="rf">
         <label for="rfPeople" data-en="Party Size">Kişi Sayısı</label>
@@ -2655,11 +2661,11 @@ document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLegal(); });
 /* ---------- REZERVASYON ---------- */
 const RES_WHATSAPP = '905336689929'; /* rezervasyon WhatsApp numarası */
 const RES_SPECIAL_DAYS = [
-  {value:'birthday', tr:'Doğum Günü', en:'Birthday'},
-  {value:'anniversary', tr:'Yıldönümü', en:'Anniversary'},
-  {value:'proposal', tr:'Evlilik Teklifi', en:'Marriage Proposal'},
-  {value:'business', tr:'İş Yemeği', en:'Business Dinner'},
-  {value:'celebration', tr:'Kutlama', en:'Celebration'}
+  {value:'birthday', icon:'\uD83C\uDF82', tr:'Doğum Günü', en:'Birthday'},
+  {value:'anniversary', icon:'\uD83D\uDC9E', tr:'Yıldönümü', en:'Anniversary'},
+  {value:'proposal', icon:'\uD83D\uDC8D', tr:'Evlilik Teklifi', en:'Marriage Proposal'},
+  {value:'business', icon:'\uD83D\uDCBC', tr:'İş Yemeği', en:'Business Dinner'},
+  {value:'celebration', icon:'\uD83C\uDF89', tr:'Kutlama', en:'Celebration'}
 ];
 
 function fillSpecialDayOptions(){
@@ -2753,6 +2759,19 @@ document.getElementById('resSubmit').addEventListener('click', ()=>{
   if(name.length < 3){ err.classList.add('show'); document.getElementById('rfName').focus(); return; }
   err.classList.remove('show');
 
+  const phoneInput = document.getElementById('rfPhone');
+  const phoneDigits = phoneInput.value.replace(/\D/g, '');
+  let localPhone = phoneDigits;
+  if(localPhone.startsWith('0090')) localPhone = localPhone.slice(2);
+  if(localPhone.startsWith('90') && localPhone.length===12) localPhone = '0' + localPhone.slice(2);
+  if(localPhone.length===10 && localPhone.startsWith('5')) localPhone = '0' + localPhone;
+  const phoneIsValid = /^05\d{9}$/.test(localPhone);
+  const phoneErr = document.getElementById('errPhone');
+  phoneErr.classList.toggle('show', !phoneIsValid);
+  phoneInput.setAttribute('aria-invalid', String(!phoneIsValid));
+  if(!phoneIsValid){ phoneInput.focus(); return; }
+  const phone = `0 (${localPhone.slice(1,4)}) ${localPhone.slice(4,7)} ${localPhone.slice(7,9)} ${localPhone.slice(9,11)}`;
+
   const people = document.getElementById('rfPeople').value;
   const dateVal = document.getElementById('rfDate').value;
   const time = document.getElementById('rfTime').value;
@@ -2769,15 +2788,19 @@ document.getElementById('resSubmit').addEventListener('click', ()=>{
   }
 
   const EN = (LANG==='en');
-  let msg = EN ? `Hello, I would like to make a reservation at Zaz Cafe Bar.\n\n`
-               : `Merhaba, Zaz Cafe Bar için rezervasyon yaptırmak istiyorum.\n\n`;
-  msg += (EN?`Name: `:`Ad Soyad: `) + name + `\n`;
-  msg += (EN?`Party size: `:`Kişi sayısı: `) + people + `\n`;
-  msg += (EN?`Date: `:`Tarih: `) + dateText + `\n`;
-  msg += (EN?`Time: `:`Saat: `) + time;
-  if(specialDay) msg += (EN?`\nSpecial occasion: `:`\nÖzel gün: `) + (EN ? specialDay.en : specialDay.tr);
-  if(specialDay && specialRequest) msg += (EN?`\nSpecial request: `:`\nÖzel gün isteği: `) + specialRequest;
-  if(note) msg += (EN?`\nNote: `:`\nNot: `) + note;
+  let msg = EN ? `*ZAZ CAFE BAR — RESERVATION REQUEST*\n\nHello, I would like to make a reservation.\n\n`
+               : `*ZAZ CAFE BAR — REZERVASYON TALEBİ*\n\nMerhaba, rezervasyon yaptırmak istiyorum.\n\n`;
+  msg += (EN?`\uD83D\uDC64 *Name:* `:`\uD83D\uDC64 *Ad Soyad:* `) + name + `\n`;
+  msg += (EN?`\uD83D\uDCF1 *Mobile phone:* `:`\uD83D\uDCF1 *Cep telefonu:* `) + phone + `\n`;
+  msg += (EN?`\uD83D\uDC65 *Party size:* `:`\uD83D\uDC65 *Kişi sayısı:* `) + people + `\n`;
+  msg += (EN?`\uD83D\uDCC5 *Date:* `:`\uD83D\uDCC5 *Tarih:* `) + dateText + `\n`;
+  msg += (EN?`\uD83D\uDD57 *Time:* `:`\uD83D\uDD57 *Saat:* `) + time;
+  if(specialDay){
+    const specialText = EN ? specialDay.en.toUpperCase() : specialDay.tr.toLocaleUpperCase('tr-TR');
+    msg += `\n\n${specialDay.icon} *${EN?'SPECIAL OCCASION':'ÖZEL GÜN'}: ${specialText}*`;
+  }
+  if(specialDay && specialRequest) msg += (EN?`\n\u2728 *Special request:* `:`\n\u2728 *Özel gün isteği:* `) + specialRequest;
+  if(note) msg += (EN?`\n\n\uD83D\uDCDD *Note:* `:`\n\n\uD83D\uDCDD *Not:* `) + note;
 
   const whatsappUrl = 'https://wa.me/' + RES_WHATSAPP + '?text=' + encodeURIComponent(msg);
   if(document.activeElement instanceof HTMLElement) document.activeElement.blur();
