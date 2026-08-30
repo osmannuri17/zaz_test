@@ -197,6 +197,12 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; transition:top .5s cubi
 .mcard h3{color:#fff; font-size:1.35rem; font-weight:600; margin-bottom:6px;}
 .mcard p{color:rgba(233,237,244,0.6); font-size:0.86rem;}
 .mcard .when{font-family:'Poppins',sans-serif; font-size:0.72rem; letter-spacing:0.14em; color:var(--gold-soft); margin-top:12px; display:block;}
+.mcard-live{width:100%; color:inherit; font:inherit; text-align:left; cursor:pointer; transition:transform .25s, border-color .25s, background .25s, box-shadow .25s;}
+.mcard-live:hover{transform:translateY(-3px); border-color:rgba(226,183,100,.58); background:rgba(255,255,255,.065); box-shadow:0 16px 34px rgba(4,10,22,.22);}
+.mcard-live:focus-visible{outline:3px solid var(--gold-soft); outline-offset:4px;}
+.mcard-action{display:inline-flex; align-items:center; gap:8px; margin-top:14px; color:#fff; font-size:.75rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;}
+.mcard-action i{font-style:normal; color:var(--gold-soft); font-size:1rem; transition:transform .25s;}
+.mcard-live:hover .mcard-action i{transform:translateX(4px);}
 .eq{display:flex; gap:5px; align-items:flex-end; height:34px; flex:none;}
 .eq i{width:4px; background:var(--gold-soft); border-radius:2px; animation:eq 1s ease-in-out infinite;}
 .eq i:nth-child(1){height:40%;} .eq i:nth-child(2){height:85%; animation-delay:.15s;}
@@ -205,6 +211,109 @@ nav{position:fixed; top:0; left:0; right:0; z-index:300; transition:top .5s cubi
 @keyframes eq{0%,100%{transform:scaleY(.4);}50%{transform:scaleY(1.1);}}
 .vinyl{width:56px; height:56px; border-radius:50%; flex:none; position:relative; background:repeating-radial-gradient(circle, #0F1929 0 2px, #1D2C45 2px 4px); border:2px solid rgba(233,237,244,0.2); animation:spin 3.2s linear infinite;}
 .vinyl::after{content:''; position:absolute; inset:38%; border-radius:50%; background:var(--red);}
+
+/* ---------- YAKLAŞAN CANLI MÜZİKLER ---------- */
+.live-overlay{
+  position:fixed; inset:0; z-index:850; display:none; align-items:center; justify-content:center;
+  padding:22px; background:rgba(7,13,27,.76); backdrop-filter:blur(7px);
+}
+.live-overlay.show{display:flex;}
+.live-dialog{
+  width:min(1040px,100%); max-height:90vh; max-height:90dvh; overflow-y:auto; position:relative;
+  border-radius:24px; background:#F7F8FB; box-shadow:0 30px 80px rgba(3,8,18,.45);
+  animation:liveIn .35s cubic-bezier(.2,.7,.2,1);
+}
+@keyframes liveIn{from{opacity:0; transform:translateY(20px) scale(.985);}to{opacity:1; transform:none;}}
+.live-head{padding:34px 70px 24px 34px; background:linear-gradient(120deg,#16233A,#20253E); color:#fff; border-radius:24px 24px 0 0;}
+.live-head .eyebrow{color:var(--gold-soft); margin-bottom:9px;}
+.live-head .eyebrow::before{background:var(--gold-soft);}
+.live-head h3{color:#fff; font-size:clamp(1.7rem,3.5vw,2.45rem); margin-bottom:7px;}
+.live-head h3 em{font-family:'Alex Brush',cursive; font-style:normal; font-weight:400; color:var(--gold-soft); font-size:1.25em;}
+.live-head p{color:rgba(255,255,255,.68); font-size:.9rem;}
+.live-close{position:absolute; z-index:2; right:21px; top:20px; width:42px; height:42px; border-radius:50%; color:#fff; background:rgba(255,255,255,.1); font-size:1.75rem; line-height:1; transition:background .2s, transform .2s;}
+.live-close:hover{background:rgba(255,255,255,.2); transform:rotate(5deg);}
+.live-close:focus-visible{outline:3px solid var(--gold-soft); outline-offset:3px;}
+.live-content{padding:26px 28px 30px;}
+.live-events{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px;}
+.live-event{overflow:hidden; border:1px solid rgba(22,35,58,.11); border-radius:18px; background:#fff; box-shadow:0 10px 28px rgba(22,35,58,.08);}
+.live-event[hidden]{display:none;}
+.live-event-visual{display:block; position:relative; aspect-ratio:3/4; overflow:hidden; background:var(--navy);}
+.live-event-visual img{display:block; width:100%; height:100%; object-fit:contain; object-position:center; transition:transform .3s;}
+.live-event-visual:hover img{transform:scale(1.015);}
+.live-event-visual:focus-visible{outline:3px solid var(--gold-soft); outline-offset:-5px;}
+.live-poster-open{position:absolute; left:50%; bottom:13px; transform:translate(-50%,8px); opacity:0; padding:8px 13px; border-radius:999px; background:rgba(10,17,34,.88); color:#fff; font-size:.68rem; font-weight:600; white-space:nowrap; transition:opacity .25s, transform .25s;}
+.live-event-visual:hover .live-poster-open,.live-event-visual:focus-visible .live-poster-open{opacity:1; transform:translate(-50%,0);}
+.live-event-info{display:grid; grid-template-columns:1fr; gap:8px; align-items:start; padding:17px 18px 19px;}
+.live-event-date{grid-column:1/-1; color:var(--red); font-size:.71rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;}
+.live-event-name{font-family:'Bodoni Moda',serif; color:var(--navy); font-size:clamp(1.25rem,2vw,1.65rem); font-weight:600; line-height:1.2;}
+.live-event-time{grid-column:1; display:inline-flex; align-items:center; gap:7px; color:var(--navy); font-size:.82rem; font-weight:600; white-space:nowrap;}
+.live-event-time::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px rgba(201,156,68,.12);}
+.live-empty{padding:34px 20px; border:1px dashed rgba(22,35,58,.2); border-radius:16px; text-align:center; color:var(--muted);}
+.live-foot{display:flex; justify-content:space-between; align-items:center; gap:18px; margin-top:22px; padding-top:20px; border-top:1px solid var(--line);}
+.live-foot p{color:var(--muted); font-size:.82rem;}
+.live-foot .btn{flex:none;}
+@media (max-width:900px){
+  .live-events{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:700px){
+  .live-overlay{padding:10px; align-items:flex-end;}
+  .live-dialog{max-height:94vh; max-height:94dvh; border-radius:22px 22px 0 0;}
+  .live-head{padding:26px 58px 20px 22px; border-radius:22px 22px 0 0;}
+  .live-close{right:13px; top:13px; width:40px; height:40px;}
+  .live-content{padding:18px 16px calc(24px + env(safe-area-inset-bottom));}
+  .live-events{grid-template-columns:1fr; gap:16px;}
+  .live-event-info{padding:15px 16px 17px;}
+  .live-poster-open{opacity:1; transform:translate(-50%,0);}
+  .live-foot{align-items:stretch; flex-direction:column; text-align:center;}
+  .live-foot .btn{width:100%; text-align:center;}
+}
+
+/* ---------- 30 AĞUSTOS ZAFER GİRİŞİ ---------- */
+.zafer-overlay{
+  position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
+  overflow:hidden; padding:24px; background:radial-gradient(circle at 50% 30%,#26334B 0,#101A2C 55%,#080F1D 100%);
+  opacity:0; visibility:hidden; transition:opacity .45s,visibility .45s;
+}
+.zafer-overlay[hidden]{display:none;}
+.zafer-overlay.show{opacity:1; visibility:visible;}
+.zafer-overlay.leaving{opacity:0;}
+.zafer-panel{width:min(760px,100%); text-align:center; color:#fff; transform:translateY(-18px);}
+.zafer-flag-stage{position:relative; width:min(620px,86vw); margin:-25vh auto 24px; padding-top:15px; perspective:1200px;}
+.zafer-flag-stage::before{content:''; position:absolute; z-index:2; left:-2.5%; right:-2.5%; top:8px; height:12px; border-radius:999px; background:linear-gradient(180deg,#F5D98E,#A87924); box-shadow:0 4px 16px rgba(0,0,0,.4);}
+.zafer-flag{
+  display:block; width:100%; aspect-ratio:3/2; overflow:hidden; transform-origin:top center;
+  clip-path:inset(0 0 100% 0); filter:drop-shadow(0 24px 32px rgba(0,0,0,.42));
+}
+.zafer-overlay.show .zafer-flag{animation:zaferUnfurl 1.65s .22s cubic-bezier(.22,.76,.2,1) forwards;}
+.zafer-flag svg{display:block; width:100%; height:100%;}
+@keyframes zaferUnfurl{
+  0%{clip-path:inset(0 0 100% 0); transform:rotateX(-16deg) scaleY(.25);}
+  68%{clip-path:inset(0); transform:rotateX(3deg) scaleY(1.025);}
+  100%{clip-path:inset(0); transform:none;}
+}
+.zafer-copy{opacity:0; transform:translateY(15px);}
+.zafer-overlay.show .zafer-copy{animation:zaferCopyIn .75s 1.45s ease forwards;}
+@keyframes zaferCopyIn{to{opacity:1; transform:none;}}
+.zafer-kicker{display:flex; justify-content:center; align-items:center; gap:12px; color:#F2D27E; font-size:.72rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase;}
+.zafer-kicker::before,.zafer-kicker::after{content:''; width:42px; height:1px; background:rgba(242,210,126,.72);}
+.zafer-copy h2{margin:12px 0 10px; color:#fff; font-size:clamp(2rem,5vw,3.65rem); line-height:1.05;}
+.zafer-copy h2 em{display:block; margin-top:4px; color:#F2D27E; font-family:'Alex Brush',cursive; font-size:1.15em; font-style:normal; font-weight:400;}
+.zafer-copy p{max-width:590px; margin:0 auto; color:rgba(255,255,255,.75); font-size:.9rem; line-height:1.65;}
+.zafer-enter{margin-top:21px; padding:13px 26px; border:1px solid rgba(255,255,255,.55); border-radius:999px; color:#fff; font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; transition:background .2s,border-color .2s,transform .2s;}
+.zafer-enter:hover{background:#E30A17; border-color:#E30A17; transform:translateY(-2px);}
+.zafer-enter:focus-visible{outline:3px solid #F2D27E; outline-offset:4px;}
+@media (max-width:600px){
+  .zafer-overlay{padding:18px;}
+  .zafer-panel{transform:none;}
+  .zafer-flag-stage{width:min(520px,92vw); margin:-14vh auto 22px;}
+  .zafer-kicker{font-size:.64rem; letter-spacing:.19em; gap:9px;}
+  .zafer-kicker::before,.zafer-kicker::after{width:26px;}
+  .zafer-copy p{font-size:.82rem; line-height:1.55;}
+  .zafer-enter{width:100%; max-width:280px; padding:14px 20px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .zafer-overlay.show .zafer-flag,.zafer-overlay.show .zafer-copy{animation:none; clip-path:inset(0); transform:none; opacity:1;}
+}
 
 /* ---------- HOURS & LOCATION ---------- */
 .info{max-width:1150px; margin:0 auto; padding:110px 5vw; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
@@ -935,7 +1044,7 @@ body.cb-open .wa-fab{bottom:150px;}
   .mobile-actions a,.mobile-actions button{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; border-radius:10px; font-size:.66rem; font-weight:600; color:var(--navy);}
   .mobile-actions b{font-size:1.08rem; line-height:1; font-weight:400;}
   .mobile-actions .mobile-res{background:var(--red); color:#fff; margin-left:5px;}
-  body.res-open .mobile-actions{display:none;}
+  body.res-open .mobile-actions, body.live-open .mobile-actions, body.zafer-open .mobile-actions{display:none;}
   .wa-fab{display:none;}
 }
 
@@ -979,6 +1088,36 @@ body.cb-open .wa-fab{bottom:150px;}
 </style>
 </head>
 <body>
+
+<div class="zafer-overlay" id="zaferOverlay" role="dialog" aria-modal="true" aria-labelledby="zaferTitle" hidden>
+  <div class="zafer-panel">
+    <div class="zafer-flag-stage" aria-hidden="true">
+      <div class="zafer-flag">
+        <svg viewBox="0 0 900 600" role="img" aria-label="Türk Bayrağı">
+          <defs>
+            <linearGradient id="zaferRed" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#C90714"/><stop offset=".48" stop-color="#E30A17"/><stop offset="1" stop-color="#C90815"/>
+            </linearGradient>
+            <linearGradient id="zaferShine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#fff" stop-opacity=".02"/><stop offset=".32" stop-color="#fff" stop-opacity=".13"/><stop offset=".58" stop-color="#000" stop-opacity=".08"/><stop offset=".82" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#000" stop-opacity=".08"/>
+            </linearGradient>
+          </defs>
+          <rect width="900" height="600" fill="url(#zaferRed)"/>
+          <circle cx="350" cy="300" r="150" fill="#fff"/>
+          <circle cx="395" cy="300" r="120" fill="#E30A17"/>
+          <polygon points="540,225 557.6,275.7 611.3,276.8 568.5,309.3 584.1,360.7 540,330 495.9,360.7 511.5,309.3 468.7,276.8 522.4,275.7" fill="#fff"/>
+          <rect width="900" height="600" fill="url(#zaferShine)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="zafer-copy">
+      <div class="zafer-kicker">30 Ağustos</div>
+      <h2 id="zaferTitle">Zafer Bayramımız <em>Kutlu Olsun</em></h2>
+      <p>Başta Gazi Mustafa Kemal Atatürk olmak üzere, bağımsızlığımız için mücadele eden tüm kahramanlarımızı saygı ve minnetle anıyoruz.</p>
+      <button class="zafer-enter" id="zaferEnter" type="button">Siteye Gir</button>
+    </div>
+  </div>
+</div>
 
 <nav id="siteNav">
   <a class="logo" href="#" aria-label="Zaz Cafe Bar · İzmir">
@@ -1095,14 +1234,15 @@ body.cb-open .wa-fab{bottom:150px;}
     <div class="eyebrow" data-en="Music">Müzik</div>
     <h2 data-en="A different <em>rhythm</em> every evening">Her akşam ayrı bir <em>ritim</em></h2>
     <div class="music-grid">
-      <div class="mcard">
+      <button class="mcard mcard-live" id="liveScheduleTrigger" type="button" aria-haspopup="dialog" aria-controls="liveOverlay">
         <div>
           <h3 data-en="Live Music">Canlı Müzik</h3>
           <p data-en="An evening by the sea with live performers on stage.">Sahne alan sanatçılarla deniz kenarında bir gece.</p>
-          <span class="when" data-en="THURSDAY &amp; FRIDAY · 21:00">PERŞEMBE &amp; CUMA · 21:00</span>
+          <span class="when" data-en="WEDNESDAY · FRIDAY · SATURDAY · 21:00">ÇARŞAMBA · CUMA · CUMARTESİ · 21:00</span>
+          <span class="mcard-action" data-en="View upcoming events <i>→</i>">Yaklaşan programı gör <i>→</i></span>
         </div>
-        <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
-      </div>
+        <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </button>
       <div class="mcard">
         <div>
           <h3 data-en="DJ Performance">DJ Performansı</h3>
@@ -1114,6 +1254,59 @@ body.cb-open .wa-fab{bottom:150px;}
     </div>
   </div>
 </section>
+
+<div class="live-overlay" id="liveOverlay" role="dialog" aria-modal="true" aria-labelledby="liveDialogTitle">
+  <div class="live-dialog">
+    <button class="live-close" id="liveClose" type="button" aria-label="Kapat">×</button>
+    <div class="live-head">
+      <div class="eyebrow" data-en="Live Music Calendar">Canlı Müzik Takvimi</div>
+      <h3 id="liveDialogTitle" data-en="Upcoming <em>live music</em>">Yaklaşan <em>canlı müzikler</em></h3>
+      <p data-en="Meet us by the sea for live performances at Zaz. Tap a poster to view its menu in full size.">Zaz'da deniz kenarında canlı performanslarla buluşuyoruz. Menü detayları için afişe dokunabilirsin.</p>
+    </div>
+    <div class="live-content">
+      <div class="live-events" id="liveEvents">
+        <article class="live-event" data-live-date="2026-09-11">
+          <a class="live-event-visual" href="assets/events/erdogan-ozsaygili-2026-09-11.png" target="_blank" rel="noopener">
+            <img src="assets/events/erdogan-ozsaygili-2026-09-11.png" alt="Erdoğan Özsaygılı — 11 Eylül 2026 Zaz canlı müzik ve menü afişi" loading="lazy">
+            <span class="live-poster-open" data-en="View full poster ↗">Afişi büyüt ↗</span>
+          </a>
+          <div class="live-event-info">
+            <div class="live-event-date" data-en="Friday · September 11, 2026">Cuma · 11 Eylül 2026</div>
+            <div class="live-event-name">Erdoğan Özsaygılı</div>
+            <div class="live-event-time" data-en="Live Music · 21:00">Canlı Müzik · 21:00</div>
+          </div>
+        </article>
+        <article class="live-event" data-live-date="2026-09-18">
+          <a class="live-event-visual" href="assets/events/sedat-yuce-2026-09-18.png" target="_blank" rel="noopener">
+            <img src="assets/events/sedat-yuce-2026-09-18.png" alt="Sedat Yüce — 18 Eylül 2026 Zaz canlı müzik ve menü afişi" loading="lazy">
+            <span class="live-poster-open" data-en="View full poster ↗">Afişi büyüt ↗</span>
+          </a>
+          <div class="live-event-info">
+            <div class="live-event-date" data-en="Friday · September 18, 2026">Cuma · 18 Eylül 2026</div>
+            <div class="live-event-name">Sedat Yüce</div>
+            <div class="live-event-time" data-en="Live Music · 21:00">Canlı Müzik · 21:00</div>
+          </div>
+        </article>
+        <article class="live-event" data-live-date="2026-09-26">
+          <a class="live-event-visual" href="assets/events/tepecik-senfoni-orkestrasi-2026-09-26.png" target="_blank" rel="noopener">
+            <img src="assets/events/tepecik-senfoni-orkestrasi-2026-09-26.png" alt="Tepecik Senfoni Orkestrası — 26 Eylül 2026 Zaz canlı müzik ve menü afişi" loading="lazy">
+            <span class="live-poster-open" data-en="View full poster ↗">Afişi büyüt ↗</span>
+          </a>
+          <div class="live-event-info">
+            <div class="live-event-date" data-en="Saturday · September 26, 2026">Cumartesi · 26 Eylül 2026</div>
+            <div class="live-event-name">Tepecik Senfoni Orkestrası</div>
+            <div class="live-event-time" data-en="Live Music · 21:00">Canlı Müzik · 21:00</div>
+          </div>
+        </article>
+      </div>
+      <div class="live-empty" id="liveEmpty" hidden data-en="New live music dates will be announced soon.">Yeni canlı müzik tarihleri çok yakında burada.</div>
+      <div class="live-foot">
+        <p data-en="Tables are limited for live music evenings.">Canlı müzik akşamlarında masa sayımız sınırlıdır.</p>
+        <button class="btn btn-red" id="liveReserve" type="button" data-en="Make a Reservation">Rezervasyon Yap</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -2645,6 +2838,103 @@ function sayfaKilidiAc(){
   });
 }
 
+/* 30 Ağustos'ta ilk ziyarette gösterilen Zafer Bayramı açılışı.
+   Tasarımı başka günlerde kontrol etmek için URL'ye ?zafer=1 eklenebilir. */
+let __zaferTimer = null;
+function initZaferGiris(){
+  const overlay = document.getElementById('zaferOverlay');
+  if(!overlay || overlay.classList.contains('show')) return;
+  const now = new Date();
+  const preview = new URLSearchParams(window.location.search).get('zafer') === '1';
+  const isZaferDay = now.getMonth() === 7 && now.getDate() === 30;
+  if(!isZaferDay && !preview) return;
+  const sessionKey = `zaz-zafer-${now.getFullYear()}`;
+  try{
+    if(!preview && sessionStorage.getItem(sessionKey)) return;
+    if(!preview) sessionStorage.setItem(sessionKey, '1');
+  }catch(e){}
+  overlay.hidden = false;
+  document.body.classList.add('zafer-open');
+  sayfaKilitle();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>overlay.classList.add('show')));
+  setTimeout(()=>document.getElementById('zaferEnter')?.focus(), 1900);
+  __zaferTimer = setTimeout(closeZaferGiris, 9000);
+}
+
+function closeZaferGiris(){
+  const overlay = document.getElementById('zaferOverlay');
+  if(!overlay || overlay.hidden || overlay.classList.contains('leaving')) return;
+  if(__zaferTimer) clearTimeout(__zaferTimer);
+  overlay.classList.add('leaving');
+  setTimeout(()=>{
+    overlay.classList.remove('show','leaving');
+    overlay.hidden = true;
+    document.body.classList.remove('zafer-open');
+    sayfaKilidiAc();
+  }, 460);
+}
+
+document.getElementById('zaferEnter')?.addEventListener('click', closeZaferGiris);
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') closeZaferGiris();
+});
+setTimeout(initZaferGiris, 160);
+
+/* Yaklaşan canlı müzik penceresi. Tarihi geçen etkinlikler otomatik gizlenir. */
+let __liveLastFocus = null;
+function updateLiveSchedule(){
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  let visibleCount = 0;
+  document.querySelectorAll('.live-event[data-live-date]').forEach(card=>{
+    const parts = card.dataset.liveDate.split('-').map(Number);
+    const eventEnd = new Date(parts[0], parts[1]-1, parts[2], 23, 59, 59, 999);
+    const isPast = eventEnd < today;
+    card.hidden = isPast;
+    if(!isPast) visibleCount++;
+  });
+  const empty = document.getElementById('liveEmpty');
+  if(empty) empty.hidden = visibleCount > 0;
+}
+
+function openLiveSchedule(){
+  const overlay = document.getElementById('liveOverlay');
+  if(!overlay || overlay.classList.contains('show')) return;
+  updateLiveSchedule();
+  __liveLastFocus = document.activeElement;
+  overlay.classList.add('show');
+  document.body.classList.add('live-open');
+  sayfaKilitle();
+  requestAnimationFrame(()=>document.getElementById('liveClose')?.focus());
+  if(typeof zazTrack === 'function') zazTrack('canli_muzik_programi_acildi');
+}
+
+function closeLiveSchedule(){
+  const overlay = document.getElementById('liveOverlay');
+  if(!overlay || !overlay.classList.contains('show')) return;
+  overlay.classList.remove('show');
+  document.body.classList.remove('live-open');
+  sayfaKilidiAc();
+  if(__liveLastFocus instanceof HTMLElement) __liveLastFocus.focus();
+}
+
+function openReservationFromLive(){
+  closeLiveSchedule();
+  setTimeout(()=>openRes(), 100);
+}
+
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape') closeLiveSchedule();
+});
+document.getElementById('liveScheduleTrigger')?.addEventListener('click', openLiveSchedule);
+document.getElementById('liveClose')?.addEventListener('click', closeLiveSchedule);
+document.getElementById('liveReserve')?.addEventListener('click', openReservationFromLive);
+document.getElementById('liveOverlay')?.addEventListener('click', e=>{
+  if(e.target===e.currentTarget) closeLiveSchedule();
+});
+window.addEventListener('pageshow', updateLiveSchedule);
+updateLiveSchedule();
+
 function openLegal(key){
   const src = (LANG==='en' && typeof LEGAL_EN!=='undefined') ? LEGAL_EN : LEGAL;
   document.getElementById('legalContent').innerHTML = src[key] || LEGAL[key] || '';
@@ -2652,7 +2942,9 @@ function openLegal(key){
   sayfaKilitle();
 }
 function closeLegal(){
-  document.getElementById('legalOverlay').classList.remove('show');
+  const overlay = document.getElementById('legalOverlay');
+  if(!overlay.classList.contains('show')) return;
+  overlay.classList.remove('show');
   sayfaKilidiAc();
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLegal(); });
@@ -2738,7 +3030,9 @@ function openRes(){
   sayfaKilitle();
 }
 function closeRes(){
-  document.getElementById('resOverlay').classList.remove('show');
+  const overlay = document.getElementById('resOverlay');
+  if(!overlay.classList.contains('show')) return;
+  overlay.classList.remove('show');
   document.body.classList.remove('res-open');
   sayfaKilidiAc();
 }
