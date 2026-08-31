@@ -543,6 +543,12 @@ html[lang="en"] .board-row.bugun .board-gun::after{content:' ← today';}
 }
 .board-row.ozel .board-ne{color:#FFDCA0;}
 
+.board-soon{
+  font-family:'Caveat',cursive; font-weight:600; text-align:center; color:#F4F1E6;
+  font-size:clamp(1.35rem,3.6vw,1.8rem); line-height:1.5; padding:26px 10px 16px;
+  text-shadow:0 0 1px rgba(255,255,255,0.45), 0 0 9px rgba(255,255,255,0.13);
+}
+
 .board-foot{
   margin-top:20px; padding-top:14px; border-top:1px dashed rgba(238,236,226,0.22);
   font-family:'Caveat',cursive; font-size:1.06rem; color:#C6CEC7; text-align:center;
@@ -3395,6 +3401,12 @@ const PROGRAM = [
    neTR:'Pazar Kahvaltısı · Pazar Keyfi', neEN:'Sunday Breakfast · Sunday Mood'}
 ];
 
+/* Bu haftanın programı netleşmediğinde PROGRAM_HAFTA_HAZIR'ı false bırak;
+   tahtada satırlar yerine "yakında" mesajı görünür. Program belli olunca true yap. */
+const PROGRAM_HAFTA_HAZIR = false;
+const PROGRAM_YAKINDA_TR = 'Sahne şu an dinleniyor, çok yakında yeniden canlanıyor 🎶';
+const PROGRAM_YAKINDA_EN = 'The stage is resting for now — back to life very soon 🎶';
+
 function tonightCiz(){
   const p = PROGRAM.find(item=>item.gun===new Date().getDay());
   const kicker = document.getElementById('tonightKicker');
@@ -3414,6 +3426,17 @@ function tonightCiz(){
 function programCiz(){
   const kap = document.getElementById('boardRows');
   if(!kap) return;
+  if(!PROGRAM_HAFTA_HAZIR){
+    kap.innerHTML = `<div class="board-soon">${LANG==='en' ? PROGRAM_YAKINDA_EN : PROGRAM_YAKINDA_TR}</div>`;
+    const b = document.getElementById('boardTitle');
+    if(b) b.textContent = LANG==='en' ? 'This Week at Zaz' : 'Bu Hafta Programımız';
+    const f = document.getElementById('boardFoot');
+    if(f) f.textContent = LANG==='en'
+      ? 'Open every day 09:00 – 01:00  ·  Reservations 0533 668 99 29'
+      : 'Her gün 09:00 – 01:00 açığız  ·  Rezervasyon 0533 668 99 29';
+    tonightCiz();
+    return;
+  }
   const bugun = new Date().getDay();
   kap.innerHTML = PROGRAM.map(p=>{
     const sinif = 'board-row' + (p.gun===bugun ? ' bugun' : '') + (p.ozel ? ' ozel' : '')
