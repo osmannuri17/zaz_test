@@ -532,16 +532,19 @@ html[lang="en"] .board-row.bugun .board-gun::after{content:' ← today';}
 .board-sanatci{font-family:'Caveat',cursive; font-weight:700; color:#FFE9A8;
   font-size:1.5rem; line-height:1.15; margin-top:2px;
   text-shadow:0 0 1px rgba(255,255,255,0.45), 0 0 9px rgba(255,255,255,0.14);}
+.board-kategori{font-family:'Caveat',cursive; font-size:1.08rem; font-weight:500;
+  color:#D5DCD6; margin-top:1px;}
 .board-altyazi{font-family:'Caveat',cursive; font-size:1.02rem; color:#C6CEC7;
   font-style:italic; margin-top:1px;}
 .board-saatler{display:flex; gap:16px; margin-top:5px; flex-wrap:wrap;}
 .board-saat-etiket{font-family:'Caveat',cursive; font-size:1.1rem; color:#DFE4DE;}
 @media (max-width:880px){
   .board-sanatci{font-size:1.32rem;}
+  .board-kategori{font-size:0.98rem;}
   .board-saat-etiket{font-size:1rem;}
   .board-saatler{gap:12px;}
 }
-.board-row.ozel .board-ne{color:#FFDCA0;}
+.board-row.ozel .board-ne,.board-row.ozel .board-kategori{color:#FFDCA0;}
 
 .board-soon{
   font-family:'Caveat',cursive; font-weight:600; text-align:center; color:#F4F1E6;
@@ -3385,25 +3388,25 @@ const ONERI_ANAHTAR = '58b94524-7c92-4b98-b9a9-4fedfb62ce21';
 const PROGRAM = [
   {gun:1, tr:'Pazartesi', en:'Monday',    neTR:'DJ Performansı',      neEN:'DJ Set',            saat:'21:00'},
   {gun:2, tr:'Salı',      en:'Tuesday',   neTR:'DJ Performansı',      neEN:'DJ Set',            saat:'21:00'},
-  {gun:3, tr:'Çarşamba',  en:'Wednesday', tarih:'26 Ağustos', tarihEN:'August 26',
-   sanatci:'UnderCover & Gupse', neTR:'Canlı Müzik', neEN:'Live Music',
+  {gun:3, tr:'Çarşamba',  en:'Wednesday', tarih:'2 Eylül', tarihEN:'September 2',
+   sanatci:'UnderCover & Gupse', neTR:'🎶 Canlı Müzik', neEN:'🎶 Live Music',
    yemekSaat:'20:00', muzikSaat:'21:00'},
-  {gun:4, tr:'Perşembe',  en:'Thursday',  tarih:'27 Ağustos', tarihEN:'August 27',
-   sanatci:'Burak Toktamış', altYazi:'Akustik Şarkılar', altYaziEN:'Acoustic Songs',
-   neTR:'Canlı Müzik', neEN:'Live Music', yemekSaat:'20:00', muzikSaat:'21:00', ozel:true},
-  {gun:5, tr:'Cuma',      en:'Friday',    tarih:'28 Ağustos', tarihEN:'August 28',
-   sanatci:'Billur Koyuncu', neTR:'Canlı Müzik', neEN:'Live Music',
-   yemekSaat:'20:00', muzikSaat:'20:00', ozel:true},
-  {gun:6, tr:'Cumartesi', en:'Saturday',  tarih:'29 Ağustos', tarihEN:'August 29',
-   sanatci:'DJ Avni Emektar', altYazi:'Zamansız Şarkılar', altYaziEN:'Timeless Songs',
-   neTR:'DJ Performansı', neEN:'DJ Set', yemekSaat:'20:00', muzikSaat:'20:00'},
-  {gun:0, tr:'Pazar',     en:'Sunday',    tarih:'30 Ağustos', tarihEN:'August 30',
-   neTR:'Pazar Kahvaltısı · Pazar Keyfi', neEN:'Sunday Breakfast · Sunday Mood'}
+  {gun:4, tr:'Perşembe',  en:'Thursday',  tarih:'3 Eylül', tarihEN:'September 3',
+   sanatci:'Burak Toktamış', neTR:'🎶 Canlı Müzik', neEN:'🎶 Live Music',
+   yemekSaat:'20:00', muzikSaat:'21:00', ozel:true},
+  {gun:5, tr:'Cuma',      en:'Friday',    tarih:'4 Eylül', tarihEN:'September 4',
+   sanatci:'White Sunset Party', tekSaat:'19:30', tekEmoji:'🌅', ozel:true},
+  {gun:6, tr:'Cumartesi', en:'Saturday',  tarih:'5 Eylül', tarihEN:'September 5',
+   sanatci:'Dj Avni Emektar', neTR:'🎧 DJ Performansı', neEN:'🎧 DJ Set',
+   altYazi:'🎶 Canlı Müzik', altYaziEN:'🎶 Live Music',
+   yemekSaat:'20:00', muzikSaat:'21:00'},
+  {gun:0, tr:'Pazar',     en:'Sunday',    tarih:'6 Eylül', tarihEN:'September 6',
+   neTR:'☕ Pazar Kahvaltısı · Pazar Keyfi', neEN:'☕ Sunday Breakfast · Sunday Mood'}
 ];
 
 /* Bu haftanın programı netleşmediğinde PROGRAM_HAFTA_HAZIR'ı false bırak;
    tahtada satırlar yerine "yakında" mesajı görünür. Program belli olunca true yap. */
-const PROGRAM_HAFTA_HAZIR = false;
+const PROGRAM_HAFTA_HAZIR = true;
 const PROGRAM_YAKINDA_TR = 'Sahne şu an dinleniyor, çok yakında yeniden canlanıyor 🎶';
 const PROGRAM_YAKINDA_EN = 'The stage is resting for now — back to life very soon 🎶';
 
@@ -3419,6 +3422,7 @@ function tonightCiz(){
   const bits = [];
   if(p.yemekSaat) bits.push(`🍽️ ${p.yemekSaat} ${LANG==='en'?'Dinner':'Yemek'}`);
   if(p.muzikSaat || p.saat) bits.push(`🎵 ${p.muzikSaat || p.saat} ${LANG==='en'?'Music':'Müzik'}`);
+  if(p.tekSaat) bits.push(`${p.tekEmoji || '🕒'} ${p.tekSaat}`);
   if(!bits.length) bits.push(LANG==='en' ? 'Open 09:00 – 01:00' : '09:00 – 01:00 açığız');
   meta.innerHTML = bits.map(bit=>`<span>${bit}</span>`).join('');
 }
@@ -3446,16 +3450,18 @@ function programCiz(){
     const tarih = LANG==='en' ? p.tarihEN : p.tarih;
     const altYazi = LANG==='en' ? p.altYaziEN : p.altYazi;
     if(p.sanatci){
+      const saatler = p.tekSaat
+        ? `<span class="board-saat-etiket">${p.tekEmoji || '🕒'} ${p.tekSaat}</span>`
+        : `<span class="board-saat-etiket">🍽️ ${p.yemekSaat} ${LANG==='en'?'Dinner':'Yemek'}</span>
+           <span class="board-saat-etiket">🎵 ${p.muzikSaat} ${LANG==='en'?'Music':'Müzik'}</span>`;
       return `<div class="${sinif}">
         <div class="board-ust">
           <span class="board-gun">${gun}${tarih?` <em>${tarih}</em>`:''}</span>
         </div>
         <div class="board-sanatci">${p.sanatci}</div>
+        ${ne?`<div class="board-kategori">${ne}</div>`:''}
         ${altYazi?`<div class="board-altyazi">${altYazi}</div>`:''}
-        <div class="board-saatler">
-          <span class="board-saat-etiket">🍽️ ${p.yemekSaat} ${LANG==='en'?'Dinner':'Yemek'}</span>
-          <span class="board-saat-etiket">🎵 ${p.muzikSaat} ${LANG==='en'?'Music':'Müzik'}</span>
-        </div>
+        <div class="board-saatler">${saatler}</div>
       </div>`;
     }
     return `<div class="${sinif}">
