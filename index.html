@@ -1604,22 +1604,22 @@ function it(n,d,p,k,a,s,pt){ return {n:n,d:d||null,p:p,k:k||null,a:a||null,s:!!s
 const DATA = {
   "Yemek": {
     "Kahvaltı": [
-      it("Zaz Serpme Kahvaltı (Kişi Başı)","Beyaz peynir, tulum peyniri, zeytin, acılı lor, çemen, kızarmış patates, tereyağı, bal, kaymak, reçel, söğüş tabağı, haşlanmış yumurta, sıcak hamur sepeti. Kişi başı sınırsız çay ile servis edilir. En az 2 kişiden başlar.",800,null,"S,Y,G",1),
-      it("Döküm Tavada Sıcak Kahvaltı","Izgara hellim, kızarmış ev yapımı dana sosis, yağda yumurta, sucuk, baharatlı baby patates, çeri domates. Bir bardak çay ile servis edilir.",935,"965","S,Y"),
-      it("Diet Kahvaltı","2 adet haşlanmış yumurta, ceviz, lor peyniri, avokado, söğüş tabağı. Bir bardak çay ile servis edilir.",575,"650–660","Y,S,C"),
-      it("Hızlı Kahvaltı","Beyaz peynir, tulum peyniri, zeytin, tereyağı, reçel, domates, salatalık, haşlanmış yumurta. Bir bardak çay ile servis edilir.",480,"595","S,Y"),
-      it("Gevrek Tost","Gevrek arasına eritilmiş kaşar peyniri, zeytin, söğüş tabağı. Bir bardak çay ile servis edilir.",420,"525","G,S"),
+      it("Zaz Serpme Kahvaltı (Kişi Başı)","Beyaz peynir, tulum peyniri, zeytin, acılı lor, çemen, kızarmış patates, tereyağı, bal, kaymak, reçel, söğüş tabağı, haşlanmış yumurta, sıcak hamur sepeti. Kişi başı sınırsız çay ile servis edilir. En az 2 kişiden başlar.",790,null,"S,Y,G",1),
+      it("Döküm Tavada Sıcak Kahvaltı","Izgara hellim, kızarmış ev yapımı dana sosis, yağda yumurta, sucuk, baharatlı baby patates, çeri domates. Bir bardak çay ile servis edilir.",890,"965","S,Y"),
+      it("Diet Kahvaltı","2 adet haşlanmış yumurta, ceviz, lor peyniri, avokado, söğüş tabağı. Bir bardak çay ile servis edilir.",495,"650–660","Y,S,C"),
+      it("Hızlı Kahvaltı","Beyaz peynir, tulum peyniri, zeytin, tereyağı, reçel, domates, salatalık, haşlanmış yumurta. Bir bardak çay ile servis edilir.",420,"595","S,Y"),
+      it("Gevrek Tost","Gevrek arasına eritilmiş kaşar peyniri, zeytin, söğüş tabağı. Bir bardak çay ile servis edilir.",320,"525","G,S"),
       it("Pankek",null,385,"295","S,G,Y"),
-      it("Sade Omlet",null,360,"230","Y,S"),
-      it("Kaşar Peynirli Omlet",null,390,"330–335","Y,S"),
-      it("Beyaz Omlet","3 yumurta beyazı, beyaz peynir, avokado, zeytin, söğüş tabağı.",450,"286","Y,S"),
-      it("Beyaz Peynirli Omlet","2 yumurta, beyaz peynir. Söğüş tabağı ve zeytin ile servis edilir.",420,"360","Y,S"),
-      it("Sebzeli Omlet","2 yumurta, mevsim sebzeleri, domates söğüş tabağı ile.",450,"200","Y"),
-      it("Karışık Omlet","2 yumurta, sucuk, salam, sosis, mantar.",480,"600","Y"),
-      it("Menemen","2 yumurta, soğan, domates, biber, baharat, çiçek yağı.",450,"300","Y"),
-      it("Sahanda Yumurta","2 adet yumurta, tereyağı, tuz.",330,"230","Y,S"),
-      it("Sucuklu Yumurta","2 adet yumurta, tereyağı, sucuk.",480,"410","Y,S"),
-      it("Sucuk","Tereyağı, sucuk.",450,"250","S"),
+      it("Sade Omlet",null,275,"230","Y,S"),
+      it("Kaşar Peynirli Omlet",null,340,"330–335","Y,S"),
+      it("Beyaz Omlet","3 yumurta beyazı, beyaz peynir, avokado, zeytin, söğüş tabağı.",420,"286","Y,S"),
+      it("Beyaz Peynirli Omlet","2 yumurta, beyaz peynir. Söğüş tabağı ve zeytin ile servis edilir.",370,"360","Y,S"),
+      it("Sebzeli Omlet","2 yumurta, mevsim sebzeleri, domates söğüş tabağı ile.",365,"200","Y"),
+      it("Karışık Omlet","2 yumurta, sucuk, salam, sosis, mantar.",415,"600","Y"),
+      it("Menemen","2 yumurta, soğan, domates, biber, baharat, çiçek yağı.",350,"300","Y"),
+      it("Sahanda Yumurta","2 adet yumurta, tereyağı, tuz.",290,"230","Y,S"),
+      it("Sucuklu Yumurta","2 adet yumurta, tereyağı, sucuk.",395,"410","Y,S"),
+      it("Sucuk","Tereyağı, sucuk.",375,"250","S"),
       it("Yumurtalı Ekmek","Yumurta, ekmek dilimi ve baharat.",240,"150","Y,G"),
       it("Pişi","Miktara göre değişir (8 adet, toplam 285 kcal).",240,null,"G"),
       it("Gevrek",null,95,"285","G,SU"),
@@ -1629,160 +1629,154 @@ const DATA = {
     "Tost & Sandviç": [
       it("Club Sandviç","Üç kat beyaz veya kepekli tost ekmeği arasına dana jambon, tavuk bonfile dilimleri, cheddar peyniri, turşu, marul, mayonez, hardal sos. Yanında patates kızartması ve coleslaw ile servis edilir.",720,"1.330","G,S,Y,H"),
       it("Karışık Ayvalık Tostu","Ayvalık ekmeği, kaşar peyniri, sucuk, salam, sosis, turşu, domates, salatalık.",660,"1.020","G,S"),
-      it("Kaşarlı Sucuklu Tost","Tost ekmeği, kaşar peyniri, sucuk, domates, salatalık, zeytin.",610,"360","G,S"),
-      it("Kaşarlı Tost","Tost ekmeği, kaşar peyniri, domates, salatalık, zeytin.",440,"480","G,S"),
-      it("J&B Tost","Tost ekmeği, kaşar peyniri, jambon, domates, salatalık, zeytin.",450,"410","G,S"),
-      it("Diet Tost","İki dilim kepek ekmeği arasına beyaz peynir, domates, salatalık ve zeytin.",380,"340","G,S")
+      it("Kaşarlı Sucuklu Tost","Tost ekmeği, kaşar peyniri, sucuk, domates, salatalık, zeytin.",420,"360","G,S"),
+      it("Kaşarlı Tost","Tost ekmeği, kaşar peyniri, domates, salatalık, zeytin.",350,"480","G,S"),
+      it("J&B Tost","Tost ekmeği, kaşar peyniri, jambon, domates, salatalık, zeytin.",420,"410","G,S"),
+      it("Diet Tost","İki dilim kepek ekmeği arasına beyaz peynir, domates, salatalık ve zeytin.",350,"340","G,S")
     ],
     "Ekmek Üstü Lezzetler": [
       it("Ekmek Üstü Poşe Yumurta",null,420,"180","Y,G"),
       it("Ekmek Üstü Scrambled",null,420,"280","Y,G"),
-      it("Ekmek Üstü Somon Füme",null,900,"160","B,G")
+      it("Ekmek Üstü Somon Füme",null,690,"160","B,G")
     ],
     "Bowl": [
-      it("Vejetaryen Bowl","Hellim peyniri ve mevsim malzemeleri ile.",660,"500","S,Y,G"),
-      it("Vegan Bowl","Nohut, basmati pirinci, avokado, kapya biber, pancar, yeşillik, kabak çekirdeği.",660,"450",null),
-      it("Sporcu Tavuk Bowl","Tavuk, nohut, basmati pirinci, avokado, brokoli, yeşillikler, mor lahana ve havuç.",780,"550",null),
-      it("Yumurta Bowl","Yumurta, nohut, basmati pirinci, avokado, yeşillikler, kapya biber, çeri domates ve havuç.",660,"500","Y"),
-      it("Izgara Tavuk Bowl","Izgara tavuk göğsü, Akdeniz yeşillikleri, çeri domates ve penne makarna.",780,"550","G"),
-      it("Chinese Et Bowl","Sote küp bonfile, renkli biberler, soğan, basmati pirinci, haşlanmış brokoli, nohut, mor lahana, avokado, kavrulmuş susam, teriyaki sos, sweet chilli sos ve soya sosu.",1320,"600","SO,SU"),
-      it("Chinese Tavuk Bowl","Sote küp tavuk, renkli biberler, soğan, basmati pirinci, haşlanmış brokoli, nohut, mor lahana, avokado, kavrulmuş susam, teriyaki sos, sweet chilli sos ve soya sosu.",900,"600","SO,SU"),
-      it("Avokado Bowl","Avokado, Akdeniz yeşillikleri, lor peyniri ve haşlanmış yumurta.",780,"400","S,Y"),
-      it("Berry Bowl",null,660,"450",null),
-      it("Choco Bowl",null,660,"500",null)
+      it("Vejetaryen Bowl","Hellim peyniri ve mevsim malzemeleri ile.",490,"500","S,Y,G"),
+      it("Vegan Bowl","Nohut, basmati pirinci, avokado, kapya biber, pancar, yeşillik, kabak çekirdeği.",490,"450",null),
+      it("Sporcu Tavuk Bowl","Tavuk, nohut, basmati pirinci, avokado, brokoli, yeşillikler, mor lahana ve havuç.",590,"550",null),
+      it("Yumurta Bowl","Yumurta, nohut, basmati pirinci, avokado, yeşillikler, kapya biber, çeri domates ve havuç.",490,"500","Y"),
+      it("Chinese Et Bowl","Sote küp bonfile, renkli biberler, soğan, basmati pirinci, haşlanmış brokoli, nohut, mor lahana, avokado, kavrulmuş susam, teriyaki sos, sweet chilli sos ve soya sosu.",890,"600","SO,SU"),
+      it("Chinese Tavuk Bowl","Sote küp tavuk, renkli biberler, soğan, basmati pirinci, haşlanmış brokoli, nohut, mor lahana, avokado, kavrulmuş susam, teriyaki sos, sweet chilli sos ve soya sosu.",650,"600","SO,SU"),
+      it("Avokado Bowl","Avokado, Akdeniz yeşillikleri, lor peyniri ve haşlanmış yumurta.",550,"400","S,Y"),
+      it("Berry Bowl",null,590,"450",null),
+      it("Choco Bowl",null,590,"500",null)
     ],
     "Aperatifler": [
-      it("Anne Patates Kızartması",null,450,"330",null),
-      it("Patates Kızartması",null,420,"310",null),
-      it("Kajun Baharatlı Patates Kızartması",null,480,"460",null),
-      it("Parmesanlı Trüf Yağlı Patates Kızartması","Patates kızartması, parmesan peyniri, trüf yağı ve baharatlar.",540,"450","S"),
-      it("Kajun Baharatlı Chicken Fingers","Kızarmış patates ile honey mustard, sweet chilli ve kokteyl sos.",600,"720","Y,H"),
+      it("Anne Patates Kızartması",null,350,"330",null),
+      it("Patates Kızartması",null,310,"310",null),
+      it("Kajun Baharatlı Patates Kızartması",null,330,"460",null),
+      it("Parmesanlı Trüf Yağlı Patates Kızartması","Patates kızartması, parmesan peyniri, trüf yağı ve baharatlar.",390,"450","S"),
+      it("Kajun Baharatlı Chicken Fingers","Kızarmış patates ile honey mustard, sweet chilli ve kokteyl sos.",590,"720","Y,H"),
       it("Sigara Böreği","Domates söğüş tabağı ile.",310,"540","G,S"),
-      it("Sosis Sepeti","Patates ile.",780,"450",null),
-      it("ZAZ Special","Ev yapımı dana sosis, bonfrit, sigara böreği, soğan halkası, chicken fingers, mozzarella sticks, mini parmak köfte.",1050,"2.600–3.550",null,1),
-      it("Yoğurtlama","Biber, patates ve patlıcan kızartması, yoğurt ve domates ile.",550,"550–750","S")
+      it("Sosis Sepeti","Patates ile.",530,"450",null),
+      it("ZAZ Special","Ev yapımı dana sosis, bonfrit, sigara böreği, soğan halkası, chicken fingers, mozzarella sticks, mini parmak köfte.",990,"2.600–3.550",null,1),
     ],
     "Başlangıçlar": [
-      it("Mezeler","Günün mezelerini lütfen sorunuz. Çeşide göre fiyat değişebilir.",420,null,null),
-      it("Kavun Peynir","Taze kavun dilimleri ve peynir çeşitleri.",420,"250","S"),
-      it("Burrata","Burrata peyniri, zeytinyağı ve taze yeşillikler ile servis edilir.",1140,"300","S"),
+      it("Mezeler","Günün mezelerini lütfen sorunuz. Çeşide göre fiyat değişebilir.",320,null,null),
+      it("Kavun Peynir","Taze kavun dilimleri ve peynir çeşitleri.",330,"250","S"),
+      it("Burrata","Burrata peyniri, zeytinyağı ve taze yeşillikler ile servis edilir.",950,"300","S"),
       it("Söğüş Tabağı","Mevsim yeşillikleri, domates, salatalık, biber ve çeşitli taze sebzeler.",240,"150",null),
-      it("Rakı Tabağı","Domates, salatalık, roka, dilim beyaz peynir ve mevsim meyveleri.",750,"250","S"),
-      it("Bruschetta","Özel yapım ekşi maya ekmeği, concassé domates, zeytin, sarımsak, rendelenmiş parmesan, fesleğen ve fesleğen sos.",420,"350","G,S"),
-      it("Peynir Tabağı","İsli çerkez peyniri, parmesan, eski kaşar, rokfor, beyaz peynir, İzmir tulum, kuru et ve mevsim meyveleri.",1210,"450","S"),
+      it("Rakı Tabağı","Domates, salatalık, roka, dilim beyaz peynir ve mevsim meyveleri.",330,"250","S"),
+      it("Bruschetta","Özel yapım ekşi maya ekmeği, concassé domates, zeytin, sarımsak, rendelenmiş parmesan, fesleğen ve fesleğen sos.",390,"350","G,S"),
+      it("Peynir Tabağı","İsli çerkez peyniri, parmesan, eski kaşar, rokfor, beyaz peynir, İzmir tulum, kuru et ve mevsim meyveleri.",980,"450","S"),
       it("Mozzarella Caprese","Suda mozzarella, dilimlenmiş domates, fesleğen, pesto sos ve ceviz.",660,"350","S,C"),
       it("Pollo Carciofi","Diet haşlanmış tavuk göğsü, taze enginar kalbi, zeytinyağı, lime, limon, tane karabiber, az tuz, toz parmesan, çeri domates ve mascolin glaze.",1100,"340","S"),
-      it("Domates Carpaccio","Dilimlenmiş domates, fesleğen ve maydanozla harmanlanmış küp mor domates, özel oyster ve soya soslu.",660,"180","SO"),
-      it("Carpaccio di Manzo (Dana Carpaccio)","İnce yaprak açılmış marine bonfile; taze baharat, lime sos, glaze sos, baby roka, çeri domates ve toz parmesan ile.",1300,"420","S")
+      it("Domates Carpaccio","Dilimlenmiş domates, fesleğen ve maydanozla harmanlanmış küp mor domates, özel oyster ve soya soslu.",450,"180","SO"),
+      it("Carpaccio di Manzo (Dana Carpaccio)","İnce yaprak açılmış marine bonfile; taze baharat, lime sos, glaze sos, baby roka, çeri domates ve toz parmesan ile.",980,"420","S")
     ],
     "Sıcak Başlangıçlar": [
-      it("Feta Cheese","Feta peyniri, bal, susam ve Yunan usulü baharatlar.",420,"300","S,SU"),
-      it("Susamlı Hellim Tava","4 dilim hellim peyniri, mascolin ve kiraz domates ile.",850,"450","S,SU"),
-      it("Fırında Kaşarlı Mantar Güveç","Mantar, kaşar peyniri, tereyağı ve baharatlar.",720,"350","S"),
-      it("Güveçte Karışık Deniz Mahsulleri","Kalamar, ahtapot, karides, tereyağı, sarımsak ve baharatlar.",1680,"450","K,S"),
-      it("Tereyağlı Karides","Tereyağı, sarımsak ve baharatlar ile.",1550,"350","K,S"),
-      it("Kalamar Tava","Tereyağı ve baharatlar ile.",1300,"350","K,S"),
-      it("Tereyağlı Yaprak Ciğer","İnce dilimlenmiş dana ciğeri, tereyağı, baharatlar ve isteğe bağlı soğan ile servis edilir.",1100,"400","S"),
-      it("Tai Usulü Ballı Susamlı Acılı Tavuk","Tempura soslu kızartılmış Tai usulü tavuk parçaları; sweet chilli, hot chilli sos, bal, göbek otu ve susam ile.",900,"640","SO,SU")
+      it("Feta Cheese","Feta peyniri, bal, susam ve Yunan usulü baharatlar.",390,"300","S,SU"),
+      it("Susamlı Hellim Tava","4 dilim hellim peyniri, mascolin ve kiraz domates ile.",490,"450","S,SU"),
+      it("Fırında Kaşarlı Mantar Güveç","Mantar, kaşar peyniri, tereyağı ve baharatlar.",590,"350","S"),
+      it("Güveçte Karışık Deniz Mahsulleri","Kalamar, ahtapot, karides, tereyağı, sarımsak ve baharatlar.",1490,"450","K,S"),
+      it("Tereyağlı Karides","Tereyağı, sarımsak ve baharatlar ile.",1350,"350","K,S"),
+      it("Kalamar Tava","Tereyağı ve baharatlar ile.",1100,"350","K,S"),
+      it("Tereyağlı Yaprak Ciğer","İnce dilimlenmiş dana ciğeri, tereyağı, baharatlar ve isteğe bağlı soğan ile servis edilir.",850,"400","S"),
+      it("Tai Usulü Ballı Susamlı Acılı Tavuk","Tempura soslu kızartılmış Tai usulü tavuk parçaları; sweet chilli, hot chilli sos, bal, göbek otu ve susam ile.",590,"640","SO,SU")
     ],
     "Çorba": [
       it("Günün Çorbası","Lütfen sorunuz.",360,null,null)
     ],
     "Salatalar": [
-      it("Roka Parmesan Salata","Roka, parmesan peyniri, siyah zeytin, kiraz domates ve zeytinyağlı limon sos.",630,"300","S"),
-      it("Mevsim Salata","Mevsim yeşillikleri, sirkeli kırmızı lahana ve özel sos ile.",620,"120",null),
-      it("Kabak Sıyırma Salata","Marine edilmiş kabak, susam, ay çekirdeği ve zeytinyağlı limon sos.",480,"250","SU"),
-      it("Greek Salata","Beyaz peynir, kırmızı soğan, domates, salatalık, zeytin ve biber.",650,null,"S"),
-      it("İstanbul Salatası","Domates, kırmızı soğan ve özel sos ile.",500,"180",null),
+      it("Roka Parmesan Salata","Roka, parmesan peyniri, siyah zeytin, kiraz domates ve zeytinyağlı limon sos.",490,"300","S"),
+      it("Mevsim Salata","Mevsim yeşillikleri, sirkeli kırmızı lahana ve özel sos ile.",450,"120",null),
+      it("Kabak Sıyırma Salata","Marine edilmiş kabak, susam, ay çekirdeği ve zeytinyağlı limon sos.",390,"250","SU"),
+      it("Greek Salata","Beyaz peynir, kırmızı soğan, domates, salatalık, zeytin ve biber.",490,null,"S"),
+      it("İstanbul Salatası","Domates, kırmızı soğan ve özel sos ile.",450,"180",null),
       it("Izgara Hellim Salata","Akdeniz yeşillikleri, yeşil elma, ceviz, köz biber, çeri domates ve ızgara hellim peyniri.",620,"450","S,C"),
       it("Sezar Salata","Marul, kruton, Sezar sos, parmesan peyniri ve tavuk göğsü.",675,"450","G,S"),
-      it("Izgara Tavuk Salata","Akdeniz yeşillikleri, köz biber, domates ve tavuk göğsü.",675,"350",null),
-      it("Ilık Et Salatası","Akdeniz yeşillikleri, salatalık, köz biber, avokado, parmesan, bonfile dilimleri ve balzamik glaze.",1050,"500","S"),
-      it("Levrek Salata","Akdeniz yeşillikleri, kırmızı soğan, dereotu, kapari, domates ve levrek fileto.",780,"400","B"),
-      it("Somon Füme Salata","Füme somon (100 gr), Akdeniz yeşillikleri, kapari karpuzu, kırmızı soğan, kapari ve özel sos.",990,"400","B"),
-      it("Ton Balıklı Salata","Akdeniz yeşillikleri, ton balığı, kapari, kırmızı soğan ve özel salata sosu.",780,"350","B")
+      it("Izgara Tavuk Salata","Akdeniz yeşillikleri, köz biber, domates ve tavuk göğsü.",650,"350",null),
+      it("Ilık Et Salatası","Akdeniz yeşillikleri, salatalık, köz biber, avokado, parmesan, bonfile dilimleri ve balzamik glaze.",950,"500","S"),
+      it("Levrek Salata","Akdeniz yeşillikleri, kırmızı soğan, dereotu, kapari, domates ve levrek fileto.",650,"400","B"),
+      it("Somon Füme Salata","Füme somon (100 gr), Akdeniz yeşillikleri, kapari karpuzu, kırmızı soğan, kapari ve özel sos.",890,"400","B"),
+      it("Ton Balıklı Salata","Akdeniz yeşillikleri, ton balığı, kapari, kırmızı soğan ve özel salata sosu.",760,"350","B")
     ],
     "Burgerler": [
       it("Zaz Burger","Özel hamburger köftesi, marul, domates, turşu ve patates kızartması.",840,"800","G,S,Y",1),
-      it("Cheeseburger","Burger köftesi, kıvırcık marul, domates, salatalık turşusu, cheddar sos, patates kızartması ve özel burger sosları.",900,"850","G,S,Y,SO"),
-      it("Chicken Burger","Panelenmiş özel tavuk, kıvırcık marul, domates, salatalık turşusu, patates kızartması ve özel burger sosları.",780,"850","G,Y,S,SO"),
-      it("Şefin Burger","Özel burger köftesi, cheddar peyniri, mantar, karamelize soğan ve soslarla kapalı ekmek içinde servis edilir. Pişirme süresi 20–25 dk.",1100,"850","G,S,SO,Y",1)
+      it("Cheeseburger","Burger köftesi, kıvırcık marul, domates, salatalık turşusu, cheddar sos, patates kızartması ve özel burger sosları.",890,"850","G,S,Y,SO"),
+      it("Chicken Burger","Panelenmiş özel tavuk, kıvırcık marul, domates, salatalık turşusu, patates kızartması ve özel burger sosları.",760,"850","G,Y,S,SO"),
     ],
     "Pizzalar": [
-      it("Pizza Burrata","Domates sos, burrata peyniri, pesto sos, kiraz domates ve roka.",1440,"700","G,S"),
-      it("Pizza Mozzarella","Domates sos, mozzarella peyniri ve kiraz domates.",935,"650","G,S"),
-      it("Pizza Margarita","Domates sos, mozzarella peyniri ve kiraz domates.",720,"650","G,S"),
+      it("Pizza Burrata","Domates sos, burrata peyniri, pesto sos, kiraz domates ve roka.",980,"700","G,S"),
+      it("Pizza Mozzarella","Domates sos, mozzarella peyniri ve kiraz domates.",750,"650","G,S"),
+      it("Pizza Margarita","Domates sos, mozzarella peyniri ve kiraz domates.",690,"650","G,S"),
       it("Pizza Vejeteryan","Domates sos, mozzarella peyniri ve mevsim sebzeleri.",720,"700","G,S"),
-      it("Pizza Al Pollo","Domates sos, mozzarella peyniri, baharatlı tavuk parçaları, Meksika usulü sebzeler ve acılı sos.",900,"750","G,S"),
-      it("Pizza Luna","Domates sos, mozzarella peyniri ve sucuk.",840,"750","G,S"),
-      it("Pizza Four Cheese","4 çeşit peynir ile.",850,"900","S,G"),
-      it("Pizza Funghi","Domates sos, mozzarella peyniri ve mantar.",780,"650","G,S"),
-      it("Pizza ZAZ","Domates sosu, mozzarella peyniri, dana füme et, roka, domates ve parmesan peyniri.",1150,"750","G,S",1),
-      it("Pizza Mista","Mozzarella peyniri, sucuk, salam, sosis, mantar, domates, yeşil biber, siyah zeytin ve domates sosu.",950,"850","G,S,SO")
+      it("Pizza Al Pollo","Domates sos, mozzarella peyniri, baharatlı tavuk parçaları, Meksika usulü sebzeler ve acılı sos.",750,"750","G,S"),
+      it("Pizza Luna","Domates sos, mozzarella peyniri ve sucuk.",760,"750","G,S"),
+      it("Pizza Four Cheese","4 çeşit peynir ile.",840,"900","S,G"),
+      it("Pizza Funghi","Domates sos, mozzarella peyniri ve mantar.",750,"650","G,S"),
+      it("Pizza ZAZ","Domates sosu, mozzarella peyniri, dana füme et, roka, domates ve parmesan peyniri.",950,"750","G,S",1),
+      it("Pizza Mista","Mozzarella peyniri, sucuk, salam, sosis, mantar, domates, yeşil biber, siyah zeytin ve domates sosu.",790,"850","G,S,SO")
     ],
     "Makarnalar": [
-      it("Enginar Kalpli Fettuccine Alfredo","Enginar kalbi, tavuk, makarna ve özel soslar. Ürün şarap ile pişirilir.",780,"650","G"),
+      it("Enginar Kalpli Fettuccine Alfredo","Enginar kalbi, tavuk, makarna ve özel soslar. Ürün şarap ile pişirilir.",710,"650","G"),
       it("Karides Linguine","Linguine makarna, karides, özel sos ve baharatlar.",1350,"650","G,K"),
       it("Spaghetti Alnero di Mare","Özel deniz sosu, karides, kalamar, ahtapot, sarımsak, şarap ve napoliten sos.",1500,"450","G,K"),
-      it("Tagliatelle Bonfile","Tagliatelle makarna, mantar, lokum bonfile parçaları, hafif krema, soya sos, oyster sos, sweet chilli sos, maydanozlu tereyağı ve parmesan ile.",1450,"750","G,S,SO"),
-      it("Penne Romano","Tavuk göğsü, kültür mantarı, krema ve soya sosu.",750,"550","G,S,SO"),
-      it("Penne Arabiata","Domates sosu (napoliten), chili biberi, zeytin ve parmesan peyniri.",660,"650","G,S"),
-      it("Spaghetti Bolognese","Makarna, kıyma, domates sosu ve özel baharatlar.",710,"650","G"),
-      it("Mantı Ev Yapımı","El açması hamur, kıyma harcı, yoğurt, sarımsak, tereyağı ve özel baharatlar.",840,"700","G,S,Y")
+      it("Tagliatelle Bonfile","Tagliatelle makarna, mantar, lokum bonfile parçaları, hafif krema, soya sos, oyster sos, sweet chilli sos, maydanozlu tereyağı ve parmesan ile.",950,"750","G,S,SO"),
+      it("Penne Romano","Tavuk göğsü, kültür mantarı, krema ve soya sosu.",620,"550","G,S,SO"),
+      it("Penne Arabiata","Domates sosu (napoliten), chili biberi, zeytin ve parmesan peyniri.",580,"650","G,S"),
+      it("Spaghetti Bolognese","Makarna, kıyma, domates sosu ve özel baharatlar.",690,"650","G"),
+      it("Mantı Ev Yapımı","El açması hamur, kıyma harcı, yoğurt, sarımsak, tereyağı ve özel baharatlar.",690,"700","G,S,Y")
     ],
     "Et Yemekleri": [
-      it("Naturel Bonfile","Izgara dana bonfile, mevsim garnitürü ve özel baharatlar.",1680,"650",null),
-      it("Zaz Usulü Lokum","Sarımsaklı krema sos ile pişirilmiş dana bonfile, mevsim sebzeleri ve özel baharatlar.",1680,"750","S",1),
-      it("Tereyağlı Yaprak Bonfile","Marine edilmiş yaprak bonfile, arpacık soğan, baby patates, çeri domates ve sarımsak.",1740,"700",null),
-      it("Mantar Soslu Antrikot","Izgara antrikot, mantar sosu ve mevsim sebzeleri.",1300,"800","S"),
-      it("Kuzu Pirzola","4 adet kuzu pirzola, roka, maydanoz, kırmızı soğan ve baby patates.",1800,"850",null),
-      it("Çökertme Kebabı","İnce dilimlenmiş dana eti, çıtır patates, sarımsaklı yoğurt ve özel soslar.",1440,"750","S"),
-      it("Yağlı Kara","Yağlı kara et dilimleri ve patates kızartması.",1650,"700",null),
-      it("Sweet Chili Beef","Bonfile parçaları, California biber çeşitleri, mantar ve beşamel sos; üzerine susam ve çörek otu.",980,"580","S,G,SU,SO"),
-      it("Viyana Usulü Et Schnitzel","Patates kızartması, tereyağı ve limon ile.",1380,"980","G,Y,S"),
-      it("Izgara Köfte","Izgara köfte, patates kızartması, ızgara domates ve ızgara biber.",900,"700",null)
+      it("Naturel Bonfile","Izgara dana bonfile, mevsim garnitürü ve özel baharatlar.",1390,"650",null),
+      it("Zaz Usulü Lokum","Sarımsaklı krema sos ile pişirilmiş dana bonfile, mevsim sebzeleri ve özel baharatlar.",1390,"750","S",1),
+      it("Tereyağlı Yaprak Bonfile","Marine edilmiş yaprak bonfile, arpacık soğan, baby patates, çeri domates ve sarımsak.",1390,"700",null),
+      it("Mantar Soslu Antrikot","Izgara antrikot, mantar sosu ve mevsim sebzeleri.",1200,"800","S"),
+      it("Kuzu Pirzola","4 adet kuzu pirzola, roka, maydanoz, kırmızı soğan ve baby patates.",1250,"850",null),
+      it("Çökertme Kebabı","İnce dilimlenmiş dana eti, çıtır patates, sarımsaklı yoğurt ve özel soslar.",1390,"750","S"),
+      it("Viyana Usulü Et Schnitzel","Patates kızartması, tereyağı ve limon ile.",1300,"980","G,Y,S"),
+      it("Izgara Köfte","Izgara köfte, patates kızartması, ızgara domates ve ızgara biber.",840,"700",null)
     ],
     "Tavuk Yemekleri": [
       it("Tavuk Külbastı","Izgara tavuk külbastı, mevsim garnitürü ve özel baharatlar.",780,"550",null),
       it("Diet Izgara Tavuk","Izgara tavuk bonfile, haşlanmış sebzeler ve patates.",780,"550",null),
-      it("Mantar Soslu Tavuk","Izgara tavuk, kremalı mantar sos ve baby patates.",850,"650","S"),
+      it("Mantar Soslu Tavuk","Izgara tavuk, kremalı mantar sos ve baby patates.",840,"650","S"),
       it("Zaz Usulü Tavuk","Sarımsaklı krema sos ile pişirilmiş tavuk bonfile ve özel baharatlar.",780,"600","S",1),
       it("Tavuk Schnitzel","Pane tavuk şnitzel, patates kızartması ve tereyağı.",780,"800","G,Y,S"),
-      it("Köri Soslu Tavuk","Tavuk dilimleri, mantar, kremalı köri sos ve patates kızartması.",850,"700","S"),
-      it("Mexican Tavuk","Tavuk külbastı, acılı Mexican sos ve patates kızartması.",850,"650",null)
+      it("Köri Soslu Tavuk","Tavuk dilimleri, mantar, kremalı köri sos ve patates kızartması.",840,"700","S"),
+      it("Mexican Tavuk","Tavuk külbastı, acılı Mexican sos ve patates kızartması.",840,"650",null)
     ],
     "Wraplar": [
-      it("Wrap Et","İnce küp bonfile, renkli biberler, jalapeño biber, mantar, kaşar peyniri ve özel sos.",950,"700","S,G"),
-      it("Wrap Tavuk","İnce küp tavuk, renkli biberler, jalapeño biber, mantar, kaşar peyniri ve özel sos.",780,"650","S,G")
+      it("Wrap Et","İnce küp bonfile, renkli biberler, jalapeño biber, mantar, kaşar peyniri ve özel sos.",790,"700","S,G"),
+      it("Wrap Tavuk","İnce küp tavuk, renkli biberler, jalapeño biber, mantar, kaşar peyniri ve özel sos.",640,"650","S,G")
     ],
     "Balık": [
-      it("Somon Izgara","Izgara somon, kabak sıyırma ve baby patates.",1320,"550","B"),
+      it("Somon Izgara","Izgara somon, kabak sıyırma ve baby patates.",1150,"550","B"),
       it("Levrek Izgara","Izgara levrek, roka, baby patates ve kırmızı soğan.",1050,"500","B"),
       it("Marine Edilmiş Levrek Şefin Speciali","Özel soslarla marine edilmiş fileto levrek ve baharatlar.",1050,"400","B",1)
     ],
     "Çocuk Menü": [
-      it("Çıtır Tavuk Parçaları","Panelenmiş çıtır tavuk parçaları ve patates kızartması.",480,"750","G,Y,S"),
-      it("Spagetti Bolonez","Makarna, kıymalı domates sos ve peynir.",540,"700","G,S"),
+      it("Çıtır Tavuk Parçaları","Panelenmiş çıtır tavuk parçaları ve patates kızartması.",370,"750","G,Y,S"),
+      it("Spagetti Bolonez","Makarna, kıymalı domates sos ve peynir.",410,"700","G,S"),
       it("Mini Pizza","Domates sos, mozzarella peyniri, sucuk, sosis ve salam.",480,"850","G,S,SO"),
-      it("Tavuk Schnitzel (Çocuk)","Panelenmiş tavuk schnitzel ve patates kızartması.",480,"450","G,Y,S"),
-      it("Makarna","Makarna, domates sos ve peynir.",480,"400","G,S"),
-      it("Izgara Köfte (Çocuk)","Ev yapımı ızgara köfte ve patates kızartması.",600,"600",null),
-      it("Mini Hamburger","Ev yapımı köfte, yeşillikler, domates ve patates kızartması.",600,"650","G,Y,S"),
-      it("Mini Sosis","Mini sosis ve isteğe bağlı patates kızartması ile servis edilir.",540,"350",null)
+      it("Tavuk Schnitzel (Çocuk)","Panelenmiş tavuk schnitzel ve patates kızartması.",420,"450","G,Y,S"),
+      it("Makarna","Makarna, domates sos ve peynir.",320,"400","G,S"),
+      it("Izgara Köfte (Çocuk)","Ev yapımı ızgara köfte ve patates kızartması.",420,"600",null),
+      it("Mini Hamburger","Ev yapımı köfte, yeşillikler, domates ve patates kızartması.",450,"650","G,Y,S"),
     ],
     "Tatlılar": [
       it("Meyve Tabağı","Mevsimine uygun taze meyve çeşitleri.",730,"150",null),
-      it("Cheesecake","Krem peynir, bisküvi tabanı ve özel cheesecake sosu.",490,"490","S,G"),
-      it("Çilekli Magnolia","Süt, krema, muhallebi kreması, bisküvi ve taze çilek.",490,"450","S,G"),
-      it("Mozaik Pasta","Kakao, bisküvi, tereyağı, süt ve çikolata.",490,"500","G,S,SO"),
-      it("San Sebastian Cheesecake","Krem peynir, krema, yumurta, şeker ve özel cheesecake karışımı.",490,"550","S,Y"),
-      it("Banana Roll","Muz, krema, çikolata sos ve özel rulo kek.",490,"450","G,S,Y")
+      it("Cheesecake","Krem peynir, bisküvi tabanı ve özel cheesecake sosu.",390,"490","S,G"),
+      it("Çilekli Magnolia","Süt, krema, muhallebi kreması, bisküvi ve taze çilek.",390,"450","S,G"),
+      it("Mozaik Pasta","Kakao, bisküvi, tereyağı, süt ve çikolata.",420,"500","G,S,SO"),
+      it("San Sebastian Cheesecake","Krem peynir, krema, yumurta, şeker ve özel cheesecake karışımı.",420,"550","S,Y"),
+      it("Banana Roll","Muz, krema, çikolata sos ve özel rulo kek.",390,"450","G,S,Y")
     ]
   },
   "İçecek": {
     "Çaylar": [
       it("Klasik Harman Çay",null,90,null,null),
-      it("Double Çay",null,180,null,null),
+      it("Double Çay",null,150,null,null),
       it("Nane Çayı",null,250,null,null),
       it("Kuşburnu Çayı",null,250,null,null),
       it("Rezene Çayı",null,250,null,null),
@@ -1812,7 +1806,7 @@ const DATA = {
       it("Nescafe",null,240,null,null),
       it("Nescafe Sütlü",null,270,null,"S"),
       it("Sıcak Çikolata",null,380,null,"S"),
-      it("Proteinli Sıcak Çikolata",null,530,null,"S"),
+      it("Proteinli Sıcak Çikolata",null,490,null,"S"),
       it("Salep",null,380,null,"S"),
       it("Kurşun Geçirmez Kahve İlavesi","Kahvenize eklenir.",95,null,"S")
     ],
@@ -1839,9 +1833,9 @@ const DATA = {
       it("Ev Yapımı Limonata",null,275,null,null),
       it("Zaz Cool Lime",null,320,null,null,1),
       it("Fresh Meyve","Havuç, elma veya portakal",360,null,null),
-      it("Taze Meyve Suyu","Portakal, havuç, elma suyu",360,null,null),
-      it("Ice Hibisküs",null,430,null,null),
-      it("Günün Detoksu","Lütfen sorunuz.",430,null,null)
+      it("Taze Meyve Suyu","Portakal, havuç, elma suyu",250,null,null),
+      it("Ice Hibisküs",null,320,null,null),
+      it("Günün Detoksu","Lütfen sorunuz.",320,null,null)
     ],
     "Soğuk Kahveler": [
       it("Ice Mocha",null,310,null,"S"),
@@ -1853,9 +1847,9 @@ const DATA = {
       it("Ice Matcha Latte",null,360,null,"S")
     ],
     "Milk Shake": [
-      it("Çikolatalı Milkshake",null,420,null,"S"),
-      it("Vanilyalı Milkshake",null,420,null,"S"),
-      it("Çilekli Milkshake",null,420,null,"S"),
+      it("Çikolatalı Milkshake",null,310,null,"S"),
+      it("Vanilyalı Milkshake",null,310,null,"S"),
+      it("Çilekli Milkshake",null,310,null,"S"),
       it("Berry Milkshake Protein",null,490,null,"S"),
       it("Chocco Milkshake Protein",null,490,null,"S")
     ]
@@ -1927,28 +1921,28 @@ const DATA = {
     "Rakılar": [
       it("Efe Gold 5cl",null,500,null,null),
       it("Efe Gold 10cl",null,750,null,null),
-      it("Efe Gold 20cl",null,1750,null,null),
-      it("Efe Gold 35cl",null,2500,null,null),
-      it("Efe Gold 50cl",null,3250,null,null),
-      it("Efe Gold 70cl",null,4100,null,null),
-      it("Efe Gold 100cl",null,4900,null,null),
-      it("Yeni Rakı 35cl",null,2470,null,null),
-      it("Yeni Rakı 50cl",null,3250,null,null),
-      it("Yeni Rakı 70cl",null,3600,null,null),
-      it("Yeni Rakı 100cl",null,4500,null,null),
-      it("Beylerbeyi Göbek 20cl",null,2150,null,null),
-      it("Beylerbeyi Göbek 35cl",null,3500,null,null),
-      it("Beylerbeyi Göbek 50cl",null,3900,null,null),
-      it("Beylerbeyi Göbek 70cl",null,4500,null,null),
-      it("Beylerbeyi Göbek 100cl",null,5500,null,null),
-      it("Sarı Zeybek 20cl",null,2200,null,null),
-      it("Sarı Zeybek 35cl",null,3200,null,null),
-      it("Sarı Zeybek 50cl",null,3900,null,null),
-      it("Sarı Zeybek 70cl",null,4500,null,null),
-      it("Tekirdağ Altın Seri 35cl",null,3150,null,null),
-      it("Tekirdağ Altın Seri 50cl",null,3600,null,null),
+      it("Efe Gold 20cl",null,1500,null,null),
+      it("Efe Gold 35cl",null,2300,null,null),
+      it("Efe Gold 50cl",null,3240,null,null),
+      it("Efe Gold 70cl",null,3700,null,null),
+      it("Efe Gold 100cl",null,4500,null,null),
+      it("Yeni Rakı 35cl",null,2000,null,null),
+      it("Yeni Rakı 50cl",null,2550,null,null),
+      it("Yeni Rakı 70cl",null,3270,null,null),
+      it("Yeni Rakı 100cl",null,4100,null,null),
+      it("Beylerbeyi Göbek 20cl",null,1980,null,null),
+      it("Beylerbeyi Göbek 35cl",null,2900,null,null),
+      it("Beylerbeyi Göbek 50cl",null,3600,null,null),
+      it("Beylerbeyi Göbek 70cl",null,4200,null,null),
+      it("Beylerbeyi Göbek 100cl",null,4800,null,null),
+      it("Sarı Zeybek 20cl",null,2040,null,null),
+      it("Sarı Zeybek 35cl",null,2600,null,null),
+      it("Sarı Zeybek 50cl",null,3300,null,null),
+      it("Sarı Zeybek 70cl",null,3700,null,null),
+      it("Tekirdağ Altın Seri 35cl",null,2900,null,null),
+      it("Tekirdağ Altın Seri 50cl",null,3300,null,null),
       it("Tekirdağ Altın Seri 70cl",null,4100,null,null),
-      it("Tekirdağ Altın Seri 100cl",null,4600,null,null)
+      it("Tekirdağ Altın Seri 100cl",null,4200,null,null)
     ],
     "Whisky": [
       it("Jameson Black Barrel 5cl",null,600,null,"G"),
@@ -2100,7 +2094,6 @@ const T_ITEM = {
 "Vegan Bowl":["Vegan Bowl", "Chickpeas, basmati rice, avocado, red pepper, beetroot, greens, pumpkin seeds."],
 "Sporcu Tavuk Bowl":["Athlete's Chicken Bowl", "Chicken, chickpeas, basmati rice, avocado, broccoli, greens, red cabbage and carrot."],
 "Yumurta Bowl":["Egg Bowl", "Egg, chickpeas, basmati rice, avocado, greens, red pepper, cherry tomatoes and carrot."],
-"Izgara Tavuk Bowl":["Grilled Chicken Bowl", "Grilled chicken breast, Mediterranean greens, cherry tomatoes and penne pasta."],
 "Chinese Et Bowl":["Chinese Beef Bowl", "Sautéed beef tenderloin cubes, mixed peppers, onion, basmati rice, steamed broccoli, chickpeas, red cabbage, avocado, roasted sesame, teriyaki, sweet chilli and soy sauce."],
 "Chinese Tavuk Bowl":["Chinese Chicken Bowl", "Sautéed chicken cubes, mixed peppers, onion, basmati rice, steamed broccoli, chickpeas, red cabbage, avocado, roasted sesame, teriyaki, sweet chilli and soy sauce."],
 "Avokado Bowl":["Avocado Bowl", "Avocado, Mediterranean greens, curd cheese and boiled egg."],
@@ -2112,7 +2105,6 @@ const T_ITEM = {
 "Sigara Böreği":["Cheese Rolls (Sigara Böreği)", "Served with a sliced tomato plate."],
 "Sosis Sepeti":["Sausage Basket", "Served with fries."],
 "ZAZ Special":["ZAZ Special Platter", "Homemade beef sausage, fries, cheese rolls, onion rings, chicken fingers, mozzarella sticks and mini meatballs."],
-"Yoğurtlama":["Yoğurtlama", "Fried peppers, potatoes and aubergine with yoghurt and tomato."],
 "Mezeler":["Meze Selection", "Please ask for today's selection. Price may vary by choice."],
 "Kavun Peynir":["Melon & Cheese", "Fresh melon slices with a selection of cheeses."],
 "Burrata":["Burrata", "Burrata cheese served with olive oil and fresh greens."],
@@ -2148,7 +2140,6 @@ const T_ITEM = {
 "Zaz Burger":["Zaz Burger", "House beef patty, lettuce, tomato, pickles and fries."],
 "Cheeseburger":["Cheeseburger", "Beef patty, curly lettuce, tomato, pickles, cheddar sauce, fries and house burger sauces."],
 "Chicken Burger":["Chicken Burger", "Breaded chicken fillet, curly lettuce, tomato, pickles, fries and house burger sauces."],
-"Şefin Burger":["Chef's Burger", "House beef patty, cheddar, mushrooms, caramelised onion and sauces in a closed bun. Cooking time 20–25 min."],
 "Pizza Burrata":["Pizza Burrata", "Tomato sauce, burrata, pesto, cherry tomatoes and rocket."],
 "Pizza Mozzarella":["Pizza Mozzarella", "Tomato sauce, mozzarella and cherry tomatoes."],
 "Pizza Margarita":["Pizza Margherita", "Tomato sauce, mozzarella and cherry tomatoes."],
@@ -2173,8 +2164,6 @@ const T_ITEM = {
 "Mantar Soslu Antrikot":["Ribeye with Mushroom Sauce", "Grilled ribeye, mushroom sauce and seasonal vegetables."],
 "Kuzu Pirzola":["Lamb Chops", "Four lamb chops with rocket, parsley, red onion and baby potatoes."],
 "Çökertme Kebabı":["Çökertme Kebab", "Thinly sliced beef, crispy potatoes, garlic yoghurt and house sauces."],
-"Yağlı Kara":["Yağlı Kara", "Marbled beef slices with fries."],
-"Sweet Chili Beef":["Sweet Chilli Beef", "Beef tenderloin pieces, California peppers, mushrooms and béchamel, topped with sesame and nigella seeds."],
 "Viyana Usulü Et Schnitzel":["Wiener Schnitzel", "Served with fries, butter and lemon."],
 "Izgara Köfte":["Grilled Meatballs", "Grilled meatballs with fries, grilled tomato and pepper."],
 "Tavuk Külbastı":["Grilled Chicken Külbastı", "Grilled chicken with seasonal garnish and house spices."],
@@ -2196,7 +2185,6 @@ const T_ITEM = {
 "Makarna":["Pasta", "Pasta with tomato sauce and cheese."],
 "Izgara Köfte (Çocuk)":["Grilled Meatballs (Kids)", "Homemade grilled meatballs with fries."],
 "Mini Hamburger":["Mini Hamburger", "Homemade patty, greens, tomato and fries."],
-"Mini Sosis":["Mini Sausages", "Mini sausages, served with fries on request."],
 "Meyve Tabağı":["Fruit Platter", "A selection of fresh seasonal fruit."],
 "Cheesecake":["Cheesecake", "Cream cheese, biscuit base and house cheesecake sauce."],
 "Çilekli Magnolia":["Strawberry Magnolia", "Milk, cream, custard, biscuits and fresh strawberries."],
@@ -3516,7 +3504,7 @@ window.addEventListener('pageshow', programGununuKontrolEt);
 /* ================= NE YESEM? — ÖNERİ =================
    Seçilen 4 tada göre menüdeki yemekleri puanlar.
    Ağırlık: 3 = ürünün adında geçiyor, 2 = ana malzeme, 1 = yardımcı malzeme. */
-const PICK_YEMEK = [{"n":"Döküm Tavada Sıcak Kahvaltı","c":"Kahvaltı","p":935,"t":{"kirmizi_et":2,"peynir":2,"yumurta":2,"sebze":1,"patates":2,"aci":2,"izgara":2,"kizartma":2,"firin":3}},{"n":"Diet Kahvaltı","c":"Kahvaltı","p":575,"t":{"peynir":2,"yumurta":2,"avokado":2,"hafif":3}},{"n":"Hızlı Kahvaltı","c":"Kahvaltı","p":480,"t":{"peynir":2,"yumurta":1,"sebze":2,"hafif":1,"kremali":2}},{"n":"Gevrek Tost","c":"Kahvaltı","p":420,"t":{"peynir":2,"sebze":2,"ekmek":3}},{"n":"Pankek","c":"Kahvaltı","p":385,"t":{"tatli":3}},{"n":"Sade Omlet","c":"Kahvaltı","p":360,"t":{"yumurta":3}},{"n":"Kaşar Peynirli Omlet","c":"Kahvaltı","p":390,"t":{"peynir":3,"yumurta":3}},{"n":"Beyaz Omlet","c":"Kahvaltı","p":450,"t":{"peynir":2,"yumurta":3,"avokado":2,"sebze":1}},{"n":"Beyaz Peynirli Omlet","c":"Kahvaltı","p":420,"t":{"peynir":3,"yumurta":3,"sebze":1}},{"n":"Sebzeli Omlet","c":"Kahvaltı","p":450,"t":{"yumurta":3,"sebze":3}},{"n":"Karışık Omlet","c":"Kahvaltı","p":480,"t":{"yumurta":3,"mantar":1}},{"n":"Menemen","c":"Kahvaltı","p":450,"t":{"yumurta":3,"sebze":2}},{"n":"Sahanda Yumurta","c":"Kahvaltı","p":330,"t":{"yumurta":3,"kremali":2}},{"n":"Sucuklu Yumurta","c":"Kahvaltı","p":480,"t":{"yumurta":3,"kremali":2}},{"n":"Sucuk","c":"Kahvaltı","p":450,"t":{"kremali":2}},{"n":"Yumurtalı Ekmek","c":"Kahvaltı","p":240,"t":{"yumurta":3,"ekmek":3}},{"n":"Pişi","c":"Kahvaltı","p":240,"t":{"ekmek":3}},{"n":"Gevrek","c":"Kahvaltı","p":95,"t":{"ekmek":3}},{"n":"Bal","c":"Kahvaltı","p":180,"t":{"tatli":3}},{"n":"Kaymak","c":"Kahvaltı","p":180,"t":{"tatli":3}},{"n":"Club Sandviç","c":"Tost & Sandviç","p":720,"t":{"tavuk":2,"kirmizi_et":2,"peynir":2,"sebze":2,"patates":1,"ekmek":3,"kizartma":1}},{"n":"Karışık Ayvalık Tostu","c":"Tost & Sandviç","p":660,"t":{"peynir":2,"sebze":1,"ekmek":3}},{"n":"Kaşarlı Sucuklu Tost","c":"Tost & Sandviç","p":610,"t":{"peynir":3,"sebze":2,"ekmek":3}},{"n":"Kaşarlı Tost","c":"Tost & Sandviç","p":440,"t":{"peynir":3,"sebze":2,"ekmek":3}},{"n":"J&B Tost","c":"Tost & Sandviç","p":450,"t":{"peynir":2,"sebze":2,"ekmek":3}},{"n":"Diet Tost","c":"Tost & Sandviç","p":380,"t":{"peynir":2,"sebze":2,"hafif":3,"ekmek":3}},{"n":"Ekmek Üstü Poşe Yumurta","c":"Ekmek Üstü Lezzetler","p":420,"t":{"yumurta":3,"ekmek":3}},{"n":"Ekmek Üstü Scrambled","c":"Ekmek Üstü Lezzetler","p":420,"t":{"yumurta":3,"ekmek":3}},{"n":"Ekmek Üstü Somon Füme","c":"Ekmek Üstü Lezzetler","p":900,"t":{"deniz":3,"ekmek":3}},{"n":"Vejetaryen Bowl","c":"Bowl","p":660,"t":{"peynir":2,"hafif":3,"sebze":1}},{"n":"Vegan Bowl","c":"Bowl","p":660,"t":{"avokado":2,"sebze":2,"hafif":3}},{"n":"Sporcu Tavuk Bowl","c":"Bowl","p":780,"t":{"tavuk":3,"avokado":2,"sebze":2,"hafif":3}},{"n":"Yumurta Bowl","c":"Bowl","p":660,"t":{"yumurta":3,"avokado":2,"sebze":2,"hafif":3}},{"n":"Izgara Tavuk Bowl","c":"Bowl","p":780,"t":{"tavuk":3,"sebze":2,"hafif":3,"izgara":3}},{"n":"Chinese Et Bowl","c":"Bowl","p":1320,"t":{"kirmizi_et":3,"avokado":2,"sebze":2,"aci":1,"hafif":3,"uzakdogu":3}},{"n":"Chinese Tavuk Bowl","c":"Bowl","p":900,"t":{"tavuk":3,"avokado":2,"sebze":2,"aci":1,"hafif":3,"uzakdogu":3}},{"n":"Avokado Bowl","c":"Bowl","p":780,"t":{"peynir":2,"yumurta":1,"avokado":3,"sebze":2,"hafif":3}},{"n":"Berry Bowl","c":"Bowl","p":660,"t":{"tatli":3,"hafif":3,"sebze":1}},{"n":"Choco Bowl","c":"Bowl","p":660,"t":{"tatli":3,"hafif":3,"sebze":1}},{"n":"Anne Patates Kızartması","c":"Aperatifler","p":450,"t":{"patates":3,"kizartma":3}},{"n":"Patates Kızartması","c":"Aperatifler","p":420,"t":{"patates":3,"kizartma":3}},{"n":"Kajun Baharatlı Patates Kızartması","c":"Aperatifler","p":480,"t":{"patates":3,"aci":3,"kizartma":3}},{"n":"Parmesanlı Trüf Yağlı Patates Kızartması","c":"Aperatifler","p":540,"t":{"peynir":3,"patates":3,"kizartma":3}},{"n":"Kajun Baharatlı Chicken Fingers","c":"Aperatifler","p":600,"t":{"tavuk":3,"patates":2,"aci":3,"uzakdogu":2,"kizartma":3}},{"n":"Sigara Böreği","c":"Aperatifler","p":310,"t":{"sebze":2,"kizartma":3}},{"n":"Sosis Sepeti","c":"Aperatifler","p":780,"t":{"patates":2}},{"n":"ZAZ Special","c":"Aperatifler","p":1050,"t":{"tavuk":2,"kirmizi_et":2,"peynir":1,"sebze":2,"patates":2,"kizartma":2}},{"n":"Yoğurtlama","c":"Aperatifler","p":550,"t":{"sebze":2,"patates":2,"kremali":3,"kizartma":2}},{"n":"Mezeler","c":"Başlangıçlar","p":420,"t":{"hafif":1}},{"n":"Kavun Peynir","c":"Başlangıçlar","p":420,"t":{"peynir":3,"hafif":1}},{"n":"Burrata","c":"Başlangıçlar","p":1140,"t":{"peynir":3,"sebze":2,"hafif":1}},{"n":"Söğüş Tabağı","c":"Başlangıçlar","p":240,"t":{"sebze":2,"hafif":1}},{"n":"Rakı Tabağı","c":"Başlangıçlar","p":750,"t":{"peynir":1,"sebze":2,"hafif":1}},{"n":"Bruschetta","c":"Başlangıçlar","p":420,"t":{"peynir":2,"sebze":2,"ekmek":3,"sarimsak":2,"hafif":1}},{"n":"Peynir Tabağı","c":"Başlangıçlar","p":1210,"t":{"kirmizi_et":1,"peynir":3,"hafif":1}},{"n":"Mozzarella Caprese","c":"Başlangıçlar","p":660,"t":{"peynir":3,"sebze":2,"hafif":1}},{"n":"Pollo Carciofi","c":"Başlangıçlar","p":1100,"t":{"tavuk":3,"peynir":1,"sebze":2,"hafif":2}},{"n":"Domates Carpaccio","c":"Başlangıçlar","p":660,"t":{"kirmizi_et":3,"sebze":3,"uzakdogu":1,"hafif":1}},{"n":"Carpaccio di Manzo (Dana Carpaccio)","c":"Başlangıçlar","p":1300,"t":{"kirmizi_et":3,"peynir":1,"sebze":2,"hafif":2}},{"n":"Feta Cheese","c":"Sıcak Başlangıçlar","p":420,"t":{"peynir":3,"uzakdogu":2,"firin":1}},{"n":"Susamlı Hellim Tava","c":"Sıcak Başlangıçlar","p":850,"t":{"peynir":3,"sebze":1,"uzakdogu":3,"firin":3}},{"n":"Fırında Kaşarlı Mantar Güveç","c":"Sıcak Başlangıçlar","p":720,"t":{"peynir":3,"mantar":3,"kremali":2,"firin":3}},{"n":"Güveçte Karışık Deniz Mahsulleri","c":"Sıcak Başlangıçlar","p":1680,"t":{"deniz":3,"sarimsak":1,"kremali":2,"firin":3}},{"n":"Tereyağlı Karides","c":"Sıcak Başlangıçlar","p":1550,"t":{"deniz":3,"sarimsak":2,"kremali":3,"firin":1}},{"n":"Kalamar Tava","c":"Sıcak Başlangıçlar","p":1300,"t":{"deniz":3,"kremali":2,"firin":3}},{"n":"Tereyağlı Yaprak Ciğer","c":"Sıcak Başlangıçlar","p":1100,"t":{"kirmizi_et":2,"sebze":1,"kremali":3,"firin":1}},{"n":"Tai Usulü Ballı Susamlı Acılı Tavuk","c":"Sıcak Başlangıçlar","p":900,"t":{"tavuk":3,"aci":2,"uzakdogu":3,"kizartma":2,"firin":1}},{"n":"Günün Çorbası","c":"Çorba","p":360,"t":{"hafif":1,"firin":1}},{"n":"Roka Parmesan Salata","c":"Salatalar","p":630,"t":{"peynir":3,"sebze":3,"hafif":3}},{"n":"Mevsim Salata","c":"Salatalar","p":620,"t":{"sebze":2,"hafif":3}},{"n":"Kabak Sıyırma Salata","c":"Salatalar","p":480,"t":{"sebze":3,"hafif":3,"uzakdogu":2}},{"n":"Greek Salata","c":"Salatalar","p":650,"t":{"peynir":2,"sebze":2,"hafif":3}},{"n":"İstanbul Salatası","c":"Salatalar","p":500,"t":{"sebze":2,"hafif":3}},{"n":"Izgara Hellim Salata","c":"Salatalar","p":620,"t":{"peynir":3,"sebze":2,"hafif":3,"izgara":3}},{"n":"Sezar Salata","c":"Salatalar","p":675,"t":{"tavuk":1,"peynir":1,"sebze":2,"hafif":3}},{"n":"Izgara Tavuk Salata","c":"Salatalar","p":675,"t":{"tavuk":3,"sebze":2,"hafif":3,"izgara":3}},{"n":"Ilık Et Salatası","c":"Salatalar","p":1050,"t":{"kirmizi_et":3,"peynir":2,"avokado":2,"sebze":2,"hafif":3}},{"n":"Levrek Salata","c":"Salatalar","p":780,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Somon Füme Salata","c":"Salatalar","p":990,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Ton Balıklı Salata","c":"Salatalar","p":780,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Zaz Burger","c":"Burgerler","p":840,"t":{"kirmizi_et":2,"sebze":2,"patates":1,"kizartma":1,"ekmek":1}},{"n":"Cheeseburger","c":"Burgerler","p":900,"t":{"kirmizi_et":2,"peynir":3,"sebze":2,"patates":1,"kizartma":1,"ekmek":1}},{"n":"Chicken Burger","c":"Burgerler","p":780,"t":{"tavuk":3,"sebze":2,"patates":1,"kizartma":2,"ekmek":1}},{"n":"Şefin Burger","c":"Burgerler","p":1100,"t":{"kirmizi_et":2,"peynir":2,"mantar":2,"sebze":2,"ekmek":1}},{"n":"Pizza Burrata","c":"Pizzalar","p":1440,"t":{"peynir":3,"pizza":3,"sebze":2}},{"n":"Pizza Mozzarella","c":"Pizzalar","p":935,"t":{"peynir":3,"pizza":3,"sebze":2}},{"n":"Pizza Margarita","c":"Pizzalar","p":720,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Vejeteryan","c":"Pizzalar","p":720,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Al Pollo","c":"Pizzalar","p":900,"t":{"tavuk":3,"peynir":2,"pizza":3,"sebze":2,"aci":2}},{"n":"Pizza Luna","c":"Pizzalar","p":840,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Four Cheese","c":"Pizzalar","p":850,"t":{"peynir":3,"pizza":3}},{"n":"Pizza Funghi","c":"Pizzalar","p":780,"t":{"peynir":2,"pizza":3,"mantar":3,"sebze":2}},{"n":"Pizza ZAZ","c":"Pizzalar","p":1150,"t":{"kirmizi_et":2,"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Mista","c":"Pizzalar","p":950,"t":{"peynir":2,"pizza":3,"mantar":2,"sebze":2}},{"n":"Enginar Kalpli Fettuccine Alfredo","c":"Makarnalar","p":780,"t":{"tavuk":2,"makarna":3,"sebze":3,"kremali":3}},{"n":"Karides Linguine","c":"Makarnalar","p":1350,"t":{"deniz":3,"makarna":3}},{"n":"Spaghetti Alnero di Mare","c":"Makarnalar","p":1500,"t":{"deniz":3,"makarna":3,"sarimsak":2}},{"n":"Tagliatelle Bonfile","c":"Makarnalar","p":1450,"t":{"kirmizi_et":3,"peynir":1,"makarna":3,"mantar":2,"aci":1,"hafif":2,"kremali":2,"uzakdogu":2}},{"n":"Penne Romano","c":"Makarnalar","p":750,"t":{"tavuk":2,"makarna":3,"mantar":2,"kremali":2,"uzakdogu":1}},{"n":"Penne Arabiata","c":"Makarnalar","p":660,"t":{"peynir":1,"makarna":3,"sebze":2,"aci":3}},{"n":"Spaghetti Bolognese","c":"Makarnalar","p":710,"t":{"kirmizi_et":3,"makarna":3,"sebze":2}},{"n":"Mantı Ev Yapımı","c":"Makarnalar","p":840,"t":{"kirmizi_et":2,"makarna":3,"ekmek":2,"sarimsak":2,"kremali":2}},{"n":"Naturel Bonfile","c":"Et Yemekleri","p":1680,"t":{"kirmizi_et":3,"izgara":2}},{"n":"Zaz Usulü Lokum","c":"Et Yemekleri","p":1680,"t":{"kirmizi_et":3,"sebze":2,"sarimsak":2,"kremali":2}},{"n":"Tereyağlı Yaprak Bonfile","c":"Et Yemekleri","p":1740,"t":{"kirmizi_et":3,"sebze":2,"patates":2,"hafif":2,"sarimsak":1,"kremali":3}},{"n":"Mantar Soslu Antrikot","c":"Et Yemekleri","p":1300,"t":{"kirmizi_et":3,"mantar":3,"sebze":1,"izgara":2}},{"n":"Kuzu Pirzola","c":"Et Yemekleri","p":1800,"t":{"kirmizi_et":3,"sebze":2,"patates":1}},{"n":"Çökertme Kebabı","c":"Et Yemekleri","p":1440,"t":{"kirmizi_et":3,"patates":2,"sarimsak":2,"kremali":2,"kizartma":2}},{"n":"Yağlı Kara","c":"Et Yemekleri","p":1650,"t":{"kirmizi_et":3,"patates":2,"kizartma":2}},{"n":"Sweet Chili Beef","c":"Et Yemekleri","p":980,"t":{"kirmizi_et":2,"mantar":2,"sebze":2,"aci":3,"kremali":2,"uzakdogu":3}},{"n":"Viyana Usulü Et Schnitzel","c":"Et Yemekleri","p":1380,"t":{"kirmizi_et":3,"patates":2,"kremali":2,"kizartma":2}},{"n":"Izgara Köfte","c":"Et Yemekleri","p":900,"t":{"kirmizi_et":3,"sebze":2,"patates":2,"izgara":3,"kizartma":2}},{"n":"Tavuk Külbastı","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"izgara":3}},{"n":"Diet Izgara Tavuk","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"sebze":2,"patates":1,"hafif":3,"izgara":3}},{"n":"Mantar Soslu Tavuk","c":"Tavuk Yemekleri","p":850,"t":{"tavuk":3,"mantar":3,"patates":1,"kremali":2,"izgara":2}},{"n":"Zaz Usulü Tavuk","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"sarimsak":2,"kremali":2}},{"n":"Tavuk Schnitzel","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"patates":2,"kremali":1,"kizartma":2}},{"n":"Köri Soslu Tavuk","c":"Tavuk Yemekleri","p":850,"t":{"tavuk":3,"mantar":2,"patates":1,"kremali":2,"kizartma":1}},{"n":"Mexican Tavuk","c":"Tavuk Yemekleri","p":850,"t":{"tavuk":3,"patates":1,"aci":3,"izgara":2,"kizartma":1}},{"n":"Wrap Et","c":"Wraplar","p":950,"t":{"kirmizi_et":3,"peynir":1,"mantar":2,"sebze":2,"ekmek":3}},{"n":"Wrap Tavuk","c":"Wraplar","p":780,"t":{"tavuk":3,"peynir":1,"mantar":2,"sebze":2,"ekmek":3}},{"n":"Somon Izgara","c":"Balık","p":1320,"t":{"deniz":3,"sebze":2,"patates":1,"izgara":3,"hafif":1}},{"n":"Levrek Izgara","c":"Balık","p":1050,"t":{"deniz":3,"sebze":2,"patates":2,"izgara":3,"hafif":1}},{"n":"Marine Edilmiş Levrek Şefin Speciali","c":"Balık","p":1050,"t":{"deniz":3,"hafif":3,"izgara":1}},{"n":"Çıtır Tavuk Parçaları","c":"Çocuk Menü","p":480,"t":{"tavuk":3,"patates":2,"kizartma":3}},{"n":"Spagetti Bolonez","c":"Çocuk Menü","p":540,"t":{"kirmizi_et":2,"peynir":1,"makarna":3,"sebze":2}},{"n":"Mini Pizza","c":"Çocuk Menü","p":480,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Tavuk Schnitzel (Çocuk)","c":"Çocuk Menü","p":480,"t":{"tavuk":3,"patates":2,"kizartma":2}},{"n":"Makarna","c":"Çocuk Menü","p":480,"t":{"peynir":1,"makarna":3,"sebze":2}},{"n":"Izgara Köfte (Çocuk)","c":"Çocuk Menü","p":600,"t":{"kirmizi_et":3,"patates":2,"izgara":3,"kizartma":2}},{"n":"Mini Hamburger","c":"Çocuk Menü","p":600,"t":{"kirmizi_et":2,"sebze":2,"patates":1,"kizartma":1}},{"n":"Mini Sosis","c":"Çocuk Menü","p":540,"t":{"patates":2,"kizartma":2}},{"n":"Meyve Tabağı","c":"Tatlılar","p":730,"t":{"tatli":3}},{"n":"Cheesecake","c":"Tatlılar","p":490,"t":{"peynir":3,"tatli":3}},{"n":"Çilekli Magnolia","c":"Tatlılar","p":490,"t":{"tatli":3,"kremali":2}},{"n":"Mozaik Pasta","c":"Tatlılar","p":490,"t":{"makarna":3,"tatli":3,"kremali":2}},{"n":"San Sebastian Cheesecake","c":"Tatlılar","p":490,"t":{"peynir":3,"yumurta":2,"tatli":3,"kremali":2}},{"n":"Banana Roll","c":"Tatlılar","p":490,"t":{"tatli":3,"kremali":2}}];
+const PICK_YEMEK = [{"n":"Döküm Tavada Sıcak Kahvaltı","c":"Kahvaltı","p":890,"t":{"kirmizi_et":2,"peynir":2,"yumurta":2,"sebze":1,"patates":2,"aci":2,"izgara":2,"kizartma":2,"firin":3}},{"n":"Diet Kahvaltı","c":"Kahvaltı","p":495,"t":{"peynir":2,"yumurta":2,"avokado":2,"hafif":3}},{"n":"Hızlı Kahvaltı","c":"Kahvaltı","p":420,"t":{"peynir":2,"yumurta":1,"sebze":2,"hafif":1,"kremali":2}},{"n":"Gevrek Tost","c":"Kahvaltı","p":320,"t":{"peynir":2,"sebze":2,"ekmek":3}},{"n":"Pankek","c":"Kahvaltı","p":385,"t":{"tatli":3}},{"n":"Sade Omlet","c":"Kahvaltı","p":275,"t":{"yumurta":3}},{"n":"Kaşar Peynirli Omlet","c":"Kahvaltı","p":340,"t":{"peynir":3,"yumurta":3}},{"n":"Beyaz Omlet","c":"Kahvaltı","p":420,"t":{"peynir":2,"yumurta":3,"avokado":2,"sebze":1}},{"n":"Beyaz Peynirli Omlet","c":"Kahvaltı","p":370,"t":{"peynir":3,"yumurta":3,"sebze":1}},{"n":"Sebzeli Omlet","c":"Kahvaltı","p":365,"t":{"yumurta":3,"sebze":3}},{"n":"Karışık Omlet","c":"Kahvaltı","p":415,"t":{"yumurta":3,"mantar":1}},{"n":"Menemen","c":"Kahvaltı","p":350,"t":{"yumurta":3,"sebze":2}},{"n":"Sahanda Yumurta","c":"Kahvaltı","p":290,"t":{"yumurta":3,"kremali":2}},{"n":"Sucuklu Yumurta","c":"Kahvaltı","p":395,"t":{"yumurta":3,"kremali":2}},{"n":"Sucuk","c":"Kahvaltı","p":375,"t":{"kremali":2}},{"n":"Yumurtalı Ekmek","c":"Kahvaltı","p":240,"t":{"yumurta":3,"ekmek":3}},{"n":"Pişi","c":"Kahvaltı","p":240,"t":{"ekmek":3}},{"n":"Gevrek","c":"Kahvaltı","p":95,"t":{"ekmek":3}},{"n":"Bal","c":"Kahvaltı","p":180,"t":{"tatli":3}},{"n":"Kaymak","c":"Kahvaltı","p":180,"t":{"tatli":3}},{"n":"Club Sandviç","c":"Tost & Sandviç","p":720,"t":{"tavuk":2,"kirmizi_et":2,"peynir":2,"sebze":2,"patates":1,"ekmek":3,"kizartma":1}},{"n":"Karışık Ayvalık Tostu","c":"Tost & Sandviç","p":660,"t":{"peynir":2,"sebze":1,"ekmek":3}},{"n":"Kaşarlı Sucuklu Tost","c":"Tost & Sandviç","p":420,"t":{"peynir":3,"sebze":2,"ekmek":3}},{"n":"Kaşarlı Tost","c":"Tost & Sandviç","p":350,"t":{"peynir":3,"sebze":2,"ekmek":3}},{"n":"J&B Tost","c":"Tost & Sandviç","p":420,"t":{"peynir":2,"sebze":2,"ekmek":3}},{"n":"Diet Tost","c":"Tost & Sandviç","p":350,"t":{"peynir":2,"sebze":2,"hafif":3,"ekmek":3}},{"n":"Ekmek Üstü Poşe Yumurta","c":"Ekmek Üstü Lezzetler","p":420,"t":{"yumurta":3,"ekmek":3}},{"n":"Ekmek Üstü Scrambled","c":"Ekmek Üstü Lezzetler","p":420,"t":{"yumurta":3,"ekmek":3}},{"n":"Ekmek Üstü Somon Füme","c":"Ekmek Üstü Lezzetler","p":690,"t":{"deniz":3,"ekmek":3}},{"n":"Vejetaryen Bowl","c":"Bowl","p":490,"t":{"peynir":2,"hafif":3,"sebze":1}},{"n":"Vegan Bowl","c":"Bowl","p":490,"t":{"avokado":2,"sebze":2,"hafif":3}},{"n":"Sporcu Tavuk Bowl","c":"Bowl","p":590,"t":{"tavuk":3,"avokado":2,"sebze":2,"hafif":3}},{"n":"Yumurta Bowl","c":"Bowl","p":490,"t":{"yumurta":3,"avokado":2,"sebze":2,"hafif":3}},{"n":"Chinese Et Bowl","c":"Bowl","p":890,"t":{"kirmizi_et":3,"avokado":2,"sebze":2,"aci":1,"hafif":3,"uzakdogu":3}},{"n":"Chinese Tavuk Bowl","c":"Bowl","p":650,"t":{"tavuk":3,"avokado":2,"sebze":2,"aci":1,"hafif":3,"uzakdogu":3}},{"n":"Avokado Bowl","c":"Bowl","p":550,"t":{"peynir":2,"yumurta":1,"avokado":3,"sebze":2,"hafif":3}},{"n":"Berry Bowl","c":"Bowl","p":590,"t":{"tatli":3,"hafif":3,"sebze":1}},{"n":"Choco Bowl","c":"Bowl","p":590,"t":{"tatli":3,"hafif":3,"sebze":1}},{"n":"Anne Patates Kızartması","c":"Aperatifler","p":350,"t":{"patates":3,"kizartma":3}},{"n":"Patates Kızartması","c":"Aperatifler","p":310,"t":{"patates":3,"kizartma":3}},{"n":"Kajun Baharatlı Patates Kızartması","c":"Aperatifler","p":330,"t":{"patates":3,"aci":3,"kizartma":3}},{"n":"Parmesanlı Trüf Yağlı Patates Kızartması","c":"Aperatifler","p":390,"t":{"peynir":3,"patates":3,"kizartma":3}},{"n":"Kajun Baharatlı Chicken Fingers","c":"Aperatifler","p":590,"t":{"tavuk":3,"patates":2,"aci":3,"uzakdogu":2,"kizartma":3}},{"n":"Sigara Böreği","c":"Aperatifler","p":310,"t":{"sebze":2,"kizartma":3}},{"n":"Sosis Sepeti","c":"Aperatifler","p":530,"t":{"patates":2}},{"n":"ZAZ Special","c":"Aperatifler","p":990,"t":{"tavuk":2,"kirmizi_et":2,"peynir":1,"sebze":2,"patates":2,"kizartma":2}},{"n":"Mezeler","c":"Başlangıçlar","p":320,"t":{"hafif":1}},{"n":"Kavun Peynir","c":"Başlangıçlar","p":330,"t":{"peynir":3,"hafif":1}},{"n":"Burrata","c":"Başlangıçlar","p":950,"t":{"peynir":3,"sebze":2,"hafif":1}},{"n":"Söğüş Tabağı","c":"Başlangıçlar","p":240,"t":{"sebze":2,"hafif":1}},{"n":"Rakı Tabağı","c":"Başlangıçlar","p":330,"t":{"peynir":1,"sebze":2,"hafif":1}},{"n":"Bruschetta","c":"Başlangıçlar","p":390,"t":{"peynir":2,"sebze":2,"ekmek":3,"sarimsak":2,"hafif":1}},{"n":"Peynir Tabağı","c":"Başlangıçlar","p":980,"t":{"kirmizi_et":1,"peynir":3,"hafif":1}},{"n":"Mozzarella Caprese","c":"Başlangıçlar","p":660,"t":{"peynir":3,"sebze":2,"hafif":1}},{"n":"Pollo Carciofi","c":"Başlangıçlar","p":1100,"t":{"tavuk":3,"peynir":1,"sebze":2,"hafif":2}},{"n":"Domates Carpaccio","c":"Başlangıçlar","p":450,"t":{"kirmizi_et":3,"sebze":3,"uzakdogu":1,"hafif":1}},{"n":"Carpaccio di Manzo (Dana Carpaccio)","c":"Başlangıçlar","p":980,"t":{"kirmizi_et":3,"peynir":1,"sebze":2,"hafif":2}},{"n":"Feta Cheese","c":"Sıcak Başlangıçlar","p":390,"t":{"peynir":3,"uzakdogu":2,"firin":1}},{"n":"Susamlı Hellim Tava","c":"Sıcak Başlangıçlar","p":490,"t":{"peynir":3,"sebze":1,"uzakdogu":3,"firin":3}},{"n":"Fırında Kaşarlı Mantar Güveç","c":"Sıcak Başlangıçlar","p":590,"t":{"peynir":3,"mantar":3,"kremali":2,"firin":3}},{"n":"Güveçte Karışık Deniz Mahsulleri","c":"Sıcak Başlangıçlar","p":1490,"t":{"deniz":3,"sarimsak":1,"kremali":2,"firin":3}},{"n":"Tereyağlı Karides","c":"Sıcak Başlangıçlar","p":1350,"t":{"deniz":3,"sarimsak":2,"kremali":3,"firin":1}},{"n":"Kalamar Tava","c":"Sıcak Başlangıçlar","p":1100,"t":{"deniz":3,"kremali":2,"firin":3}},{"n":"Tereyağlı Yaprak Ciğer","c":"Sıcak Başlangıçlar","p":850,"t":{"kirmizi_et":2,"sebze":1,"kremali":3,"firin":1}},{"n":"Tai Usulü Ballı Susamlı Acılı Tavuk","c":"Sıcak Başlangıçlar","p":590,"t":{"tavuk":3,"aci":2,"uzakdogu":3,"kizartma":2,"firin":1}},{"n":"Günün Çorbası","c":"Çorba","p":360,"t":{"hafif":1,"firin":1}},{"n":"Roka Parmesan Salata","c":"Salatalar","p":490,"t":{"peynir":3,"sebze":3,"hafif":3}},{"n":"Mevsim Salata","c":"Salatalar","p":450,"t":{"sebze":2,"hafif":3}},{"n":"Kabak Sıyırma Salata","c":"Salatalar","p":390,"t":{"sebze":3,"hafif":3,"uzakdogu":2}},{"n":"Greek Salata","c":"Salatalar","p":490,"t":{"peynir":2,"sebze":2,"hafif":3}},{"n":"İstanbul Salatası","c":"Salatalar","p":450,"t":{"sebze":2,"hafif":3}},{"n":"Izgara Hellim Salata","c":"Salatalar","p":620,"t":{"peynir":3,"sebze":2,"hafif":3,"izgara":3}},{"n":"Sezar Salata","c":"Salatalar","p":675,"t":{"tavuk":1,"peynir":1,"sebze":2,"hafif":3}},{"n":"Izgara Tavuk Salata","c":"Salatalar","p":650,"t":{"tavuk":3,"sebze":2,"hafif":3,"izgara":3}},{"n":"Ilık Et Salatası","c":"Salatalar","p":950,"t":{"kirmizi_et":3,"peynir":2,"avokado":2,"sebze":2,"hafif":3}},{"n":"Levrek Salata","c":"Salatalar","p":650,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Somon Füme Salata","c":"Salatalar","p":890,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Ton Balıklı Salata","c":"Salatalar","p":760,"t":{"deniz":3,"sebze":2,"hafif":3}},{"n":"Zaz Burger","c":"Burgerler","p":840,"t":{"kirmizi_et":2,"sebze":2,"patates":1,"kizartma":1,"ekmek":1}},{"n":"Cheeseburger","c":"Burgerler","p":890,"t":{"kirmizi_et":2,"peynir":3,"sebze":2,"patates":1,"kizartma":1,"ekmek":1}},{"n":"Chicken Burger","c":"Burgerler","p":760,"t":{"tavuk":3,"sebze":2,"patates":1,"kizartma":2,"ekmek":1}},{"n":"Pizza Burrata","c":"Pizzalar","p":980,"t":{"peynir":3,"pizza":3,"sebze":2}},{"n":"Pizza Mozzarella","c":"Pizzalar","p":750,"t":{"peynir":3,"pizza":3,"sebze":2}},{"n":"Pizza Margarita","c":"Pizzalar","p":690,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Vejeteryan","c":"Pizzalar","p":720,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Al Pollo","c":"Pizzalar","p":750,"t":{"tavuk":3,"peynir":2,"pizza":3,"sebze":2,"aci":2}},{"n":"Pizza Luna","c":"Pizzalar","p":760,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Four Cheese","c":"Pizzalar","p":840,"t":{"peynir":3,"pizza":3}},{"n":"Pizza Funghi","c":"Pizzalar","p":750,"t":{"peynir":2,"pizza":3,"mantar":3,"sebze":2}},{"n":"Pizza ZAZ","c":"Pizzalar","p":950,"t":{"kirmizi_et":2,"peynir":2,"pizza":3,"sebze":2}},{"n":"Pizza Mista","c":"Pizzalar","p":790,"t":{"peynir":2,"pizza":3,"mantar":2,"sebze":2}},{"n":"Enginar Kalpli Fettuccine Alfredo","c":"Makarnalar","p":710,"t":{"tavuk":2,"makarna":3,"sebze":3,"kremali":3}},{"n":"Karides Linguine","c":"Makarnalar","p":1350,"t":{"deniz":3,"makarna":3}},{"n":"Spaghetti Alnero di Mare","c":"Makarnalar","p":1500,"t":{"deniz":3,"makarna":3,"sarimsak":2}},{"n":"Tagliatelle Bonfile","c":"Makarnalar","p":950,"t":{"kirmizi_et":3,"peynir":1,"makarna":3,"mantar":2,"aci":1,"hafif":2,"kremali":2,"uzakdogu":2}},{"n":"Penne Romano","c":"Makarnalar","p":620,"t":{"tavuk":2,"makarna":3,"mantar":2,"kremali":2,"uzakdogu":1}},{"n":"Penne Arabiata","c":"Makarnalar","p":580,"t":{"peynir":1,"makarna":3,"sebze":2,"aci":3}},{"n":"Spaghetti Bolognese","c":"Makarnalar","p":690,"t":{"kirmizi_et":3,"makarna":3,"sebze":2}},{"n":"Mantı Ev Yapımı","c":"Makarnalar","p":690,"t":{"kirmizi_et":2,"makarna":3,"ekmek":2,"sarimsak":2,"kremali":2}},{"n":"Naturel Bonfile","c":"Et Yemekleri","p":1390,"t":{"kirmizi_et":3,"izgara":2}},{"n":"Zaz Usulü Lokum","c":"Et Yemekleri","p":1390,"t":{"kirmizi_et":3,"sebze":2,"sarimsak":2,"kremali":2}},{"n":"Tereyağlı Yaprak Bonfile","c":"Et Yemekleri","p":1390,"t":{"kirmizi_et":3,"sebze":2,"patates":2,"hafif":2,"sarimsak":1,"kremali":3}},{"n":"Mantar Soslu Antrikot","c":"Et Yemekleri","p":1200,"t":{"kirmizi_et":3,"mantar":3,"sebze":1,"izgara":2}},{"n":"Kuzu Pirzola","c":"Et Yemekleri","p":1250,"t":{"kirmizi_et":3,"sebze":2,"patates":1}},{"n":"Çökertme Kebabı","c":"Et Yemekleri","p":1390,"t":{"kirmizi_et":3,"patates":2,"sarimsak":2,"kremali":2,"kizartma":2}},{"n":"Viyana Usulü Et Schnitzel","c":"Et Yemekleri","p":1300,"t":{"kirmizi_et":3,"patates":2,"kremali":2,"kizartma":2}},{"n":"Izgara Köfte","c":"Et Yemekleri","p":840,"t":{"kirmizi_et":3,"sebze":2,"patates":2,"izgara":3,"kizartma":2}},{"n":"Tavuk Külbastı","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"izgara":3}},{"n":"Diet Izgara Tavuk","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"sebze":2,"patates":1,"hafif":3,"izgara":3}},{"n":"Mantar Soslu Tavuk","c":"Tavuk Yemekleri","p":840,"t":{"tavuk":3,"mantar":3,"patates":1,"kremali":2,"izgara":2}},{"n":"Zaz Usulü Tavuk","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"sarimsak":2,"kremali":2}},{"n":"Tavuk Schnitzel","c":"Tavuk Yemekleri","p":780,"t":{"tavuk":3,"patates":2,"kremali":1,"kizartma":2}},{"n":"Köri Soslu Tavuk","c":"Tavuk Yemekleri","p":840,"t":{"tavuk":3,"mantar":2,"patates":1,"kremali":2,"kizartma":1}},{"n":"Mexican Tavuk","c":"Tavuk Yemekleri","p":840,"t":{"tavuk":3,"patates":1,"aci":3,"izgara":2,"kizartma":1}},{"n":"Wrap Et","c":"Wraplar","p":790,"t":{"kirmizi_et":3,"peynir":1,"mantar":2,"sebze":2,"ekmek":3}},{"n":"Wrap Tavuk","c":"Wraplar","p":640,"t":{"tavuk":3,"peynir":1,"mantar":2,"sebze":2,"ekmek":3}},{"n":"Somon Izgara","c":"Balık","p":1150,"t":{"deniz":3,"sebze":2,"patates":1,"izgara":3,"hafif":1}},{"n":"Levrek Izgara","c":"Balık","p":1050,"t":{"deniz":3,"sebze":2,"patates":2,"izgara":3,"hafif":1}},{"n":"Marine Edilmiş Levrek Şefin Speciali","c":"Balık","p":1050,"t":{"deniz":3,"hafif":3,"izgara":1}},{"n":"Çıtır Tavuk Parçaları","c":"Çocuk Menü","p":370,"t":{"tavuk":3,"patates":2,"kizartma":3}},{"n":"Spagetti Bolonez","c":"Çocuk Menü","p":410,"t":{"kirmizi_et":2,"peynir":1,"makarna":3,"sebze":2}},{"n":"Mini Pizza","c":"Çocuk Menü","p":480,"t":{"peynir":2,"pizza":3,"sebze":2}},{"n":"Tavuk Schnitzel (Çocuk)","c":"Çocuk Menü","p":420,"t":{"tavuk":3,"patates":2,"kizartma":2}},{"n":"Makarna","c":"Çocuk Menü","p":320,"t":{"peynir":1,"makarna":3,"sebze":2}},{"n":"Izgara Köfte (Çocuk)","c":"Çocuk Menü","p":420,"t":{"kirmizi_et":3,"patates":2,"izgara":3,"kizartma":2}},{"n":"Mini Hamburger","c":"Çocuk Menü","p":450,"t":{"kirmizi_et":2,"sebze":2,"patates":1,"kizartma":1}},{"n":"Meyve Tabağı","c":"Tatlılar","p":730,"t":{"tatli":3}},{"n":"Cheesecake","c":"Tatlılar","p":390,"t":{"peynir":3,"tatli":3}},{"n":"Çilekli Magnolia","c":"Tatlılar","p":390,"t":{"tatli":3,"kremali":2}},{"n":"Mozaik Pasta","c":"Tatlılar","p":420,"t":{"makarna":3,"tatli":3,"kremali":2}},{"n":"San Sebastian Cheesecake","c":"Tatlılar","p":420,"t":{"peynir":3,"yumurta":2,"tatli":3,"kremali":2}},{"n":"Banana Roll","c":"Tatlılar","p":390,"t":{"tatli":3,"kremali":2}}];
 const PICK_SECENEK = [{"k":"kirmizi_et","tr":"Kırmızı Et","en":"Red Meat","i":"🥩"},{"k":"tavuk","tr":"Tavuk","en":"Chicken","i":"🍗"},{"k":"deniz","tr":"Deniz Ürünleri","en":"Seafood","i":"🦐"},{"k":"peynir","tr":"Peynir","en":"Cheese","i":"🧀"},{"k":"makarna","tr":"Makarna","en":"Pasta","i":"🍝"},{"k":"pizza","tr":"Pizza","en":"Pizza","i":"🍕"},{"k":"yumurta","tr":"Yumurta","en":"Egg","i":"🍳"},{"k":"sebze","tr":"Sebze & Yeşillik","en":"Vegetables","i":"🥗"},{"k":"avokado","tr":"Avokado","en":"Avocado","i":"🥑"},{"k":"mantar","tr":"Mantar","en":"Mushroom","i":"🍄"},{"k":"patates","tr":"Patates","en":"Potato","i":"🍟"},{"k":"aci","tr":"Acı & Baharatlı","en":"Spicy","i":"🌶️"},{"k":"kremali","tr":"Kremalı","en":"Creamy","i":"🥛"},{"k":"sarimsak","tr":"Sarımsaklı","en":"Garlicky","i":"🧄"},{"k":"uzakdogu","tr":"Uzak Doğu","en":"Asian","i":"🥢"},{"k":"ekmek","tr":"Ekmek Arası","en":"Bread & Toast","i":"🥪"},{"k":"hafif","tr":"Hafif & Diyet","en":"Light","i":"🌿"},{"k":"tatli","tr":"Tatlı","en":"Sweet","i":"🍰"},{"k":"kizartma","tr":"Kızartma","en":"Fried","i":"🍤"},{"k":"firin","tr":"Fırın & Tava","en":"Baked & Pan","i":"🥘"}];
 const PICK_MIN = 3;   /* en az 3 seçim; üst sınır yok */
 let pickSecim = [];
